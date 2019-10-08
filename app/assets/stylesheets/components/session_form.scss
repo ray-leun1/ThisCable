@@ -10,7 +10,6 @@
 
 .session-form-container .title {
   font-size: 26px;
-  line-height: 32px;
   font-weight: 300;
   text-align: center;
 }
@@ -18,12 +17,12 @@
 .session-input-container {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 }
 
 .session-input {
   color: $txt-gray1;
   font-size: 12px;
+  margin-top: 20px;
 }
 
 .session-input input {
@@ -31,6 +30,35 @@
   font-size: 16px;
   display: flex;
   border: 1px solid black;
+  border-radius: 3px;
   width: 100%;
   padding: 10px;
+  background: $bg-gray2;
+}
+
+.session-submit {
+  width: 100%;
+  background: $light-blue;
+  text-align: center;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.session-nav {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.session-nav-link {
+  color: $light-blue;
+}
+
+.session-nav-link:hover {
+  text-decoration: underline;
+}
+
+.session-switch-msg {
+  color: $txt-gray2;
+  cursor: default;
 }
