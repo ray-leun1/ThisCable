@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
       log_in(@user)
       render json: current_user
     else
-      render json: ['Invalid parameters'], status: 404
+      render json: ['Invalid parameters'], status: 401
     end
   end
 
@@ -21,10 +21,5 @@ class Api::SessionsController < ApplicationController
     else
       render json: ['No current_user'], status: 404
     end
-  end
-
-  private
-  def user_params
-    params.require(:user).permit(:email, :password)
   end
 end

@@ -1,0 +1,36 @@
+.session-form-container {
+  color: white;
+  margin: auto;
+  padding: 40px;
+  width: 480px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: $bg-gray0;
+}
+
+.session-form-container .title {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.session-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.session-input {
+  color: $txt-gray1;
+  font-size: 12px;
+}
+
+.session-input input {
+  color: white;
+  font-size: 16px;
+  display: flex;
+  border: 1px solid black;
+  width: 100%;
+  padding: 10px;
+}
