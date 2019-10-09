@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { logout, login } from '../../actions/session_actions';
 import Landing from './landing';
 
-const mapStateToProps = state => ({
+let demoLogin = {email: 'testEmail@cord.com', password: 'password'};
 
+const mapStateToProps = state => ({
+  currentUserId: state.session.id !== null,
+  currentUser: (state.session.id !== null) ? 
+    state.entities.users[state.session.id] : null
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  login: () => dispatch(login(demoLogin))
 });
 
 export default connect(

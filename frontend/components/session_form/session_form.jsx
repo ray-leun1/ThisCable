@@ -10,12 +10,18 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+  
+  handleDemo() {
+    const demoUser = {email: 'testEmail@cord.com', password: 'password'};
+    this.props.processForm(demoUser);
   }
 
   handleChange(field) {
@@ -34,6 +40,7 @@ class SessionForm extends React.Component {
     let loginStr = 'Login';
     let signupStr = 'Sign Up';
     let formTypeStr = this.props.formType === 'login' ? loginStr : signupStr;
+    let hidden = this.props.formType === 'signup';
 
     return (<div className='session-form-container'>
       <form className='session-form'
@@ -59,6 +66,11 @@ class SessionForm extends React.Component {
           <input type="submit"
             value={formTypeStr}
             className='session-submit'/>
+          <button hidden={hidden}
+            onClick={this.handleDemo}
+            className='session-submit'>
+            Demo Login
+          </button>
         </div>
       </form>
       {this.props.navLink}

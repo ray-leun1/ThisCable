@@ -1,9 +1,14 @@
 .session-form-container {
-  color: white;
-  margin: auto;
-  padding: 40px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 480px;
+  padding: 40px;
   box-sizing: border-box;
+  color: $txt-white;
   border-radius: 5px;
   background: $bg-gray0;
 }
@@ -20,13 +25,13 @@
 }
 
 .session-input {
-  color: $txt-gray1;
+  color: $txt-gray2;
   font-size: 12px;
   margin-top: 20px;
 }
 
 .session-input input {
-  color: white;
+  color: $txt-white;
   font-size: 16px;
   display: flex;
   border: 1px solid black;
@@ -59,6 +64,6 @@
 }
 
 .session-switch-msg {
-  color: $txt-gray2;
+  color: $txt-gray3;
   cursor: default;
 }

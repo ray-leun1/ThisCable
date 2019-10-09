@@ -1,0 +1,28 @@
+.landing-container > nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: $txt-gray0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.landing-container .nav-right li {
+  margin-left: 20px;
+  padding: 5px 17px;
+  border: 2px solid $txt-gray0;
+  border-radius: 20px;
+}
+
+.landing-container .nav-right li:hover {
+  border-color: $txt-white;
+  color: $txt-white;
+}
+
+.landing-container .nav-right span {
+  margin-left: 5px;
+}
