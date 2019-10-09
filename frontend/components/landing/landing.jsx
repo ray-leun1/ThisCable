@@ -17,7 +17,7 @@ class Landing extends React.Component {
             <Link to='/login'>Log In</Link>
           </li>
           <li hidden={hidden}>
-            <button onClick={this.props.login}>Demo Login</button>
+            <button onClick={this.props.loginDemo}>Demo Login</button>
           </li>
           <li hidden={!hidden}>
             <button onClick={this.props.logout}>Log Out</button>

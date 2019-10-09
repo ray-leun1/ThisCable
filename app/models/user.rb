@@ -4,7 +4,12 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  attr_reader :password
+  attr_reader :password, :joinedServerIds
+
+  def joinServer(serverId)
+    @joinedServerIds ||= []
+    joinedServerIds.push(serverId) unless joinedServerIds.include?(serverId)
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

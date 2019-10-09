@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
+import { login, compUnmount } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
 const mapStateToProps = state => ({
@@ -13,8 +13,12 @@ const mapStateToProps = state => ({
   </div>
 });
 
+const demoUser = { email: 'testEmail@cord.com', password: 'password' };
+
 const mapDispatchToProps = dispatch => ({
-  processForm: user => dispatch(login(user))
+  processForm: user => dispatch(login(user)),
+  processDemo: () => dispatch(login(demoUser)),
+  clearErrors: () => dispatch(compUnmount())
 });
 
 export default connect(
