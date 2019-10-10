@@ -23,7 +23,8 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
   
-  handleDemo() {
+  handleDemo(e) {
+    e.preventDefault();
     this.props.processDemo();
   }
 

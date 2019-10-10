@@ -2,14 +2,15 @@ class User < ApplicationRecord
   validates :username, :email, :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
+  has_many :memberships
+  has_many :servers, through: :memberships, source: :server
+  has_many :user_roles
+  has_many :roles, through: :user_roles, source: :role
+  has_many :joined_channels, through: :roles, source: :channel
+
   before_validation :ensure_session_token
 
-  attr_reader :password, :joinedServerIds
-
-  def joinServer(serverId)
-    @joinedServerIds ||= []
-    joinedServerIds.push(serverId) unless joinedServerIds.include?(serverId)
-  end
+  attr_reader :password
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
