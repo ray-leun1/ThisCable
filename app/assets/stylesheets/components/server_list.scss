@@ -1,0 +1,36 @@
+.server-list {
+  height: 100vh;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  background: $bg-server-list;
+}
+
+.server-list-item {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+}
+
+.server-list-item:hover {
+  border-radius: 25%;
+}
+
+.add-server-btn, .logout-btn {
+  width: 46px;
+  height: 46px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  color: $txt-add-server-btn;
+  font-size: 28px;
+  text-align: center;
+  background: $add-server-btn;
+}
+
+.add-server-btn:hover, .logout-btn:hover {
+  color: white;
+  background: $add-server-btn-hover;
+}

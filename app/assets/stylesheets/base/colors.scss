@@ -1,13 +1,79 @@
 $bg-gray0: #36393f;
+
+$bg-session-form: $bg-gray0;
+$add-server-btn: $bg-gray0;
+$bg-chat: $bg-gray0;
+
 $bg-gray1: #313339;
+
+$bg-session-input: $bg-gray1;
+
 $bg-gray2: #2f3136;
 
+$create-server-input-name-txt: $bg-gray2;
+
+$border-gray: #cdcdcd;
+
+$create-server-input-region-border: $border-gray;
+
+
+$bg-gray3: #26262b;
+
+$bg-gray4: #202225;
+
+$bg-server-list: $bg-gray4;
+
+$bg-gray5: #f6f6f7;
+
+$create-server-form-container-bottom: $bg-gray5;
+
+
+$underline-gray: #f0f0f0;
+
+$underline: $underline-gray;
+
+
 $txt-gray0: #b0b0b2;
+
+$landing: $txt-gray0;
+
 $txt-gray1: #8e9297;
+
+$txt-session-label: $txt-gray1;
+
 $txt-gray2: #72767d;
 $txt-gray3: #6d7177;
 
+$txt-session-switch: $txt-gray3;
+
+$txt-gray4: #99aab5;
+
+$create-server-txt: $txt-gray4;
+
+$txt-gray5: #87909c;
+
+$create-server-label-txt: $txt-gray5;
+$create-server-input-icon-txt: $txt-gray5;
+
+$txt-gray6: #747f8d;
+
 $txt-white: #d4d4d5;
+
+$landing-hover: $txt-white;
+$title-session-form: $txt-white;
+$txt-session-input: $txt-white;
 
 $error-red: #bc1315;
 $light-blue: #7289da;
+
+$default-btn: $light-blue;
+$txt-session-nav-link: $light-blue;
+$create-server-title: $light-blue;
+$create-server-input-region-btn-hover: $light-blue;
+$create-server-input-region-change-btn: $light-blue;
+$create-server-input-icon-btn: $light-blue;
+
+$warm-green: #43b581;
+
+$txt-add-server-btn: $warm-green;
+$add-server-btn-hover: $warm-green;

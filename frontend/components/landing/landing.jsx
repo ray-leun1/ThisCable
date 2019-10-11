@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Landing extends React.Component {
   render() {
@@ -10,23 +11,23 @@ class Landing extends React.Component {
     return(<div className='landing-container'>
       <nav>
         <div className='nav-left'>
-          Download Nitro Jobs Developers Community Support
+           
         </div>
-        <ul className='nav-right'>
-          <li hidden={hidden}>
-            <Link to='/login'>Log In</Link>
-          </li>
-          <li hidden={hidden}>
+        <div className='nav-right'>
+          <div hidden={hidden}>
+            <Link to='/login'><button>Log In</button></Link>
+          </div>
+          <div hidden={hidden}>
             <button onClick={this.props.loginDemo}>Demo Login</button>
-          </li>
-          <li hidden={!hidden}>
+          </div>
+          <div hidden={!hidden}>
             <button onClick={this.props.logout}>Log Out</button>
-          </li>
+          </div>
           <span hidden={!hidden}>{currentUsername}</span>
-        </ul>
+        </div>
       </nav>
     </div >)
   }
 }
 
-export default Landing
+export default withRouter(Landing)

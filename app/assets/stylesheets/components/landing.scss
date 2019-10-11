@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  color: $txt-gray0;
+  color: $landing;
 }
 
 .nav-right {
@@ -11,16 +11,16 @@
   align-items: center;
 }
 
-.landing-container .nav-right li {
+.landing-container .nav-right button {
   margin-left: 20px;
   padding: 5px 17px;
-  border: 2px solid $txt-gray0;
+  border: 2px solid $landing;
   border-radius: 20px;
 }
 
-.landing-container .nav-right li:hover {
-  border-color: $txt-white;
-  color: $txt-white;
+.landing-container .nav-right button:hover {
+  border-color: $landing-hover;
+  color: $landing-hover;
 }
 
 .landing-container .nav-right span {

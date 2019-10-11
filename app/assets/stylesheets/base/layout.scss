@@ -1,8 +1,19 @@
 /* Define application-wide selectors here!*/
 
 #root {
-  background: $bg-gray2;
+  background: $bg-gray3;
   height: 100vh;
   color: $txt-white;
   position: relative;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.default-btn {
+  line-height: 16px;
+  padding: 2px 16px;
+  background: $default-btn;
+  border-radius: 3px;
 }
