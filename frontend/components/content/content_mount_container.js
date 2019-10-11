@@ -1,11 +1,12 @@
 import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import ServerListContainer from './servers/server_list_container';
+import SidebarContainer from './sidebar/sidebar_container';
 
 const ContentMountContainer = () => {
-  return(<div>
+  return(<div className='content-mount-container'>
     <ServerListContainer />
+    <SidebarContainer />
   </div>)
 }
 
-export default ContentMountContainer
+export default ContentMountContainer;

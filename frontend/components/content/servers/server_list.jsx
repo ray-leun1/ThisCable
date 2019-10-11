@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 class ServerList extends React.Component {
-
-  componentDidMount() {
-    this.props.getServers();
+  constructor(props) {
+    super(props);
+    this.state = this.props.getServers();
   }
 
   render() {

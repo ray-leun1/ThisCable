@@ -1,0 +1,38 @@
+.settings-container-left {
+  background: $settings-left-bg;
+  height: 100%;
+}
+
+.settings-container-right {
+  background: $settings-right-bg;
+  height: 100%;
+}
+
+.settings-tab {
+  font-size: 16px;
+  line-height: 20px;
+  width: 172px;
+  height: 20px;
+  padding: 6px 10px;
+  margin-bottom: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.settings-tab:hover {
+  background: rgba(79, 84, 92, 0.32);
+}
+
+.settings-tab.logout {
+  color: $settings-tab-logout;
+  cursor: pointer;
+}
+
+.settings-tab.logout:hover {
+  background: rgba(240, 71, 71, 0.1)
+}
+
+.settings-tab.logout:active {
+  color: white;
+  background: $settings-tab-logout;
+}

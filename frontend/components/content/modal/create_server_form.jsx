@@ -68,11 +68,11 @@ class CreateServerForm extends React.Component {
             </div>
             <div className='create-server-form-input-container-right'>
               <div className='create-server-input-icon-container'>
-                <button className='create-server-input-icon-btn'>
+                <div className='create-server-input-icon-btn'>
                   <img className='create-server-input-icon'
                     src='#'
                     alt='Server Icon'/>
-                </button>
+                </div>
                 <span className='create-server-input-icon-txt'>
                   Minimum Size: <strong>128x128</strong>
                 </span>
