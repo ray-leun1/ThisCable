@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import ServerListItem from './server_list_item';
 
 class ServerList extends React.Component {
   constructor(props) {
@@ -9,26 +10,31 @@ class ServerList extends React.Component {
   }
 
   render() {
-    return (
-      <div className='server-list'>
-        {this.props.servers.map(server =>
-          <Link to={`/channels/${server.id}`}
-            key={`server-li-${server.id}`}>
-            <img className='server-list-item'
-              src="https://i.imgur.com/Jvh1OQm.jpg"
-              alt={server.name} />
-          </Link>
-        )}
-        <button className='server-list-item add-server-btn'
+    return (<div className='server-list'>
+      {this.props.servers.map(server => 
+        <ServerListItem server={server} />
+      )}
+      <div className='server-list-item-container'>
+        <button className='add-server-btn'
           onClick={() => this.props.openModal('create server')}>
           +
         </button>
-        <button className='server-list-item logout-btn'
+        <div className='hover-tooltip server-list-item-hover'
+          key={'server-hover-name-add-a-server'}>
+          Add a Server
+        </div>
+      </div>
+      <div className='server-list-item-container'>
+        <button className='logout-btn'
           onClick={() => this.props.logout()}>
           -
         </button>
+        <div className='hover-tooltip server-list-item-hover'
+          key={'server-hover-name-logout'}>
+          Logout
+        </div>
       </div>
-    );
+    </div>);
   }
 }
 

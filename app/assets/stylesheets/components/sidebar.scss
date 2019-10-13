@@ -1,0 +1,93 @@
+.sidebar-container {
+  width: 232px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $sidebar-bg;
+}
+
+
+// Server name at top
+.sidebar-title-container {
+  height: 48px;
+  padding: 0px 16px;
+  border-bottom: 1px solid $content-top-divider;
+}
+
+.sidebar-title {
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 48px;
+}
+
+// User UI at bottom
+.sidebar-user-ui {
+  height: 52px;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $sidebar-user-ui-bg;
+}
+
+
+// User info
+.sidebar-user-ui-info {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-user-ui-info-avatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.sidebar-user-ui-info-username {
+  color: white;
+  font-size: 14px;
+}
+
+
+// Buttons in UI
+.sidebar-user-ui-btn-container {
+  color: $sidebar-user-ui-btns-color;
+  // width: 96px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-user-ui-btn-container > * {
+  position: relative;
+}
+
+.sidebar-user-ui-btn {
+  position: relative;
+  width: 32px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-radius: 4px;
+}
+
+.sidebar-user-ui-btn:hover {
+  background: $sidebar-user-ui-btns-bg;
+}
+
+.sidebar-user-ui-btn-hover {
+  display: none;
+  position: absolute;
+  left: -45px;
+  right: -45px;
+  bottom: 40px;
+}
+
+.sidebar-user-ui-btn-container > *:hover > .sidebar-user-ui-btn-hover {
+  display: inline;
+}

@@ -10,12 +10,17 @@ $bg-session-input: $bg-gray1;
 $bg-gray2: #2f3136;
 $create-server-input-name-txt: $bg-gray2;
 $settings-left-bg: $bg-gray2;
+$sidebar-bg: $bg-gray2;
 
 $border-gray: #cdcdcd;
 $create-server-input-region-border: $border-gray;
 
 
-$bg-gray3: #26262b;
+$content-top-divider: #242529;
+$content-top-divider: $content-top-divider;
+
+$bg-gray3: #292b2f;
+$sidebar-user-ui-bg: $bg-gray3;
 
 $bg-gray4: #202225;
 $bg-server-list: $bg-gray4;
@@ -46,6 +51,13 @@ $create-server-input-icon-txt: $txt-gray5;
 
 $txt-gray6: #747f8d;
 
+
+$ui-color: #b9bbbe;
+$sidebar-user-ui-btns-color: $ui-color;
+
+$ui-bg: #33363b;
+$sidebar-user-ui-btns-bg: $ui-bg;
+
 $txt-white: #d4d4d5;
 $landing-hover: $txt-white;
 $title-session-form: $txt-white;
@@ -62,6 +74,9 @@ $create-server-title: $light-blue;
 $create-server-input-region-btn-hover: $light-blue;
 $create-server-input-region-change-btn: $light-blue;
 $create-server-input-icon-btn: $light-blue;
+
+$light-blue-dark: #677bc4;
+$default-btn-hover: $light-blue-dark;
 
 $warm-green: #43b581;
 $txt-add-server-btn: $warm-green;

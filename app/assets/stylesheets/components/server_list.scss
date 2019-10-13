@@ -6,28 +6,46 @@
   background: $bg-server-list;
 }
 
-.server-list-item {
+.server-list-item-container {
+  position: relative;
   width: 48px;
   height: 48px;
-  margin: auto;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin: 4px auto;
   border-radius: 50%;
 }
 
-.server-list-item:hover {
+.server-list-item {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+ .server-list-item-container:hover, .server-list-item:hover {
   border-radius: 25%;
 }
 
+.server-list-item-hover {
+  display: none;
+  position: absolute;
+  left: 56px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.server-list-item-container:hover > .server-list-item-hover {
+  display: inline;
+}
+
 .add-server-btn, .logout-btn {
+  color: $txt-add-server-btn;
+  font-size: 28px;
+  text-align: center;
   width: 46px;
   height: 46px;
   padding-bottom: 2px;
   padding-right: 2px;
-  color: $txt-add-server-btn;
-  font-size: 28px;
-  text-align: center;
   background: $add-server-btn;
+  border-radius: 50%;
 }
 
 .add-server-btn:hover, .logout-btn:hover {

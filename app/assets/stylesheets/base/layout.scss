@@ -31,3 +31,20 @@ strong {
   background: $default-btn;
   border-radius: 3px;
 }
+
+.hover-tooltip {
+  color: white;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  height: 14px;
+  max-height: 48px;
+  max-width: 190px;
+  padding: 11px 12px;
+  margin: auto;
+  border-radius: 5px;
+  background: black;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
