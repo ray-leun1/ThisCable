@@ -72,7 +72,7 @@ class SessionForm extends React.Component {
               value={this.state.password}
               onChange={this.handleChange('password')} />
           </label>
-          <input className='session-form-submit-btn'
+          <input className='default-btn session-form-submit-btn'
             type="submit"
             value={submitStr} />
           <button

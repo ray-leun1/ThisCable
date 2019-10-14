@@ -1,6 +1,6 @@
 $bg-gray0: #36393f;
 $bg-session-form: $bg-gray0;
-$add-server-btn: $bg-gray0;
+$server-list-btn-bg: $bg-gray0;
 $bg-chat: $bg-gray0;
 $settings-right-bg: $bg-gray0;
 
@@ -24,6 +24,8 @@ $sidebar-user-ui-bg: $bg-gray3;
 
 $bg-gray4: #202225;
 $bg-server-list: $bg-gray4;
+$settings-content-border: $bg-gray4;
+$server-discovery-item-bg: $bg-gray4;
 
 $bg-gray5: #f6f6f7;
 $create-server-form-container-bottom: $bg-gray5;
@@ -37,8 +39,11 @@ $landing: $txt-gray0;
 
 $txt-gray1: #8e9297;
 $txt-session-label: $txt-gray1;
+$user-info-label: $txt-gray1;
 
 $txt-gray2: #72767d;
+$settings-exit-btn: $txt-gray2;
+
 $txt-gray3: #6d7177;
 $txt-session-switch: $txt-gray3;
 
@@ -49,11 +54,15 @@ $txt-gray5: #87909c;
 $create-server-label-txt: $txt-gray5;
 $create-server-input-icon-txt: $txt-gray5;
 
-$txt-gray6: #747f8d;
+$txt-gray6: #4f545c;
+$server-discovery-search-bg: $txt-gray6;
+
 
 
 $ui-color: #b9bbbe;
 $sidebar-user-ui-btns-color: $ui-color;
+$sidebar-user-ui-info-id-txt: $ui-color;
+$user-info-input: $ui-color;
 
 $ui-bg: #33363b;
 $sidebar-user-ui-btns-bg: $ui-bg;
@@ -70,6 +79,7 @@ $settings-tab-logout: $warning-red;
 $light-blue: #7289da;
 $default-btn: $light-blue;
 $txt-session-nav-link: $light-blue;
+$active-input: $light-blue;
 $create-server-title: $light-blue;
 $create-server-input-region-btn-hover: $light-blue;
 $create-server-input-region-change-btn: $light-blue;
@@ -79,5 +89,5 @@ $light-blue-dark: #677bc4;
 $default-btn-hover: $light-blue-dark;
 
 $warm-green: #43b581;
-$txt-add-server-btn: $warm-green;
-$add-server-btn-hover: $warm-green;
+$server-list-btn: $warm-green;
+$server-list-btn-hover: $warm-green;

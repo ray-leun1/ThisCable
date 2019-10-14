@@ -28,15 +28,48 @@ class Settings extends React.Component {
       </div>
       <div className='settings-container-right'>
         <div className='settings-content'>
-          Stuff here
+          <div className='settings-content-my-account'>
+            <div className='settings-content-title'>
+              MY ACCOUNT
+            </div>
+            <div className='settings-content-user-info'>
+              <div className='user-info-avatar-container'>
+                <img className='user-info-avatar'
+                  src='https://i.imgur.com/3jykKJ3.jpg'
+                  alt={`${this.props.currentUser.username} avatar`} />
+              </div>
+                <div className='user-info-txt-container'>
+                  <div className='user-info-username'>
+                    <div className='user-info-label'>
+                      USERNAME
+                    </div>
+                    <div className='user-info-input'>
+                      {this.props.currentUser.username}
+                      <span className='user-info-id'>
+                        #{this.props.currentUser.id}
+                      </span>
+                    </div>
+                  </div>
+                  <div className='user-info-email'>
+                    <div className='user-info-label'>
+                      EMAIL
+                    </div>
+                    <div className='user-info-input'>
+                      {this.props.currentUser.email}
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='settings-exit-container'>
-        <div className='settings-exit-btn'>
-
-        </div>
-        <div className='settings-exit-txt'>
-          ESC
+        <div className='settings-exit-container'>
+          <div className='no-select settings-exit-btn'
+            onClick={() => this.props.closeModal()}>
+            X
+          </div>
+          <div className='settings-exit-txt'>
+            ESC
+          </div>
         </div>
       </div>
     </div>)

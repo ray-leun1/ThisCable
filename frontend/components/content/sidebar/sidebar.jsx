@@ -22,8 +22,13 @@ class Sidebar extends React.Component {
           <img className='sidebar-user-ui-info-avatar'
             src='https://i.imgur.com/3jykKJ3.jpg'
             alt={`${this.props.currentUser.username} avatar`}  />
-          <div className='sidebar-user-ui-info-username'>
-            {this.props.currentUser.username}
+          <div className='sidebar-user-ui-info-user'>
+            <div className='sidebar-user-ui-info-username'>
+              {this.props.currentUser.username}
+            </div>
+            <div className='sidebar-user-ui-info-id'>
+              #{this.props.currentUser.id}
+            </div>
           </div>
         </div>
         <div className='sidebar-user-ui-btn-container'>

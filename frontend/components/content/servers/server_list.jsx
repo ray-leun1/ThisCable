@@ -1,17 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import ServerListItem from './server_list_item';
 
 class ServerList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.getServers();
+  componentDidMount() {
+    this.props.getServers();
+    this.props.getUser(this.props.currentUserId);
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.servers.length !== this.props.servers.length) {
+      this.props.getUser(this.props.currentUserId);
+    }
   }
 
   render() {
+    let servers = [];
+    let currentUser = this.props.users[this.props.currentUserId - 1];
+    if (currentUser.joinedServerIds) {
+      servers = this.props.servers.filter(server =>
+        currentUser.joinedServerIds.includes(server.id))
+    }
+
     return (<div className='server-list'>
-      {this.props.servers.map(server => 
+      {servers.map(server => 
         <ServerListItem server={server} />
       )}
       <div className='server-list-item-container'>
@@ -22,6 +34,16 @@ class ServerList extends React.Component {
         <div className='hover-tooltip server-list-item-hover'
           key={'server-hover-name-add-a-server'}>
           Add a Server
+        </div>
+      </div>
+      <div className='server-list-item-container'>
+        <button className='server-discovery-btn'
+        onClick={() => this.props.history.push('/channels/server-discovery')}>
+          <i className="fas fa-search"></i>
+        </button>
+        <div className='hover-tooltip server-list-item-hover'
+          key={'server-hover-name-server-discovery'}>
+          Server Discovery
         </div>
       </div>
       <div className='server-list-item-container'>

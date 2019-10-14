@@ -39,6 +39,10 @@
   width: 100%;
   padding: 10px;
   background: $bg-session-input;
+
+  &:focus {
+    border-color: $active-input;
+  }
 }
 
 .session-form-submit-btn {
@@ -50,10 +54,6 @@
   margin-top: 20px;
 }
 
-.session-form-submit-btn:hover {
-  background: $default-btn-hover;
-}
-
 .session-nav {
   font-size: 14px;
   margin-top: 10px;
@@ -61,10 +61,10 @@
 
 .session-nav-link {
   color: $txt-session-nav-link;
-}
 
-.session-nav-link:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .session-switch-msg {

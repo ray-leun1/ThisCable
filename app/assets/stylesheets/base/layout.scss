@@ -30,6 +30,10 @@ strong {
   padding: 2px 16px;
   background: $default-btn;
   border-radius: 3px;
+
+  &:hover {
+    background: $default-btn-hover;
+  }
 }
 
 .hover-tooltip {

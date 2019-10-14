@@ -1,0 +1,83 @@
+.server-discovery-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1088px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.server-discovery-header {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.server-discovery-search-container {
+  font-size: 18px;
+  overflow: hidden;
+  min-width: 600px;
+  max-width: 800px;
+  margin-bottom: 80px;
+  background: $server-discovery-search-bg;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.server-discovery-search-input {
+  font-size: 18px;
+  width: 90%;
+  height: 25px;
+  padding: 12px;
+  border-radius: 3px;
+}
+
+.server-discovery-server-list {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.server-discovery-list-item-container {
+  position: relative;
+  width: 256px;
+  height: 144px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  background: $server-discovery-item-bg;
+  border-radius: 8px;
+}
+
+.server-discovery-list-item-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 25%;
+}
+
+.server-discovery-list-item-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.server-discovery-list-item-join-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+  width: min-content;
+  height: 20px;
+}

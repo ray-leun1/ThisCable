@@ -22,3 +22,12 @@ Membership.create([
   {user_id: 2, server_id: 1},
   {user_id: 2, server_id: 2}
 ])
+
+Channel.create([
+  {name: 'testChannel00', server_id: 1},
+  {name: 'testChannel01', server_id: 1},
+  {name: 'testChannel10', server_id: 2},
+  {name: 'testChannel11', server_id: 2},
+  {name: 'testChannel12', server_id: 2},
+  {name: 'testChannel20', server_id: 3}
+])

@@ -64,11 +64,16 @@
   display: flex;
   align-items: center;
   margin-top: 10px;
-}
 
-.create-server-input-region-btn:hover {
-  border-color: $create-server-input-region-btn-hover;
-  cursor: pointer;
+  &:hover {
+    border-color: $create-server-input-region-btn-hover;
+    cursor: pointer;
+
+    .create-server-input-region-change-btn {
+      color: white;
+      background: $create-server-input-region-change-btn;
+    }
+  }
 }
 
 .create-server-input-region {
@@ -80,6 +85,10 @@
   border-right: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+
+  &:hover {
+    border-color: $create-server-input-region-btn-hover;
+  }
 }
 
 .create-server-input-region-change-btn {
@@ -92,12 +101,6 @@
   border-bottom-right-radius: 5px;
   text-align: center;
   vertical-align: middle;
-}
-
-.create-server-input-region-btn:hover
-  .create-server-input-region-change-btn {
-  color: white;
-  background: $create-server-input-region-change-btn;
 }
 
 
@@ -136,4 +139,5 @@
   text-align: center;
   width: 64px;
   height: 34px;
+  padding: 2px 16px;
 }

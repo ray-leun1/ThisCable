@@ -16,11 +16,11 @@
   padding: 5px 17px;
   border: 2px solid $landing;
   border-radius: 20px;
-}
 
-.landing-container .nav-right button:hover {
-  border-color: $landing-hover;
-  color: $landing-hover;
+  &:hover {
+    border-color: $landing-hover;
+    color: $landing-hover;
+  }
 }
 
 .landing-container .nav-right span {

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :servers, through: :memberships, source: :server
   has_many :user_roles
   has_many :roles, through: :user_roles, source: :role
-  has_many :joined_channels, through: :roles, source: :channel
+  has_many :joined_channels, through: :roles, source: :channels
 
   before_validation :ensure_session_token
 

@@ -1,0 +1,34 @@
+.channel-list-container {
+  
+}
+
+.channels-tab {
+  font-size: 16px;
+  line-height: 20px;
+  width: 172px;
+  height: 20px;
+  padding: 6px 10px;
+  margin-bottom: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(79, 84, 92, 0.16);
+  }
+
+  &:active {
+    background: rgba(79, 84, 92, 0.32);
+  }
+}
+
+.channel-list-item-hover {
+  display: none;
+  position: absolute;
+  left: 56px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.channel-list-item-container:hover > .channel-list-item-hover {
+  display: inline;
+}

@@ -12,16 +12,27 @@
   height: 48px;
   margin: 4px auto;
   border-radius: 50%;
+  cursor: pointer;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    border-radius: 25%;
+  }
 }
 
 .server-list-item {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-}
 
- .server-list-item-container:hover, .server-list-item:hover {
-  border-radius: 25%;
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    border-radius: 25%;
+  }
 }
 
 .server-list-item-hover {
@@ -37,18 +48,41 @@
 }
 
 .add-server-btn, .logout-btn {
-  color: $txt-add-server-btn;
+  color: $server-list-btn;
   font-size: 28px;
   text-align: center;
   width: 46px;
   height: 46px;
   padding-bottom: 2px;
   padding-right: 2px;
-  background: $add-server-btn;
+  background: $server-list-btn-bg;
   border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: white;
+    background: $server-list-btn-hover;
+    border-radius: 25%;
+  }
 }
 
-.add-server-btn:hover, .logout-btn:hover {
-  color: white;
-  background: $add-server-btn-hover;
+.server-discovery-btn {
+  color: $server-list-btn;
+  font-size: 20px;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  background: $server-list-btn-bg;
+  border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: white;
+    background: $server-list-btn-hover;
+    border-radius: 25%;
+  }
 }
