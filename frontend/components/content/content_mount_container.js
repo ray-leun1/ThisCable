@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProtectedRoute } from '../../util/route_util';
+import { Route } from 'react-router-dom';
 import ServerListContainer from './servers/server_list_container';
 import SidebarContainer from './sidebar/sidebar_container';
 import ServerDiscoveryContainer from './server_discovery/server_discovery_container';
@@ -7,8 +7,8 @@ import ServerDiscoveryContainer from './server_discovery/server_discovery_contai
 const ContentMountContainer = () => {
   return(<div className='content-mount-container'>
     <ServerListContainer />
-    <ProtectedRoute path='/channels/:serverId(\d+)' component={SidebarContainer} />
-    <ProtectedRoute path='/channels/server-discovery' component={ServerDiscoveryContainer} />
+    <Route path='/channels/:serverId(\d+)' component={SidebarContainer} />
+    <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
   </div>)
 }
 

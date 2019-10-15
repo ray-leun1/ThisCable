@@ -14,16 +14,8 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
   )} />
 );
 
-// const UserProtected = ({ component: Component, path, loggedIn, matchUser, exact }) => (
-//   <Route path={path} exact={exact} render={props => (
-//     (loggedIn && matchUser) ? <Component {...props} /> : <Redirect to="/login" />
-//   )} />
-// );
-
 const mapStateToProps = state => ({
-  loggedIn: Boolean(state.session.id),
-  // matchUser: state.users[state.session.id]
-  //   .joinedServerIds.includes(state.currentServer.id)
+  loggedIn: Boolean(state.session.id)
 });
 
 export const AuthRoute = withRouter(
@@ -31,6 +23,3 @@ export const AuthRoute = withRouter(
 
 export const ProtectedRoute = withRouter(
   connect(mapStateToProps)(Protected));
-
-// export const UserProtectedRoute = withRouter(
-//   connect(mapStateToProp)(UserProtected))

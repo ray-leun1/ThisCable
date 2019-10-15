@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { ProtectedRoute } from '../../../util/route_util';
+import { Route, withRouter } from 'react-router-dom';
 import ChannelListContainer from './channels/channel_list_container';
 
 class Sidebar extends React.Component {
@@ -14,9 +13,26 @@ class Sidebar extends React.Component {
     this.toggleContextMenu = this.toggleContextMenu.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getUser(this.props.currentUser.id);
+
+    if (!this.props.currentUser.joinedServerIds.includes(
+      parseInt(this.props.match.params.serverId))) {
+      // this.props.history.push('/channels');
+    }
+  }
+
   componentDidUpdate(prevProps) {
+    if (prevProps.currentUser.joinedServerIds.length
+      !== this.props.currentUser.joinedServerIds.length) {
+      this.props.getUser(this.props.currentUser.id);
+    }
     if (prevProps.match.params.serverId !== this.props.match.params.serverId) {
       this.props.getServer(this.props.match.params.serverId);
+    }
+    if (!this.props.currentUser.joinedServerIds.includes(
+      parseInt(this.props.match.params.serverId))) {
+      // this.props.history.push('/channels');
     }
   }
 
@@ -34,17 +50,33 @@ class Sidebar extends React.Component {
   }
 
   renderServerContextMenu() {
-    return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
-      <div className='server-menu-option leave-server noverflow'
-        onClick={() => this.handleLeave()}>
-        <div className='server-menu-option-txt'>
-          Leave Server
-        </div>
-        <div className='server-menu-option-icon'>
-          <i class="fas fa-sign-out-alt"></i>
-        </div>
-      </div>
-    </div>)
+    if (this.props.currentServer) {
+      if (this.props.currentServer.admin_id === this.props.currentUser.id) {
+        return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
+          <div className='server-menu-option leave-server noverflow'
+            onClick={() => this.props.deleteServer(parseInt(this.props.match.params.serverId))}>
+            <div className='server-menu-option-txt'>
+              Delete Server
+            </div>
+            <div className='server-menu-option-icon'>
+              <i class="fas fa-sign-out-alt"></i>
+            </div>
+          </div>
+        </div>)
+      } else {
+        return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
+          <div className='server-menu-option leave-server noverflow'
+            onClick={() => this.handleLeave()}>
+            <div className='server-menu-option-txt'>
+              Leave Server
+            </div>
+            <div className='server-menu-option-icon'>
+              <i class="fas fa-sign-out-alt"></i>
+            </div>
+          </div>
+        </div>)
+      }
+    }
   }
 
   renderTitleV() {
@@ -67,7 +99,7 @@ class Sidebar extends React.Component {
         </div>
         {this.renderServerContextMenu()}
       </div>
-      <ProtectedRoute path='/channels/:serverId' component={ChannelListContainer} />
+      <Route path='/channels/:serverId' component={ChannelListContainer} />
       <div className='sidebar-user-ui'>
         <div className='sidebar-user-ui-info'>
           <img className='sidebar-user-ui-info-avatar'
