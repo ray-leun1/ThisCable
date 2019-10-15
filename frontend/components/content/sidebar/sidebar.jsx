@@ -47,6 +47,14 @@ class Sidebar extends React.Component {
     </div>)
   }
 
+  renderTitleV() {
+    if (this.state.serverContextMenu === 'hide') {
+      return <i class="fas fa-chevron-down"></i>
+    } else {
+      return <i class="fas fa-times"></i>
+    }
+  }
+
   render() {
     return (<div className='sidebar-container'>
       <div className='sidebar-title-container'
@@ -55,7 +63,7 @@ class Sidebar extends React.Component {
           {this.props.currentServer ? this.props.currentServer.name : ""}
         </div>
         <div className='sidebar-title-v'>
-          <i class="fas fa-chevron-down"></i>
+          {this.renderTitleV()}
         </div>
         {this.renderServerContextMenu()}
       </div>
