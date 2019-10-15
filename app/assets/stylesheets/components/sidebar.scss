@@ -9,18 +9,30 @@
 
 // Server name at top
 .sidebar-title-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 48px;
   padding: 0px 16px;
   border-bottom: 1px solid $content-top-divider;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background: $bgray-overlay-hover;
+  }
 }
 
-.sidebar-title {
+.sidebar-title-txt {
   color: white;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
   line-height: 48px;
 }
+
+.sidebar-title-v {
+  margin-left: 4px;
+}
+
 
 // User UI at bottom
 .sidebar-user-ui {

@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { deleteMembership } from '../../../actions/user_actions';
+import { getServer, deleteServer } from '../../../actions/server_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
 import Sidebar from './sidebar';
 
@@ -8,6 +10,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  deleteMembership: serverId => dispatch(deleteMembership(serverId)),
+  getServer: id => dispatch(getServer(id)),
+  deleteServer: id => dispatch(deleteServer(id)),
   openModal: item => dispatch(openModal(item)),
   closeModal: () => dispatch(closeModal())
 });

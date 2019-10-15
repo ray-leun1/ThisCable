@@ -19,8 +19,8 @@ const removeChannel = id => ({
   id
 });
 
-export const getChannels = () => dispatch => (
-  ChannelAPIUtil.getChannels()
+export const getChannels = serverId => dispatch => (
+  ChannelAPIUtil.getChannels(serverId)
     .then(channels => dispatch(receiveChannels(channels)))
 );
 

@@ -3,12 +3,15 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create]
     resource :session, only: [:create, :destroy]
     resources :servers, only: [:index, :show, :create, :update, :destroy] do
+      resources :memberships, only: [:create]
       resources :channels, only: [:index, :create]
       resources :roles, only: [:index, :create]
     end
     resources :channels, only: [:show, :update, :destroy]
     resources :roles, only: [:destroy]
   end
+
+  delete 'api/servers/:server_id/memberships', to: 'api/memberships#destroy'
 
   root to: 'static_pages#root'
 end

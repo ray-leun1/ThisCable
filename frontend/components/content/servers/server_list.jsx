@@ -11,6 +11,11 @@ class ServerList extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.servers.length !== this.props.servers.length) {
       this.props.getUser(this.props.currentUserId);
+    } else if (prevProps.users[this.props.currentUserId - 1].joinedServerIds) {
+      if (prevProps.users[this.props.currentUserId - 1].joinedServerIds.length
+        !== this.props.users[this.props.currentUserId - 1].joinedServerIds.length) {
+        this.props.getUser(this.props.currentUserId);
+      }
     }
   }
 

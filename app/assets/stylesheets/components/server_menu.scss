@@ -1,0 +1,46 @@
+.server-menu-container {
+  position: absolute;
+  top: 20px;
+  width: 212px;
+  padding: 6px 4px;
+  background: $context-menu-bg;
+  border-radius: 4px;
+
+  &.hide {
+    display: none;
+  }
+
+  &.show {
+    display: flex;
+  }
+}
+
+.server-menu-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  line-height: 18px;
+  width: 100%;
+  height: 24px;
+  padding: 4px 8px;
+  border-radius: 2px;
+  margin: 2px 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: $bgray-overlay-hover;
+  }
+
+  &.leave-server {
+    color: $settings-tab-logout;
+  }
+}
+
+.server-menu-option-txt {
+  line-height: 24px;
+}
+
+.server-menu-option-icon {
+  margin-left: 4px;
+}

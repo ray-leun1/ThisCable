@@ -22,3 +22,13 @@ export const getUser = id => dispatch => (
   UserAPIUtils.getUser(id)
     .then(user => dispatch(receiveUser(user)))
 );
+
+export const createMembership = membership => dispatch => (
+  UserAPIUtils.createMembership(membership)
+    .then(user => dispatch(receiveUser(user)))
+);
+
+export const deleteMembership = serverId => dispatch => (
+  UserAPIUtils.deleteMembership(serverId)
+    .then(user => dispatch(receiveUser(user)))
+);

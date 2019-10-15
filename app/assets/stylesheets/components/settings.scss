@@ -34,11 +34,11 @@
   cursor: pointer;
 
   &:hover {
-    background: rgba(79, 84, 92, 0.16);
+    background: $bgray-overlay-hover;
   }
 
   &:active {
-    background: rgba(79, 84, 92, 0.32);
+    background: $bgray-overlay-active;
   }
 }
 

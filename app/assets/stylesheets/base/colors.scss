@@ -40,6 +40,10 @@ $landing: $txt-gray0;
 $txt-gray1: #8e9297;
 $txt-session-label: $txt-gray1;
 $user-info-label: $txt-gray1;
+$channels-tab: $txt-gray1;
+
+$txt-gray-hover: #dcddde;
+$channels-tab-hover: $txt-gray-hover;
 
 $txt-gray2: #72767d;
 $settings-exit-btn: $txt-gray2;
@@ -57,6 +61,8 @@ $create-server-input-icon-txt: $txt-gray5;
 $txt-gray6: #4f545c;
 $server-discovery-search-bg: $txt-gray6;
 
+$context-black: #18191c;
+$context-menu-bg: $context-black;
 
 
 $ui-color: #b9bbbe;
@@ -91,3 +97,13 @@ $default-btn-hover: $light-blue-dark;
 $warm-green: #43b581;
 $server-list-btn: $warm-green;
 $server-list-btn-hover: $warm-green;
+$join-btn: $warm-green;
+
+$warm-green-redux: #3ca374;
+$join-btn-hover: $warm-green-redux;
+
+$warm-green-dark: #369167;
+$join-btn-active: $warm-green-dark;
+
+$bgray-overlay-hover: rgba(79, 84, 92, 0.16);
+$bgray-overlay-active: rgba(79, 84, 92, 0.32);

@@ -1,6 +1,6 @@
 /* Define application-wide selectors here!*/
 
-.no-select {
+div {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -8,6 +8,11 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+}
+
+*::-moz-focus-inner {
+  outline: none;
+  border: 0;
 }
 
 #root {
@@ -37,9 +42,9 @@ strong {
 }
 
 .hover-tooltip {
+  z-index: 2;
   color: white;
   font-size: 14px;
-  overflow-wrap: break-word;
   height: 14px;
   max-height: 48px;
   max-width: 190px;
@@ -48,6 +53,12 @@ strong {
   border-radius: 5px;
   background: black;
 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.noverflow {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

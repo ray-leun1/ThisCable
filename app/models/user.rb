@@ -3,9 +3,9 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :servers, through: :memberships, source: :server
-  has_many :user_roles
+  has_many :user_roles, :dependent => :destroy
   has_many :roles, through: :user_roles, source: :role
   has_many :joined_channels, through: :roles, source: :channels
 

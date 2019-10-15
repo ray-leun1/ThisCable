@@ -1,17 +1,17 @@
 class Api::ChannelsController < ApplicationController
   def index
-    @channels = Channel.all.where(server_id: params[:serverId])
+    @channels = Channel.where(server_id: params[:server_id])
     render :index
   end
 
   def show
-    @channel = current_user.joined_channels.find(params[:id])
+    @channel = Channel.find(params[:id])
     render :show
   end
 
   def create
     @channel = Channel.new(channel_params)
-    @channel.server_id = params[:serverId]
+    @channel.server_id = params[:server_id]
 
     if @channel.save
 

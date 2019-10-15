@@ -59,6 +59,7 @@
   width: 48px;
   height: 48px;
   border-radius: 25%;
+  margin: 8px;
 }
 
 .server-discovery-list-item-name {
@@ -66,18 +67,50 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .server-discovery-list-item-join-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   color: white;
   font-size: 14px;
   line-height: 20px;
-  width: min-content;
-  height: 20px;
+  min-width: 90px;
+  height: 40px;
+  padding: 2px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  
+  &.join {
+    background: $join-btn;
+
+    &:hover {
+      background: $join-btn-hover;
+    }
+  
+    &:active {
+      background: $join-btn-active;
+    }
+  }
+
+  &.joined {
+    border: 1px solid hsla(0, 0, 100%, 0.3);
+    
+    &:hover {
+      border-color: hsla(0, 0, 100%, 0.6);
+    }
+    
+    &:active {
+      background: rgba(79, 84, 92, 0.32);
+      border-color: hsla(0, 0, 100%, 0.9);
+    }
+  }
+}
+
+.join-btn-check {
+  margin-left: 8px;
 }

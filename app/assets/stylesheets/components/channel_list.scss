@@ -1,34 +1,35 @@
 .channel-list-container {
-  
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100%;
+}
+
+.channel-list-item-container {
+  display: flex;
 }
 
 .channels-tab {
+  color: $channels-tab;
   font-size: 16px;
   line-height: 20px;
-  width: 172px;
   height: 20px;
   padding: 6px 10px;
-  margin-bottom: 2px;
+  margin: 1px 8px;
   border-radius: 3px;
   cursor: pointer;
 
   &:hover {
-    background: rgba(79, 84, 92, 0.16);
+    color: $channels-tab-hover;
+    background: $bgray-overlay-hover;
   }
 
   &:active {
-    background: rgba(79, 84, 92, 0.32);
+    color: white;
+    background: $bgray-overlay-active;
   }
 }
 
-.channel-list-item-hover {
-  display: none;
-  position: absolute;
-  left: 56px;
-  top: 0px;
-  bottom: 0px;
-}
-
-.channel-list-item-container:hover > .channel-list-item-hover {
-  display: inline;
+.channel-list-item-hash {
+  margin-right: 8px;
 }
