@@ -6,36 +6,17 @@ class ServerList extends React.Component {
   componentDidMount() {
     this.props.getServers();
     this.props.getUser(this.props.currentUserId);
-    this.props.getCurrentUser(this.props.currentUserId);
   }
 
   componentDidUpdate(prevProps) {
-    
     if (prevProps.servers.length !== this.props.servers.length) {
-      this.props.getServers();
       this.props.getUser(this.props.currentUserId);
-      this.props.getCurrentUser(this.props.currentUserId);
+    } else if (prevProps.users[this.props.currentUserId - 1].joinedServerIds) {
+      if (prevProps.users[this.props.currentUserId - 1].joinedServerIds.length
+        !== this.props.users[this.props.currentUserId - 1].joinedServerIds.length) {
+        this.props.getUser(this.props.currentUserId);
+      }
     }
-    // if (!this.props.currentUser) {
-    //   this.props.getServers();
-    //   this.props.getUser(this.props.currentUserId);
-    //   this.props.getCurrentUser(this.props.currentUserId);
-    // }
-    // if (prevProps.currentUser
-    //   && prevProps.currentUser.joinedServerIds) {
-    //   if (prevProps.currentUser.joinedServerIds.length
-    //     !== this.props.currentUser.joinedServerIds.length) {
-    //     this.props.getServers();
-    //     this.props.getUser(this.props.currentUserId);
-    //     this.props.getCurrentUser(this.props.currentUserId);
-    //   }
-    // }
-    // let prevCurrentUser = prevProps.users[this.props.currentUserId - 1];
-    // let currCurrentUser = this.props.users[this.props.currentUserId - 1];
-    // if (prevCurrentUser.joinedServerIds
-    //   && prevCurrentUser.joinedServerIds.length !== currCurrentUser.joinedServerIds.length) {
-    //   this.props.getUser(this.props.currentUserId);
-    // }
   }
 
   render() {
@@ -47,8 +28,8 @@ class ServerList extends React.Component {
     }
 
     return (<div className='server-list'>
-      {servers.map(server => 
-        <ServerListItem {...this.props} server={server} />
+      {servers.map(server =>
+        <ServerListItem server={server} />
       )}
       <div className='server-list-item-container'>
         <button className='add-server-btn'
@@ -62,7 +43,7 @@ class ServerList extends React.Component {
       </div>
       <div className='server-list-item-container'>
         <button className='server-discovery-btn'
-        onClick={() => this.props.history.push('/channels/server-discovery')}>
+          onClick={() => this.props.history.push('/channels/server-discovery')}>
           <i className="fas fa-search"></i>
         </button>
         <div className='hover-tooltip server-list-item-hover'

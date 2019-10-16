@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :channels, only: [:show, :update, :destroy]
     resources :roles, only: [:destroy]
+    resources :permissions, only: [:create, :destroy]
   end
 
   delete 'api/servers/:server_id/memberships', to: 'api/memberships#destroy'

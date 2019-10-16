@@ -3,6 +3,7 @@ $bg-session-form: $bg-gray0;
 $server-list-btn-bg: $bg-gray0;
 $bg-chat: $bg-gray0;
 $settings-right-bg: $bg-gray0;
+$create-channel-form-bg: $bg-gray0;
 
 $bg-gray1: #313339;
 $bg-session-input: $bg-gray1;
@@ -11,6 +12,7 @@ $bg-gray2: #2f3136;
 $create-server-input-name-txt: $bg-gray2;
 $settings-left-bg: $bg-gray2;
 $sidebar-bg: $bg-gray2;
+$create-channel-form-bottom-bg: $bg-gray2;
 
 $border-gray: #cdcdcd;
 $create-server-input-region-border: $border-gray;
@@ -41,12 +43,14 @@ $txt-gray1: #8e9297;
 $txt-session-label: $txt-gray1;
 $user-info-label: $txt-gray1;
 $channels-tab: $txt-gray1;
+$create-channel-label-txt: $txt-gray1;
 
 $txt-gray-hover: #dcddde;
 $channels-tab-hover: $txt-gray-hover;
 
 $txt-gray2: #72767d;
 $settings-exit-btn: $txt-gray2;
+$create-channel-private-deselected-bg: $txt-gray2;
 
 $txt-gray3: #6d7177;
 $txt-session-switch: $txt-gray3;
@@ -70,6 +74,10 @@ $sidebar-user-ui-btns-color: $ui-color;
 $sidebar-user-ui-info-id-txt: $ui-color;
 $user-info-input: $ui-color;
 $server-menu-option-txt: $ui-color;
+$create-channel-text-hash: $ui-color;
+$create-channel-private-lock: $ui-color;
+$create-channel-checkbox-deselected: $ui-color;
+$create-channel-private-description: $ui-color;
 
 $ui-bg: #33363b;
 $sidebar-user-ui-btns-bg: $ui-bg;
@@ -91,6 +99,8 @@ $create-server-title: $light-blue;
 $create-server-input-region-btn-hover: $light-blue;
 $create-server-input-region-change-btn: $light-blue;
 $create-server-input-icon-btn: $light-blue;
+$create-channel-checkbox-selected: $light-blue;
+$create-channel-private-selected-bg: $light-blue;
 
 $light-blue-dark: #677bc4;
 $default-btn-hover: $light-blue-dark;

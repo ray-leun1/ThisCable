@@ -14,7 +14,7 @@ class Api::ChannelsController < ApplicationController
     @channel.server_id = params[:server_id]
 
     if @channel.save
-
+      # @channel.assoc_create
       render :show
     else
       render json: @channel.errors.full_messages, status: 422

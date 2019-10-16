@@ -31,7 +31,9 @@ strong {
 }
 
 .default-btn {
+  color: white;
   line-height: 16px;
+  text-align: center;
   padding: 2px 16px;
   background: $default-btn;
   border-radius: 3px;
@@ -62,4 +64,14 @@ strong {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.form-checkbox-wrapper {
+  width: 24px;
+  height: 24px;
+
+  .form-checkbox-input {
+    width: 24px;
+    height: 24px;
+  }
 }

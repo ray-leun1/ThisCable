@@ -9,12 +9,14 @@ class Sidebar extends React.Component {
       serverContextMenu: 'hide'
     }
 
-    this.handleLeave = this.handleLeave.bind(this);
+    this.handleLeaveServer = this.handleLeaveServer.bind(this);
+    this.handleDeleteServer = this.handleDeleteServer.bind(this);
     this.toggleContextMenu = this.toggleContextMenu.bind(this);
   }
 
   componentDidMount() {
-    this.props.getUser(this.props.currentUser.id);
+    this.props.getCurrentUser(this.props.currentUser.id)
+    this.props.getCurrentServer(this.props.match.params.serverId);
 
     if (!this.props.currentUser.joinedServerIds.includes(
       parseInt(this.props.match.params.serverId))) {
@@ -36,9 +38,14 @@ class Sidebar extends React.Component {
     }
   }
 
-  handleLeave() {
+  handleLeaveServer() {
     this.props.deleteMembership(this.props.currentServer.id);
-    this.props.history.push(`/channels`);
+    this.props.history.push('/channels');
+  }
+
+  handleDeleteServer() {
+    this.props.deleteServer(parseInt(this.props.match.params.serverId));
+    this.props.history.push('/channels');
   }
 
   toggleContextMenu() {
@@ -53,8 +60,17 @@ class Sidebar extends React.Component {
     if (this.props.currentServer) {
       if (this.props.currentServer.admin_id === this.props.currentUser.id) {
         return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
+          <div className='server-menu-option noverflow'
+            onClick={() => this.props.openModal('create channel')}>
+            <div className='server-menu-option-txt'>
+              Create Channel
+            </div>
+            <div className='server-menu-option-icon'>
+              <i class="fas fa-plus-circle"></i>
+            </div>
+          </div>
           <div className='server-menu-option leave-server noverflow'
-            onClick={() => this.props.deleteServer(parseInt(this.props.match.params.serverId))}>
+            onClick={() => this.handleDeleteServer()}>
             <div className='server-menu-option-txt'>
               Delete Server
             </div>
@@ -66,7 +82,7 @@ class Sidebar extends React.Component {
       } else {
         return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
           <div className='server-menu-option leave-server noverflow'
-            onClick={() => this.handleLeave()}>
+            onClick={() => this.handleLeaveServer()}>
             <div className='server-menu-option-txt'>
               Leave Server
             </div>

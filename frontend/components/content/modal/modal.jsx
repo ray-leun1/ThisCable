@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import CreateServerFormContainer from './create_server_form_container';
 import SettingsContainer from './settings_container';
+import CreateChannelFormContainer from './create_channel_form_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -12,6 +13,9 @@ function Modal({ modal, closeModal }) {
   switch (modal) {
     case 'create server':
       component = <CreateServerFormContainer />;
+      break;
+    case 'create channel':
+      component = <CreateChannelFormContainer />;
       break;
     case 'settings':
       component = <SettingsContainer />;

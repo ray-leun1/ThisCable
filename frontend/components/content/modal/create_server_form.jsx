@@ -21,9 +21,9 @@ class CreateServerForm extends React.Component {
 
     this.props.createServer(this.state)
       .then(server => {
-        this.props.history.push(
-          `/channels/${server.server.id}`
-        )
+        this.props.history.push(`/channels/${server.server.id}/${server.server.joinedChannelIds[0]}`);
+        this.props.getCurrentServer(server.server.id);
+        this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
       });
 
     this.props.closeModal();
@@ -31,7 +31,7 @@ class CreateServerForm extends React.Component {
 
   render() {
     return (<div className='create-server-form-container'>
-      <form className='create-server_form'
+      <form className='create-server-form'
         onSubmit={this.handleSubmit}>
         <div className='create-server-form-container-top'>
           <div className='create-server-form-title'>CREATE YOUR SERVER</div>

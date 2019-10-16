@@ -31,3 +31,33 @@ Channel.create([
   {name: 'testChannel12', server_id: 2},
   {name: 'testChannel20', server_id: 3}
 ])
+
+Role.create([
+  {name: 'admin', server_id: 1},
+  {name: 'user', server_id: 1},
+  {name: 'admin', server_id: 2},
+  {name: 'user', server_id: 2},
+  {name: 'admin', server_id: 3},
+  {name: 'user', server_id: 3},
+])
+
+Permission.create([
+  {role_id: 1, channel_id: 1},
+  {role_id: 1, channel_id: 2},
+  {role_id: 2, channel_id: 1},
+  {role_id: 2, channel_id: 2},
+  {role_id: 3, channel_id: 3},
+  {role_id: 3, channel_id: 4},
+  {role_id: 3, channel_id: 5},
+  {role_id: 4, channel_id: 3},
+  {role_id: 4, channel_id: 4},
+  {role_id: 4, channel_id: 5},
+  {role_id: 5, channel_id: 6},
+  {role_id: 6, channel_id: 6},
+])
+
+UserRole.create([
+  {user_id: 1, role_id: 1},
+  {user_id: 2, role_id: 2},
+  {user_id: 2, role_id: 3}
+])

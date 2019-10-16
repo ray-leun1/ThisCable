@@ -14,7 +14,7 @@ class Api::ServersController < ApplicationController
     @server.admin_id = current_user.id
 
     if @server.save
-      Membership.create(user_id: current_user.id, server_id: @server.id)
+      @server.assoc_create
       render :show
     else
       render json: @server.errors.full_messages, status: 422

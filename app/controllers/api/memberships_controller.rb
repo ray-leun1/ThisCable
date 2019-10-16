@@ -3,6 +3,7 @@ class Api::MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
 
     if @membership.save
+      @membership.assoc_create
       @user = current_user
       render 'api/users/show'
     else

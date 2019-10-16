@@ -15,7 +15,10 @@ class ServerDiscoveryItem extends React.Component {
       server_id: this.props.server.id
     })
     this.props.getUser(this.props.currentUser.id);
-    this.props.history.push(`/channels/${this.props.server.id}`);
+    this.props.getCurrentServer(this.props.server.id).then(server => {
+      this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
+      this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
+    });
   }
 
   renderJoinBtn() {

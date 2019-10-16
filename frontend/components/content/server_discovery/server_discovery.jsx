@@ -20,10 +20,7 @@ class ServerDiscovery extends React.Component {
 
     this.props.servers.forEach(server => {
       if (search.test(server.name)) {
-        servers.push(<ServerDiscoveryItem server={server} 
-          currentUser={this.props.currentUser}
-          getUser={this.props.getUser}
-          createMembership={this.props.createMembership} />);
+        servers.push(<ServerDiscoveryItem {...this.props} server={server} />);
       }
     })
 
