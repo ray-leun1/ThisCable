@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :memberships, :dependent => :destroy
   has_many :servers, through: :memberships, source: :server
+  has_many :messages, class_name: :Message, foreign_key: :author_id
   has_many :user_roles, :dependent => :destroy
   has_many :roles, through: :user_roles, source: :role
   has_many :joined_channels, through: :roles, source: :channels

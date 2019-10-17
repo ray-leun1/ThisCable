@@ -11,6 +11,7 @@ import {
 import Sidebar from './sidebar';
 
 const mapStateToProps = (state, ownProps) => ({
+  currentUserId: state.session.id,
   currentUser: state.entities.users[state.session.id],
   currentServer: state.entities.servers[ownProps.match.params.serverId]
 });

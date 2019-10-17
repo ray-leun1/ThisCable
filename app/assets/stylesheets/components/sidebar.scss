@@ -1,5 +1,6 @@
 .sidebar-container {
   width: 232px;
+  min-width: 232px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,6 +15,7 @@
   justify-content: space-between;
   align-items: center;
   height: 48px;
+  min-height: 48px;
   padding: 0px 16px;
   border-bottom: 1px solid $content-top-divider;
   margin-bottom: 16px;
@@ -36,11 +38,12 @@
 
 // User UI at bottom
 .sidebar-user-ui {
-  height: 52px;
-  padding: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 52px;
+  min-height: 52px;
+  padding: 0px 10px;
   background: $sidebar-user-ui-bg;
 }
 

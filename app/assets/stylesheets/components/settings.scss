@@ -43,7 +43,7 @@
 }
 
 .settings-tab.logout {
-  color: $settings-tab-logout;
+  color: $context-tab-warning;
   cursor: pointer;
 
   &:hover {
@@ -52,7 +52,7 @@
 
   &:active {
     color: white;
-    background: $settings-tab-logout;
+    background: $context-tab-warning;
   }
 }
 

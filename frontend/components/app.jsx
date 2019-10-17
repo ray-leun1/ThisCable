@@ -9,6 +9,7 @@ import ContentMountContainer from './content/content_mount_container';
 
 const App = () => (
   <div>
+    <div className='app-bg'></div>
     <Modal />
     <AuthRoute exact path ='/' component={LandingContainer} />
     <AuthRoute path='/login' component={LoginFormContainer} />

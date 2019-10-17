@@ -1,0 +1,46 @@
+.chat-container {
+  box-sizing: content-box;
+  background: $chat-container-bg;
+  width: 100%;
+  height: 100vh;
+}
+
+.chat-title-container {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  min-height: 48px;
+  padding: 0px 8px;
+  border-bottom: 1px solid $content-top-divider;
+}
+
+.chat-title-hash {
+  color: $chat-title-hash;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0px 8px;
+}
+
+.chat-title-txt {
+  color: white;
+}
+
+
+.chat-form-container {
+  padding: 20px 20px 30px 20px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.06);
+}
+
+.chat-form-input {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  width: 100%;
+  min-height: 20px;
+  max-height: 144px;
+  padding: 10px;
+  background: $chat-form-bg;
+  border-radius: 8px;
+  resize: none;
+}

@@ -10,6 +10,7 @@ class CreateServerForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOnEnter = this.handleOnEnter.bind(this);
   }
 
   handleChange(field) {
@@ -29,6 +30,13 @@ class CreateServerForm extends React.Component {
     this.props.closeModal();
   }
 
+  handleOnEnter(e) {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      this.handleSubmit(e);
+    }
+  }
+
   render() {
     return (<div className='create-server-form-container'>
       <form className='create-server-form'
@@ -46,7 +54,8 @@ class CreateServerForm extends React.Component {
                   type='text'
                   value={this.state.name}
                   placeholder='Enter a server name'
-                  onChange={this.handleChange('name')} />
+                  onChange={this.handleChange('name')}
+                  onKeyDown={this.handleOnEnter} />
               </label>
               <div className='create-server-input-region-container'>
                 <label className='create-server-label'>SERVER REGION

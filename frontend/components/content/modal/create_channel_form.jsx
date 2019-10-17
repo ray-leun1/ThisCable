@@ -16,6 +16,7 @@ class CreateChannelForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOnEnter = this.handleOnEnter.bind(this);
     this.togglePrivate = this.togglePrivate.bind(this);
     this.toggleRole = this.toggleRole.bind(this);
     this.renderRoles = this.renderRoles.bind(this);
@@ -47,6 +48,13 @@ class CreateChannelForm extends React.Component {
       })
         
     this.props.closeModal();
+  }
+
+  handleOnEnter(e) {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      this.handleSubmit(e);
+    }
   }
 
   togglePrivate() {
@@ -142,7 +150,8 @@ class CreateChannelForm extends React.Component {
             <input className='create-channel-input-name'
               type='text'
               value={this.state.name}
-              onChange={this.handleChange('name')} />
+              onChange={this.handleChange('name')}
+              onKeyDown={this.handleOnEnter} />
           </label>
           <div className='create-channel-private-container'>
             <div className='create-channel-private-input-container'>

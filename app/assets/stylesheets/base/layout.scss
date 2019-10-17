@@ -16,10 +16,20 @@ div {
 }
 
 #root {
-  background: $bg-gray3;
+  background: transparent;
   height: 100vh;
   color: $txt-white;
   position: relative;
+}
+
+.app-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $bg-gray3;
+  z-index: -10;
 }
 
 .content-mount-container {
@@ -54,6 +64,7 @@ strong {
   margin: auto;
   border-radius: 5px;
   background: black;
+  z-index: 50;
 
   white-space: nowrap;
   text-overflow: ellipsis;

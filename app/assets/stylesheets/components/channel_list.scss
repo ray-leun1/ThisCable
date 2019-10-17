@@ -2,14 +2,35 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  width: 232px;
+  min-width: 232px;
   height: 100%;
+  padding-top: 10px;
+  margin-top: -10px;
+  padding-right: 200px;
+  margin-right: -200px;
+
+  overflow-y: scroll;
+  overflow-x: visible;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
 }
 
 .channel-list-item-container {
   display: flex;
+  justify-content: space-between;
+}
+
+.channel-list-item-title {
+  display: flex;
 }
 
 .channels-tab {
+  position: relative;
   color: $channels-tab;
   font-size: 16px;
   line-height: 20px;
@@ -24,7 +45,7 @@
     background: $bgray-overlay-hover;
   }
 
-  &:active {
+  &:active, &.selected {
     color: white;
     background: $bgray-overlay-active;
   }
@@ -32,4 +53,8 @@
 
 .channel-list-item-hash {
   margin-right: 8px;
+}
+
+.channel-list-item-x {
+  z-index: 5;
 }

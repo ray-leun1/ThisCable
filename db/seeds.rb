@@ -8,12 +8,12 @@
 
 User.create([
   {email: 'testEmail@cord.com', username: 'testUser', password: 'password'},
-  {email: 'fakeEmail@cord.com', username: 'testUser', password: 'hunter12'}
+  {email: 'fakeEmail@cord.com', username: 'fakeUser', password: 'hunter12'}
 ])
 
 Server.create([
   {name: 'testServer0', admin_id: 1},
-  {name: 'testServer1', admin_id: 1},
+  {name: 'testServer1', admin_id: 2},
   {name: 'testServer2', admin_id: 2}
 ])
 
@@ -30,6 +30,15 @@ Channel.create([
   {name: 'testChannel11', server_id: 2},
   {name: 'testChannel12', server_id: 2},
   {name: 'testChannel20', server_id: 3}
+])
+
+Message.create([
+  {body: 'testMessage00-21', author_id: 2, channel_id: 1},
+  {body: 'testMessage00-22', author_id: 2, channel_id: 1},
+  {body: 'testMessage00-11', author_id: 1, channel_id: 1},
+  {body: 'testMessage01-11', author_id: 2, channel_id: 2},
+  {body: 'testMessage10-21', author_id: 2, channel_id: 3},
+  {body: 'testMessage10-22', author_id: 2, channel_id: 3}
 ])
 
 Role.create([

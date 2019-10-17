@@ -1,12 +1,12 @@
-.server-menu-container {
+.channel-menu-container {
   position: absolute;
-  left: 10px;
-  top: 56px;
-  width: 204px;
+  left: 232px;
+  top: -7px;
+  bottom: -7px;
+  width: 186px;
   padding: 6px 4px;
   background: $context-menu-bg;
   border-radius: 4px;
-  z-index: 10;
 
   &.hide {
     display: none;
@@ -19,7 +19,7 @@
   }
 }
 
-.server-menu-option {
+.channel-menu-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,15 +36,16 @@
     background: $bgray-overlay-hover;
   }
 
-  &.leave-server {
+  &.delete-channel {
     color: $context-tab-warning;
   }
 }
 
-.server-menu-option-txt {
+.channel-menu-option-txt {
   line-height: 24px;
 }
 
-.server-menu-option-icon {
+.channel-menu-option-icon {
   margin-left: 4px;
+  z-index: 2;
 }

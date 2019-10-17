@@ -9,11 +9,13 @@ class ServerDiscoveryItem extends React.Component {
     this.renderJoinBtn = this.renderJoinBtn.bind(this);
   }
 
-  handleJoin() {
-    this.props.createMembership({
-      user_id: this.props.currentUser.id,
-      server_id: this.props.server.id
-    })
+  handleJoin(join) {
+    if (join === 'join') {
+      this.props.createMembership({
+        user_id: this.props.currentUser.id,
+        server_id: this.props.server.id
+      })
+    }
     this.props.getUser(this.props.currentUser.id);
     this.props.getCurrentServer(this.props.server.id).then(server => {
       this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
@@ -24,7 +26,7 @@ class ServerDiscoveryItem extends React.Component {
   renderJoinBtn() {
     if (this.props.currentUser.joinedServerIds.includes(this.props.server.id)) {
       return (<div className='server-discovery-list-item-join-btn joined'
-        onClick={() => this.props.history.push(`/channels/${this.props.server.id}`)}>
+        onClick={() => this.handleJoin('joined')}>
         <div className='join-btn-txt'>
           Joined
         </div>
@@ -34,7 +36,7 @@ class ServerDiscoveryItem extends React.Component {
       </div>)
     } else {
       return (<div className='server-discovery-list-item-join-btn join'
-        onClick={() => this.handleJoin()}>
+        onClick={() => this.handleJoin('join')}>
         <div className='join-btn-txt'>
           Join
         </div>

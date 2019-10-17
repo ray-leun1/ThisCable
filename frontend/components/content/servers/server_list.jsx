@@ -10,38 +10,17 @@ class ServerList extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    
     if (prevProps.servers.length !== this.props.servers.length) {
       this.props.getServers();
       this.props.getUser(this.props.currentUserId);
       this.props.getCurrentUser(this.props.currentUserId);
     }
-    // if (!this.props.currentUser) {
-    //   this.props.getServers();
-    //   this.props.getUser(this.props.currentUserId);
-    //   this.props.getCurrentUser(this.props.currentUserId);
-    // }
-    // if (prevProps.currentUser
-    //   && prevProps.currentUser.joinedServerIds) {
-    //   if (prevProps.currentUser.joinedServerIds.length
-    //     !== this.props.currentUser.joinedServerIds.length) {
-    //     this.props.getServers();
-    //     this.props.getUser(this.props.currentUserId);
-    //     this.props.getCurrentUser(this.props.currentUserId);
-    //   }
-    // }
-    // let prevCurrentUser = prevProps.users[this.props.currentUserId - 1];
-    // let currCurrentUser = this.props.users[this.props.currentUserId - 1];
-    // if (prevCurrentUser.joinedServerIds
-    //   && prevCurrentUser.joinedServerIds.length !== currCurrentUser.joinedServerIds.length) {
-    //   this.props.getUser(this.props.currentUserId);
-    // }
   }
 
   render() {
     let servers = [];
     let currentUser = this.props.users[this.props.currentUserId - 1];
-    if (currentUser.joinedServerIds) {
+    if (currentUser && currentUser.joinedServerIds) {
       servers = this.props.servers.filter(server =>
         currentUser.joinedServerIds.includes(server.id))
     }
@@ -50,6 +29,7 @@ class ServerList extends React.Component {
       {servers.map(server => 
         <ServerListItem {...this.props} server={server} />
       )}
+      <div className='server-list-bg'></div>
       <div className='server-list-item-container'>
         <button className='add-server-btn'
           onClick={() => this.props.openModal('create server')}>

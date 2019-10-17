@@ -1,9 +1,30 @@
 .server-list {
+  position: relative;
   height: 100vh;
   width: 72px;
+  min-width: 72px;
   display: flex;
   flex-direction: column;
-  background: $bg-server-list;
+  // background: $bg-server-list;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  padding-right: 220px;
+  margin-right: -220px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .server-list-bg {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background: $bg-server-list;
+    top: 0;
+    left: 0;
+    z-index: -5;
+  }
 }
 
 .server-list-item-container {
