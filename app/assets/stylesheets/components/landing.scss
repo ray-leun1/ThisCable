@@ -25,7 +25,10 @@
   align-items: center;
   color: $landing;
   font-size: 14px;
+  width: calc(100% - 263px - 83px);
+  max-width: 1600px;
   padding: 20px 30px;
+  margin: 0 auto;
 }
 
 .nav-left {
@@ -118,6 +121,7 @@
   vertical-align: baseline;
   max-width: 1200px;
   padding: 72px 50px 0px;
+  margin: 0 auto;
 }
 
 .description-header {

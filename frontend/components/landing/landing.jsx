@@ -27,6 +27,7 @@ class Landing extends React.Component {
             </a>
           </div>
         </div>
+        <div className='nav-center'></div>
         <div className='nav-right'>
           <div hidden={hidden}>
             <Link to='/login'><button>Log In</button></Link>

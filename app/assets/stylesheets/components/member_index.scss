@@ -25,12 +25,13 @@
 }
 
 .member-index-item-icon {
+  color: $message-user-icon-name;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 32px;
   width: 32px;
   height: 32px;
-  background-image: url('https://i.imgur.com/3jykKJ3.jpg');
-  background-color: $light-blue;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: $message-user-icon-bg;
   border-radius: 50%;
   margin-right: 12px;
 }

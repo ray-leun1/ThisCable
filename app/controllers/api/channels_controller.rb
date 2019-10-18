@@ -11,7 +11,7 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-    @channel.name = @channel.name.split.join('-')
+    @channel.name = @channel.name.downcase.split.join('-')
     @channel.server_id = params[:server_id]
 
     if @channel.save

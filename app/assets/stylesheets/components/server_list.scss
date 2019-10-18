@@ -43,15 +43,30 @@
   }
 }
 
+.server-list-separator {
+  width: 32px;
+  height: 2px;
+  background: hsla(0, 0%, 100%, 0.06);
+  border-radius: 1px;
+  margin: 2px auto;
+}
+
 .server-list-item {
+  color: $server-list-item-name;
+  font-size: 18px;
+  line-height: 48px;
+  text-align: center;
+  vertical-align: middle;
   width: 48px;
   height: 48px;
+  background: $server-list-item-bg;
   border-radius: 50%;
 
   transition-property: border-radius;
   transition-duration: 0.2s;
 
   &:hover {
+    background: $server-list-item-bg-hover;
     border-radius: 25%;
   }
 }
@@ -74,7 +89,7 @@
   text-align: center;
   width: 48px;
   height: 48px;
-  background: $home-btn;
+  background: $server-list-item-bg;
   border-radius: 50%;
 
   transition-property: border-radius;
@@ -82,7 +97,7 @@
 
   &:hover {
     color: white;
-    background: $home-btn-hover;
+    background: $server-list-item-bg-hover;
     border-radius: 25%;
   }
 }

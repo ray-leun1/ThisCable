@@ -37,6 +37,7 @@ class ServerList extends React.Component {
           Home
         </div>
       </div>
+      <div className='server-list-separator'></div>
       {servers.map(server => 
         <ServerListItem {...this.props} server={server} />
       )}

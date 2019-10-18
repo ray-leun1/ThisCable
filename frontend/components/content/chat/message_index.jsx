@@ -36,9 +36,9 @@ class MessageIndex extends React.Component {
 
         return (<div className='message-container'
           key={`message-container-${message.id}`}>
-          <img className='message-user-icon'
-            src='https://i.imgur.com/3jykKJ3.jpg'
-            alt={`${author.username} avatar`} />
+          <div className='message-user-icon'>
+            {author.username.slice(0, 1)}
+          </div>
           <div className='message-info'>
             <div className='message-user-header'>
               <div className='message-username'>

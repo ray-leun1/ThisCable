@@ -1,5 +1,5 @@
 $bg-gray0: #36393f;
-$home-btn: $bg-gray0;
+$server-list-item-bg: $bg-gray0;
 $bg-session-form: $bg-gray0;
 $server-list-btn-bg: $bg-gray0;
 $bg-chat: $bg-gray0;
@@ -53,6 +53,8 @@ $create-channel-label-txt: $txt-gray1;
 $txt-gray-hover: #dcddde;
 $tab-hover: $txt-gray-hover;
 $message-body: $txt-gray-hover;
+$server-list-item-name: $txt-gray-hover;
+$message-user-icon-name: $txt-gray-hover;
 
 $txt-gray2: #72767d;
 $settings-exit-btn: $txt-gray2;
@@ -75,6 +77,7 @@ $create-server-input-icon-txt: $txt-gray5;
 
 $txt-gray6: #4f545c;
 $server-discovery-search-bg: $txt-gray6;
+$message-user-icon-bg: $txt-gray6;
 
 $txt-gray7: #40444b;
 $chat-form-bg: $txt-gray7;
@@ -109,7 +112,7 @@ $warning-red: #f04747;
 $context-tab-warning: $warning-red;
 
 $light-blue: #7289da;
-$home-btn-hover: $light-blue;
+$server-list-item-bg-hover: $light-blue;
 $default-btn: $light-blue;
 $txt-session-nav-link: $light-blue;
 $active-input: $light-blue;

@@ -36,7 +36,9 @@ class MemberIndex extends React.Component {
           if (user) {
             users.push(<div className='member-index-item'
               key={`member-index-item-${user.id}`}>
-              <div className='member-index-item-icon'></div>
+              <div className='member-index-item-icon'>
+                {user.username.slice(0, 1)}
+              </div>
               <div className='member-index-item-username noverflow'>
                 {user.username}
               </div>

@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
   </div>
 });
 
-let demoLogin = {email: 'testEmail@cord.com', password: 'password'};
+let demoLogin = {email: 'taehanazono@cable.com', password: 'Oddeye'};
 
 const mapDispatchToProps = dispatch => ({
   processForm: user => dispatch(signup(user)),
