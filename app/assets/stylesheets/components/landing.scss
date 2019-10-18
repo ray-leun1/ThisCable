@@ -73,14 +73,15 @@
 }
 
 .github-link {
-  padding: 15px 10px;
+  padding: 15px 10px 17px;
   margin-left: 14px;
 
-  &:hover {
+  a:hover {
     color: white;
   }
 
   .fa-github {
+    font-size: 18px;
     margin-right: 6px;
   }
 }
