@@ -26,10 +26,20 @@ class ServerList extends React.Component {
     }
 
     return (<div className='server-list'>
+      <div className='server-list-bg'></div>
+      <div className='server-list-item-container'>
+        <button className='home-btn'
+          onClick={() => this.props.history.push('/channels/@me')}>
+          <i className="fas fa-home"></i>
+        </button>
+        <div className='hover-tooltip server-list-item-hover'
+          key={'server-hover-name-home'}>
+          Home
+        </div>
+      </div>
       {servers.map(server => 
         <ServerListItem {...this.props} server={server} />
       )}
-      <div className='server-list-bg'></div>
       <div className='server-list-item-container'>
         <button className='add-server-btn'
           onClick={() => this.props.openModal('create server')}>

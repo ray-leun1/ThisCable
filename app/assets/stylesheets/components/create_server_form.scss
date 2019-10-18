@@ -64,11 +64,12 @@
   display: flex;
   align-items: center;
   margin-top: 10px;
+  cursor: pointer;
 
   &:hover {
-    border-color: $create-server-input-region-btn-hover;
-    cursor: pointer;
-
+    .create-server-input-region {
+      border-color: $create-server-input-region-btn-hover;
+    }
     .create-server-input-region-change-btn {
       color: white;
       background: $create-server-input-region-change-btn;
@@ -79,16 +80,30 @@
 .create-server-input-region {
   display: flex;
   align-items: center;
+  width: 155px;
   height: 30px;
   padding: 7px;
   border: 1px solid $create-server-input-region-border;
   border-right: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
 
-  &:hover {
-    border-color: $create-server-input-region-btn-hover;
-  }
+.create-server-input-region-flag {
+  width: 44px;
+  height: 30px;
+  background-image: url('flag_uswest');
+  background-color: $light-blue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+
+.create-server-input-region-text {
+  color: $create-server-txt;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .create-server-input-region-change-btn {
@@ -103,6 +118,13 @@
   vertical-align: middle;
 }
 
+.create-server-input-fineprint {
+  color: $create-server-label-txt;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 15px 0px;
+}
+
 
 // Server icon button
 .create-server-input-icon-container {
@@ -110,10 +132,10 @@
 }
 
 .create-server-input-icon {
-  color: transparent;
   width: 128px;
   height: 128px;
   background: $create-server-input-icon-btn;
+  border: 5px solid $create-server-avatar-border;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -131,6 +153,20 @@
   padding: 18px 40px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.create-server-form-back {
+  color: $create-server-txt;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+
+  .fa-arrow-left {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    border-color: $create-server-back-border;
+  }
 }
 
 .create-server-form-submit {

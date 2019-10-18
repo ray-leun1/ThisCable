@@ -13,6 +13,7 @@
   overflow-y: scroll;
   overflow-x: visible;
   scrollbar-width: none;
+  scrollbar-track-color: $scrollbar-tracker;
 
   ::-webkit-scrollbar {
     display: none;
@@ -41,13 +42,19 @@
   cursor: pointer;
 
   &:hover {
-    color: $channels-tab-hover;
     background: $bgray-overlay-hover;
+    
+    .channel-list-item-name {
+      color: $tab-hover;
+    }
   }
 
   &:active, &.selected {
-    color: white;
     background: $bgray-overlay-active;
+  
+    .channel-list-item-name {
+      color: white;
+    }
   }
 }
 

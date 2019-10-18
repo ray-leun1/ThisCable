@@ -6,6 +6,27 @@
   color: $landing;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+
+}
+
+.logo-image {
+
+}
+
+.logo-txt {
+  background-image: url('thisCableLogo.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .nav-right {
   display: flex;
   align-items: center;

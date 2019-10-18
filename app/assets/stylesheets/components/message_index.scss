@@ -1,19 +1,39 @@
 .message-index-container {
   width: 100%;
-  height: calc(100% - 49px - 124px);
+  height: calc(100% - 124px);
+  max-height: calc(100% - 124px);
   overflow-y: scroll;
+  scrollbar-width: 8px;
+  scrollbar-color: $scrollbar-tracker;
   
+  ::-webkit-scrollbar-thumb {
+    &:hover {
+      background: $scrollbar-tracker;
+    }
+    &:active {
+      background: $scrollbar-tracker;
+    }
+  }
 }
 
 .message-container {
   display: flex;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.06);
+  padding: 20px 0px;
 }
 
 .message-user-icon {
   width: 40px;
+  min-width: 40px;
   height: 40px;
+  min-height: 40px;
   border-radius: 50%;
-  margin: 0px 20px 20px 20px;
+  margin: 0px 20px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .message-info {

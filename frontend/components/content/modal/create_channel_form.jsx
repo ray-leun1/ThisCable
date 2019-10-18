@@ -158,7 +158,7 @@ class CreateChannelForm extends React.Component {
               <div className='create-channel-private-header-container'
                 onClick={() => this.togglePrivate()}>
                 <div className='create-channel-private-header-lock'>
-                  <i class="fas fa-lock"></i>
+                  <i className="fas fa-lock"></i>
                 </div>
                 <div className='create-channel-private-header-txt'>
                   Private Channel

@@ -45,7 +45,7 @@ class MessageIndex extends React.Component {
                 {author.username}
               </div>
               <div className='message-timestamp'>
-                {message.created_at}
+                {`${message.created_at.split('T')[0]} at ${message.created_at.split('T')[1].slice(0, 5)}`}
               </div>
             </div>
             <div className='message-body'>

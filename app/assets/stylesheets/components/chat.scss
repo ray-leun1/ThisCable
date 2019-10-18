@@ -1,7 +1,7 @@
 .chat-container {
   box-sizing: content-box;
   background: $chat-container-bg;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -16,8 +16,8 @@
 
 .chat-title-hash {
   color: $chat-title-hash;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 22px;
   margin: 0px 8px;
 }
 
@@ -25,6 +25,17 @@
   color: white;
 }
 
+
+.chat-content-container {
+  display: flex;
+  height: calc(100% - 49px);
+  max-height: calc(100% - 49px);
+}
+
+.chat-area-container {
+  height: 100%;
+  width: 100%;
+}
 
 .chat-form-container {
   padding: 20px 20px 30px 20px;

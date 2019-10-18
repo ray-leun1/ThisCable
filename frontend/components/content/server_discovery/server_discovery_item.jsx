@@ -14,13 +14,18 @@ class ServerDiscoveryItem extends React.Component {
       this.props.createMembership({
         user_id: this.props.currentUser.id,
         server_id: this.props.server.id
+      }).then(() => {
+        this.props.getCurrentServer(this.props.server.id).then(server => {
+          this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
+          this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
+        })
+      })
+    } else {
+      this.props.getCurrentServer(this.props.server.id).then(server => {
+        this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
+        this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
       })
     }
-    this.props.getUser(this.props.currentUser.id);
-    this.props.getCurrentServer(this.props.server.id).then(server => {
-      this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
-      this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
-    });
   }
 
   renderJoinBtn() {

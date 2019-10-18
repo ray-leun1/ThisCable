@@ -33,8 +33,11 @@ class ChannelList extends React.Component {
 
   render() {
     return (<div className='channel-list-container'>
-      {this.props.channels.map(channel => 
-        <ChannelListItem {...this.props} channel={channel} />)}
+      {this.props.channels.map(channel => {
+        if (channel.permittedUserIds.includes(this.props.currentUserId)) {
+          return <ChannelListItem {...this.props} channel={channel} />
+        }
+      })}
     </div>)
   }
 }

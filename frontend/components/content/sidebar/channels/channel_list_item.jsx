@@ -14,43 +14,12 @@ class ChannelListItem extends React.Component {
     this.handleContextMenu = this.handleContextMenu.bind(this);
   }
 
-  // componentDidMount() {
-  //   let currentChannelId = this.props.location.pathname.split('/')[3];
-
-  //   if (this.props.channel.id === parseInt(currentChannelId)) {
-  //     this.setState({active: 'selected'});
-  //   } else {
-  //     this.setState({active: 'deselected'});
-  //   }
-  // }
-
-  // componentDidUpdate() {
-  //   if (this.props.location.pathname !== this.props.history.location.pathname) {
-  //     if (this.props.channel.id === parseInt(this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1])) {
-  //       this.setState({ active: 'selected' });
-  //       this.forceUpdate();
-  //     } else {
-  //       this.setState({ active: 'deselected' });
-  //       this.forceUpdate();
-  //     }
-  //   }
-  // }
-
   handleClick() {
     if (this.state.channelContextMenu === 'hide') {
       this.props.history.push(`/channels/${this.props.match.params.serverId}/${this.props.channel.id}`)
-      
-      // let currentChannelId = this.props.location.pathname.split('/')[3];
-
-      // if (this.props.channel.id === parseInt(currentChannelId)) {
-      //   this.setState({ active: 'selected' });
-      // } else {
-      //   this.setState({ active: 'deselected' });
-      // }
     } else {
       this.setState({
-        channelContextMenu: 'hide',
-        // active: 'selected'
+        channelContextMenu: 'hide'
       });
     }
   }
@@ -110,7 +79,7 @@ class ChannelListItem extends React.Component {
           </div>
         </div>
         <div className='channel-list-item-x' hidden={this.state.channelContextMenu === 'hide'}>
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </div>
       </div>
       {this.renderChannelContextMenu()}

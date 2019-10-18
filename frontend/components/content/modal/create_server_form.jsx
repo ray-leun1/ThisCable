@@ -61,9 +61,7 @@ class CreateServerForm extends React.Component {
                 <label className='create-server-label'>SERVER REGION
                   <div className='create-server-input-region-btn'>
                     <div className='create-server-input-region'>
-                      <img className='create-server-input-region-flag'
-                        src='#'
-                        alt='US West Flag' />
+                      <div className='create-server-input-region-flag'></div>
                       <span className='create-server-input-region-text'>
                         US West
                       </span>
@@ -74,13 +72,14 @@ class CreateServerForm extends React.Component {
                   </div>
                 </label>
               </div>
+              <div className='create-server-input-fineprint'>
+                By creating a server, you.. create a server, really.
+              </div>
             </div>
             <div className='create-server-form-input-container-right'>
               <div className='create-server-input-icon-container'>
                 <div className='create-server-input-icon-btn'>
-                  <img className='create-server-input-icon'
-                    src='#'
-                    alt='Server Icon'/>
+                  <div className='create-server-input-icon'></div>
                 </div>
                 <span className='create-server-input-icon-txt'>
                   Minimum Size: <strong>128x128</strong>
@@ -92,6 +91,7 @@ class CreateServerForm extends React.Component {
         <div className='create-server-form-bottom-container'>
           <button className='create-server-form-back'
             onClick={() => this.props.closeModal()}>
+            <i className="fas fa-arrow-left"></i>
             BACK
           </button>
           <input className='default-btn create-server-form-submit'

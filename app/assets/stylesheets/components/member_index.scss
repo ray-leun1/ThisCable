@@ -1,0 +1,42 @@
+.member-index-container {
+  width: 240px;
+  min-width: 240px;
+  background: $sidebar-bg;
+}
+
+.member-index-item {
+  display: flex;
+  align-items: center;
+  max-width: 224px;
+  height: 42px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+
+  &:hover {
+    color: $tab-hover;
+    background: $bgray-overlay-hover;
+  }
+
+  &:active {
+    background: $bgray-overlay-active;
+  }
+}
+
+.member-index-item-icon {
+  width: 32px;
+  height: 32px;
+  background-image: url('https://i.imgur.com/3jykKJ3.jpg');
+  background-color: $light-blue;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.member-index-item-username {
+  color: $user-info-label;
+  font-size: 16px;
+  line-height: 20px;
+}

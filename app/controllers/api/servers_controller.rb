@@ -11,7 +11,6 @@ class Api::ServersController < ApplicationController
 
   def create
     @server = Server.new(server_params)
-    @server.admin_id = current_user.id
 
     if @server.save
       @server.assoc_create
@@ -40,6 +39,6 @@ class Api::ServersController < ApplicationController
 
   private
   def server_params
-    params.require(:server).permit(:name)
+    params.require(:server).permit(:name, :admin_id)
   end
 end

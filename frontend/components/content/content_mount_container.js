@@ -10,6 +10,7 @@ const ContentMountContainer = () => {
     <ServerListContainer />
     <Route path='/channels/:serverId(\d+)' component={SidebarContainer} />
     <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
+    <Route path='/channels/@me' component={SidebarContainer} />
     <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
   </div>)
 }

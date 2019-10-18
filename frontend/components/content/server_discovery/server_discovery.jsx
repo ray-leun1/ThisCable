@@ -44,7 +44,7 @@ class ServerDiscovery extends React.Component {
           onChange={this.handleChange()} />
         {/* <button className='server-discovery-search-submit'
           onClick={() => this.handleSubmit()}>
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
         </button> */}
       </div>
       <div className='server-discovery-server-list'>

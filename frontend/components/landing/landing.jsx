@@ -11,7 +11,16 @@ class Landing extends React.Component {
     return(<div className='landing-container'>
       <nav>
         <div className='nav-left'>
-           
+          <div className='logo-container'>
+            <div className='logo-image'></div>
+            <div className='logo-txt'></div>
+          </div>
+          <div className='github-link'>
+            <a href='https://github.com/ray-leun1/ThisCable'>
+              <i className="fab fa-github"></i>
+              GitHub
+            </a>
+          </div>
         </div>
         <div className='nav-right'>
           <div hidden={hidden}>
@@ -26,6 +35,7 @@ class Landing extends React.Component {
           <span hidden={!hidden}>{currentUsername}</span>
         </div>
       </nav>
+
     </div >)
   }
 }

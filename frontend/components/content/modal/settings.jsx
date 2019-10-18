@@ -65,7 +65,7 @@ class Settings extends React.Component {
         <div className='settings-exit-container'>
           <div className='settings-exit-btn'
             onClick={() => this.props.closeModal()}>
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </div>
           <div className='settings-exit-txt'>
             ESC

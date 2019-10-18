@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
-import { getServer } from '../../../../actions/server_actions';
-import { getChannels, deleteChannel } from '../../../../actions/channel_actions';
+import { getServer } from '../../../actions/server_actions';
+import { getChannels, deleteChannel } from '../../../actions/channel_actions';
 import {
   getCurrentUser,
   getCurrentServer,
   getCurrentChannel
-} from '../../../../actions/current_actions';
-import ChannelList from './channel_list';
+} from '../../../actions/current_actions';
+import DMList from './dm_list';
 
 const mapStateToProps = state => ({
   channels: Object.values(state.entities.channels),
-  currentUserId: state.session.id,
   currentUser: state.current.user,
   currentServer: state.current.server,
   currentChannel: state.current.channel
@@ -28,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ChannelList)
+)(DMList)

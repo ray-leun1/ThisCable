@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import MessageIndexContainer from './message_index_container';
+import MemberIndexContainer from './member_index_container';
 
 class Chat extends React.Component {
   constructor(props) {
@@ -54,14 +55,19 @@ class Chat extends React.Component {
           {this.props.currentChannel ? this.props.currentChannel.name : ''}
         </div>
       </div>
-      <Route path='/channels/:serverId/:channelId' render={() => <MessageIndexContainer key={parseInt(this.props.location.pathname.split('/')[3])} />} />
-      <form className='chat-form-container'>
-        <textarea className='chat-form-input'
-          placeholder={`Message #${this.props.currentChannel ? this.props.currentChannel.name : ''}`}
-          value={this.state.body}
-          onChange={this.handleChange('body')}
-          onKeyDown={this.handleOnEnter} />
-      </form>
+      <div className='chat-content-container'>
+        <div className='chat-area-container'>
+          <Route path='/channels/:serverId/:channelId' render={() => <MessageIndexContainer key={parseInt(this.props.location.pathname.split('/')[3])} />} />
+          <form className='chat-form-container'>
+            <textarea className='chat-form-input'
+              placeholder={`Message #${this.props.currentChannel ? this.props.currentChannel.name : ''}`}
+              value={this.state.body}
+              onChange={this.handleChange('body')}
+              onKeyDown={this.handleOnEnter} />
+          </form>
+        </div>
+        <Route path='/channels/:serverId/:channelId' component={MemberIndexContainer} />
+      </div>
     </div>)
   }
 }
