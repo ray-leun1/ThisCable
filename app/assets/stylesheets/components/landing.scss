@@ -1,9 +1,31 @@
+.landing-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.landing-splash {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url('CatAHHHHHHHHHH0.jpg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
 .landing-container > nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
   color: $landing;
+  font-size: 14px;
+  padding: 20px 30px;
 }
 
 .nav-left {
@@ -12,18 +34,55 @@
 }
 
 .logo-container {
+  display: flex;
+}
 
+.logo-image-container {
+  width: 33px;
+  min-width: 33px;
+  height: 36px;
+  min-height: 36px;
 }
 
 .logo-image {
-
-}
-
-.logo-txt {
-  background-image: url('thisCableLogo.png');
+  width: calc(487px / 15);
+  height: 35.95px;
+  background-image: url('thisCableIcon.png');
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.logo-txt-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 122px;
+  min-width: 122px;
+  height: 24px;
+  min-height: 24px;
+}
+
+.logo-txt {
+  width: 115px;
+  height: calc(100px / 6);
+  background-image: url('thisCableLogo.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.github-link {
+  padding: 15px 10px;
+  margin-left: 14px;
+
+  &:hover {
+    color: white;
+  }
+
+  .fa-github {
+    margin-right: 6px;
+  }
 }
 
 
@@ -33,8 +92,8 @@
 }
 
 .landing-container .nav-right button {
-  margin-left: 20px;
-  padding: 5px 17px;
+  line-height: 24px;
+  padding: 5px 17px 7px;
   border: 2px solid $landing;
   border-radius: 20px;
 
@@ -46,4 +105,32 @@
 
 .landing-container .nav-right span {
   margin-left: 5px;
+}
+
+
+.landing-description {
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  vertical-align: baseline;
+  max-width: 1200px;
+  padding: 72px 50px 0px;
+}
+
+.description-header {
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+.description-blurb {
+  color: hsla(0,0%,100%,.6);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 710px;
+  margin-bottom: 12px auto 30px auto;
 }

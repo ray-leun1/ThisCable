@@ -46,6 +46,7 @@ class SessionForm extends React.Component {
     let titleStr = this.props.formType === 'login' ? 'Welcome back!' : 'Create an account'
 
     return (<div className='session-form-container'>
+      <div className='session-splash'></div>
       <form className='session-form'
         onSubmit={this.handleSubmit}>
         <div className='session-form-title'>{titleStr}</div>
@@ -81,8 +82,8 @@ class SessionForm extends React.Component {
             Demo Login
           </button>
         </div>
+        {this.props.navLink}
       </form>
-      {this.props.navLink}
     </div>)
   }
 }
