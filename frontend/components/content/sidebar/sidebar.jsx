@@ -133,8 +133,8 @@ class Sidebar extends React.Component {
         </div>
         {this.renderServerContextMenu()}
       </div>
-      <Route path='/channels/:serverId(\d+)' component={ChannelListContainer} />
-      <Route path='/channels/@me' component={DMListContainer} />
+      <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={parseInt(this.props.location.pathname.split('/')[2])} />} />
+      {/* <Route path='/channels/@me' component={DMListContainer} /> */}
       <div className='sidebar-user-ui'>
         <div className='sidebar-user-ui-info'>
           <img className='sidebar-user-ui-info-avatar'

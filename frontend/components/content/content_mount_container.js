@@ -7,7 +7,7 @@ import ServerDiscoveryContainer from './server_discovery/server_discovery_contai
 
 const ContentMountContainer = () => {
   return(<div className='content-mount-container'>
-    <ServerListContainer />
+    <Route path='/channels/:serverId' component={ServerListContainer} />
     <Route path='/channels/:serverId(\d+)' component={SidebarContainer} />
     <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
     <Route path='/channels/@me' component={SidebarContainer} />

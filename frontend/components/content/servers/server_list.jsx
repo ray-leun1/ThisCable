@@ -18,9 +18,10 @@ class ServerList extends React.Component {
   }
 
   render() {
+    
     let servers = [];
-    let currentUser = this.props.users[this.props.currentUserId - 1];
-    if (currentUser && currentUser.joinedServerIds) {
+    let currentUser = this.props.currentUser;
+    if (currentUser && currentUser.joinedServerIds && this.props.servers) {
       servers = this.props.servers.filter(server =>
         currentUser.joinedServerIds.includes(server.id))
     }
