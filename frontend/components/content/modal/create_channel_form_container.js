@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getChannel, createChannel } from '../../../actions/channel_actions';
+import { getChannels, getChannel, createChannel } from '../../../actions/channel_actions';
 import { getRoles } from '../../../actions/role_actions';
 import { createPermission } from '../../../actions/permission_actions';
 import { closeModal } from '../../../actions/modal_actions';
@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getChannels: serverId => dispatch(getChannels(serverId)),
   getChannel: id => dispatch(getChannel(id)),
   createChannel: channel => dispatch(createChannel(channel)),
   getRoles: () => dispatch(getRoles()),

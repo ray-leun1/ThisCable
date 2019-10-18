@@ -44,7 +44,8 @@ class CreateChannelForm extends React.Component {
             this.props.createPermission({role_id: role.id, channel_id: channel.channel.id});
           }
         })
-        this.props.getChannel(channel.channel.id);
+        // this.props.getChannel(channel.channel.id);
+        this.props.getChannels(channel.channel.server_id);
       })
         
     this.props.closeModal();
