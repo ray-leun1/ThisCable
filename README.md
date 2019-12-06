@@ -1,6 +1,6 @@
 # [ThisCable](https://this-cable.herokuapp.com)
 
-ThisCable is a fullstack clone of [Discord](https://discordapp.com), a live message and voice chat organived by user-created servers with channels as well as by one-on-one user direct messages. ThisCable focuses on the live messaging feature, allowing user creation and joining of servers to chat with other users.
+ThisCable is a fullstack clone of [Discord](https://discordapp.com), a live-message and voice chat app organized by user-created servers with channels as well as by one-on-one user direct messages. ThisCable focuses on the live messaging feature, allowing user creation and joining of servers to chat with other users.
 
 ## Technologies
 * React-redux - Javascript frontend
