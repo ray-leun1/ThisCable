@@ -1,8 +1,88 @@
 /* Define application-wide selectors here!*/
 
+div {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+*::-moz-focus-inner {
+  outline: none;
+  border: 0;
+}
+
 #root {
-  background: $bg-gray2;
-  height: 100vh;
   color: $txt-white;
+  background: transparent;
+  height: 100vh;
   position: relative;
+}
+
+.app-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $bg-gray3;
+  z-index: -10;
+}
+
+.content-mount-container {
+  display: flex;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.default-btn {
+  color: white;
+  line-height: 16px;
+  text-align: center;
+  padding: 2px 16px;
+  background: $default-btn;
+  border-radius: 3px;
+
+  &:hover {
+    background: $default-btn-hover;
+  }
+}
+
+.hover-tooltip {
+  z-index: 2;
+  color: white;
+  font-size: 14px;
+  height: 14px;
+  max-height: 48px;
+  max-width: 190px;
+  padding: 11px 12px;
+  margin: auto;
+  border-radius: 5px;
+  background: black;
+  z-index: 50;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.noverflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.form-checkbox-wrapper {
+  width: 24px;
+  height: 24px;
+
+  .form-checkbox-input {
+    width: 24px;
+    height: 24px;
+  }
 }

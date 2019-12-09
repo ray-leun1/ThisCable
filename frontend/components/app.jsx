@@ -1,18 +1,21 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
+import Modal from './content/modal/modal';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_contain';
 import LandingContainer from './landing/landing_container';
+import ContentMountContainer from './content/content_mount_container';
 
-const App = () => {
-
-  return(<div>
-    <Route exact path ='/' component={LandingContainer} />
+const App = () => (
+  <div>
+    <div className='app-bg'></div>
+    <Modal />
+    <AuthRoute exact path ='/' component={LandingContainer} />
     <AuthRoute path='/login' component={LoginFormContainer} />
     <AuthRoute path='/signup' component={SignupFormContainer} />
-  </div>)
-};
+    <ProtectedRoute path='/channels' component={ContentMountContainer} />
+  </div>
+);
 
 export default App;

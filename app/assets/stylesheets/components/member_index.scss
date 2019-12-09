@@ -1,0 +1,52 @@
+.member-index-container {
+  width: 240px;
+  min-width: 240px;
+  background: $sidebar-bg;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  padding-right: 220px;
+  margin-right: -220px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.member-index-item {
+  display: flex;
+  align-items: center;
+  max-width: 224px;
+  height: 42px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+
+  &:hover {
+    color: $tab-hover;
+    background: $bgray-overlay-hover;
+  }
+
+  &:active {
+    background: $bgray-overlay-active;
+  }
+}
+
+.member-index-item-icon {
+  color: $message-user-icon-name;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 32px;
+  width: 32px;
+  height: 32px;
+  background: $message-user-icon-bg;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.member-index-item-username {
+  color: $user-info-label;
+  font-size: 16px;
+  line-height: 20px;
+}

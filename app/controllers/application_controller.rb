@@ -19,9 +19,4 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
-
-  def ensure_logged_in
-    render json: { base: ['Invalid parameters'] }, status: 401 unless current_user
-  end
-
 end

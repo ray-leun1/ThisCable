@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
   
-  handleDemo() {
+  handleDemo(e) {
+    e.preventDefault();
     this.props.processDemo();
   }
 
@@ -31,52 +33,59 @@ class SessionForm extends React.Component {
     return e => this.setState({[field]: e.currentTarget.value})
   }
 
+  renderErrors() {
+    return (<div className='errors'>
+      {this.props.errors.map((error, i) => 
+        <li key={`error-${i}`}>{error}</li>
+      )}
+    </div>)
+  }
+
   render() {
-    const inputUsername = this.props.formType === 'signup' ? 
-      (<label className='session-input'>Username:
-        <input type="text"
-        value={this.state.username}
-        onChange={this.handleChange('username')} />
-      </label>)
-      : '';
-    
-    let loginStr = 'Login';
-    let signupStr = 'Sign Up';
-    let formTypeStr = this.props.formType === 'login' ? loginStr : signupStr;
+    let submitStr = this.props.formType === 'login' ? 'Login' : 'Sign Up';
+    let titleStr = this.props.formType === 'login' ? 'Welcome back!' : 'Create an account'
 
     return (<div className='session-form-container'>
+      <div className='session-splash'></div>
       <form className='session-form'
         onSubmit={this.handleSubmit}>
-        <div className='title'>{formTypeStr}</div>
+        <div className='session-form-title'>{titleStr}</div>
         
-        <div className='errors'>{this.props.errors.map((error, i) => {
-          return (<li key={`error-${i}`}>{error}</li>)
-        })}</div>
+        {this.renderErrors()}
 
         <div className='session-input-container'>
-          <label className='session-input'>Email:
-            <input type="text"
+          <label className='session-label'>Email:
+            <input className='session-input'
+              type="text"
               value={this.state.email}
-              onChange={this.handleChange('email')}/>
+              onChange={this.handleChange('email')} />
           </label>
-          {inputUsername}
-          <label className='session-input'>Password:
-            <input type="password"
+          <label className='session-label'
+            hidden={this.props.formType === 'login'}>Username:
+            <input className='session-input'
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChange('username')} />
+          </label>
+          <label className='session-label'>Password:
+            <input className='session-input'
+              type="password"
               value={this.state.password}
               onChange={this.handleChange('password')} />
           </label>
-          <input type="submit"
-            value={formTypeStr}
-            className='session-submit'/>
-          <button onClick={this.handleDemo}
-            className='session-submit'>
+          <input className='default-btn session-form-submit-btn'
+            type="submit"
+            value={submitStr} />
+          <button
+            className='default-btn session-form-submit-btn'
+            onClick={this.handleDemo}>
             Demo Login
           </button>
         </div>
+        {this.props.navLink}
       </form>
-      {this.props.navLink}
     </div>)
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

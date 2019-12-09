@@ -1,0 +1,143 @@
+.server-list {
+  position: relative;
+  height: 100vh;
+  width: 72px;
+  min-width: 72px;
+  display: flex;
+  flex-direction: column;
+  // background: $bg-server-list;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  padding-right: 220px;
+  margin-right: -220px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .server-list-bg {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    background: $bg-server-list;
+    top: 0;
+    left: 0;
+    z-index: -5;
+  }
+}
+
+.server-list-item-container {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 4px auto;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    border-radius: 25%;
+  }
+}
+
+.server-list-separator {
+  width: 32px;
+  height: 2px;
+  background: hsla(0, 0%, 100%, 0.06);
+  border-radius: 1px;
+  margin: 2px auto;
+}
+
+.server-list-item {
+  color: $server-list-item-name;
+  font-size: 18px;
+  line-height: 48px;
+  text-align: center;
+  vertical-align: middle;
+  width: 48px;
+  height: 48px;
+  background: $server-list-item-bg;
+  border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    background: $server-list-item-bg-hover;
+    border-radius: 25%;
+  }
+}
+
+.server-list-item-hover {
+  display: none;
+  position: absolute;
+  left: 56px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.server-list-item-container:hover > .server-list-item-hover {
+  display: inline;
+}
+
+.home-btn {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  background: $server-list-item-bg;
+  border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: white;
+    background: $server-list-item-bg-hover;
+    border-radius: 25%;
+  }
+}
+
+.add-server-btn, .logout-btn {
+  color: $server-list-btn;
+  font-size: 28px;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  background: $server-list-btn-bg;
+  border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: white;
+    background: $server-list-btn-hover;
+    border-radius: 25%;
+  }
+}
+
+.server-discovery-btn {
+  color: $server-list-btn;
+  font-size: 20px;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  background: $server-list-btn-bg;
+  border-radius: 50%;
+
+  transition-property: border-radius;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: white;
+    background: $server-list-btn-hover;
+    border-radius: 25%;
+  }
+}
