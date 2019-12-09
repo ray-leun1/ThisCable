@@ -1,56 +1,62 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import svgs from '../../../app/assets/images/svgs';
+import imgs from './splash_svgs';
 
-class Landing extends React.Component {
-  render() {
-    let hidden = this.props.currentUserId;
-    let currentUsername = this.props.currentUser ?
-      this.props.currentUser.username : null;
-
-    return(<div className='landing-container'>
-      <div className='landing-splash'></div>
-      <nav>
-        <div className='nav-left'>
-          <div className='logo-container'>
-            <div className='logo-image-container'>
-              <div className='logo-image'></div>
-            </div>
-            <div className='logo-txt-container'>
-              <div className='logo-txt'></div>
-            </div>
+export default () => {
+  return(<div className='landing-container'>
+    <div className='splash'></div>
+    <nav>
+      <div className='nav-left'>
+        <div className='logo-container'>
+          <div className='image-container'>
+            <div className='logo-image'></div>
           </div>
-          <div className='github-link'>
-            <a href='https://github.com/ray-leun1/ThisCable'>
-              <i className="fab fa-github"></i>
-              GitHub
-            </a>
+          <div className='txt-container'>
+            <div className='logo-txt'></div>
           </div>
         </div>
-        <div className='nav-center'></div>
-        <div className='nav-right'>
-          <div hidden={hidden}>
-            <Link to='/login'><button>Log In</button></Link>
-          </div>
-          <div hidden={!hidden}>
-            <button onClick={this.props.loginDemo}>Demo Login</button>
-          </div>
-          <div hidden={!hidden}>
-            <button onClick={this.props.logout}>Log Out</button>
-          </div>
-          <span hidden={!hidden}>{currentUsername}</span>
-        </div>
-      </nav>
-      <div className='landing-description'>
-        <div className='description-header'>
-          It's time to ditch Yipes and TeamSpeech.
-        </div>
-        <div className='description-blurb'>
-          All-in-one text and text chat for texters that's a free, insecure Discord clone that works on both your desktops. Stop looking up TeamSpeech servers and hassling with Yipes. Confuzzle your life.
+        <a className='github-link'
+          href='https://github.com/ray-leun1/ThisCable'>
+          {svgs.github}
+          GitHub
+        </a>
+      </div>
+      <div className='nav-center'></div>
+      <div className='nav-right'>
+        <div>
+          <Link to='/login'><button>Login</button></Link>
         </div>
       </div>
-    </div >)
-  }
-}
-
-export default withRouter(Landing)
+    </nav>
+    <div className='description'>
+      <div className='header'>
+        It's time to ditch Yipes and TeamSpeech.
+      </div>
+      <div className='blurb'>
+        All-in-one text and text chat for texters that's a free, insecure Discord 
+        clone that works on both your desktops. Stop looking up TeamSpeech servers 
+        and hassling with Yipes. Confuzzle your life.
+      </div>
+    </div>
+    <div className='splash-imgs'>
+      {imgs.triangle}{imgs.triangle}{imgs.triangle}
+      {imgs.dot}{imgs.dot}{imgs.dot}{imgs.dot}{imgs.dot}
+      {imgs.circle}{imgs.circle}{imgs.circle}
+      {imgs.square}{imgs.square}{imgs.square}
+      {imgs.x}{imgs.x}{imgs.x}
+      {imgs.potion}
+      {imgs.bomb}
+      {imgs.coin}{imgs.coin}
+      {imgs.cartridge}
+      {imgs.shield}
+      {imgs.block}
+      {imgs.desktop}
+      {imgs.android}
+      {imgs.iphone}
+      {imgs.controller}
+      {imgs.laptop}
+      {imgs.headphones}
+    </div>
+  </div>)
+};
