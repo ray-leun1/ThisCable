@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+
   
   .splash {
     position: absolute;
@@ -156,7 +159,20 @@
   .splash-imgs {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 638px;
+    min-height: 638px;
+
+    .shadow {
+      position: absolute;
+      left: 50%;
+      margin-left: -650px;
+      bottom: 0;
+      border-radius: 50px;
+      width: 1300px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+    }
 
     svg {
       left: 50%;
@@ -182,37 +198,37 @@
     }
 
     @mixin nth-triangle($n) {
-      &:nth-child(#{$n}) {
+      &:nth-of-type(#{$n}) {
         @content;
       }
     }
 
     @mixin nth-dot($n) {
-      &:nth-child(#{$n + 3}) {
+      &:nth-of-type(#{$n + 3}) {
         @content;
       }
     }
 
     @mixin nth-circle($n) {
-      &:nth-child(#{$n + 8}) {
+      &:nth-of-type(#{$n + 8}) {
         @content;
       }
     }
 
     @mixin nth-square($n) {
-      &:nth-child(#{$n + 11}) {
+      &:nth-of-type(#{$n + 11}) {
         @content;
       }
     }
 
     @mixin nth-x($n) {
-      &:nth-child(#{$n + 14}) {
+      &:nth-of-type(#{$n + 14}) {
         @content;
       }
     }
 
     @mixin nth-coin($n) {
-      &:nth-child(#{$n + 19}) {
+      &:nth-of-type(#{$n + 19}) {
         @content;
       }
     }
@@ -384,6 +400,52 @@
       margin-left: 270px;
       bottom: 142px;
       transform: scale(0.75);
+    }
+  }
+
+  @media screen and (max-width: 848px) {
+    .splash-imgs {
+      height: 410px;
+      min-height: 410px;
+
+      .shadow, .triangle, .dot, .circle, .square, .x, .potion, .bomb, .coin, .cartridge,
+      .shield, .block, .desktop, .controller {
+        display: none;
+      }
+  
+      .android {
+        margin-left: -384px;
+      }
+  
+      .iphone {
+        margin-left: -229.5px;
+      }
+  
+      .laptop {
+        margin-left: -124px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .splash-imgs {
+      margin-top: 40px;
+
+      .laptop, .headphones {
+        display: none;
+      }
+  
+      .android {
+        margin-left: -178px;
+        top: 7%;
+        bottom: auto;
+      }
+  
+      .iphone {
+        margin-left: 34.5px;
+        top: 7%;
+        bottom: auto;
+      }
     }
   }
 }
