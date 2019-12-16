@@ -17,7 +17,6 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
     opacity: 0.2;
     z-index: -1;
   }
@@ -332,7 +331,6 @@
       margin-left: -609px;
       bottom: 10px;
       z-index: 1;
-      cursor: pointer;
     }
 
     .bomb {
@@ -366,7 +364,6 @@
     .block {
       margin-left: -239px;
       bottom: 462px;
-      cursor: pointer;
       transition: none;
     }
 
