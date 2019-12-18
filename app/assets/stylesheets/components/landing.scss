@@ -5,21 +5,11 @@
   height: 100vh;
   // overflow-y: scroll;
   overflow-x: hidden;
-
-  
-  .splash {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background-image: image-url('CatAHHHHHHHHHH0.jpg');
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.2;
-    z-index: -1;
-  }
+  background-image: image-url('CatAHHHHHHHHHH.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   nav {
     box-sizing: border-box;
@@ -27,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     color: $landing;
-    font-size: 12px;
+    font-size: 14px;
     width: calc(100% - 263px - 83px);
     max-width: 1600px;
     height: 72px;
@@ -128,7 +118,6 @@
   
   
   .description {
-    font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,6 +132,7 @@
       font-size: 36px;
       font-weight: 700;
       line-height: 44px;
+      letter-spacing: -1px;
     }
     
     .blurb {

@@ -5,7 +5,6 @@ import imgs from './splash_svgs';
 
 export default () => {
   return(<div className='landing-container'>
-    {/* <div className='splash'></div> */}
     <nav>
       <div className='nav-left'>
         <div className='logo-container'>
