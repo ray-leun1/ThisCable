@@ -1,4 +1,7 @@
 .session-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -6,78 +9,103 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.session-form {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 480px;
-  padding: 40px;
-  box-sizing: border-box;
-  color: $title-session-form;
-  border-radius: 5px;
-  background: $bg-session-form;
-}
+  form {
+    box-sizing: border-box;
+    color: white;
+    width: 480px;
+    padding: 40px;
+    border-radius: 5px;
+    background: #36393f;
 
-.session-form-title {
-  font-size: 26px;
-  font-weight: 300;
-  text-align: center;
-}
+    .title {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
 
-.session-input-container {
-  display: flex;
-  flex-direction: column;
-}
+    .subtitle {
+      color: #72767d;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+    }
 
-.session-label {
-  color: $txt-session-label;
-  font-size: 12px;
-  margin-top: 20px;
-}
+    .errors {
+      color: #8e9297;
+      margin-top: 8px;
+    }
 
-.session-input {
-  color: $txt-session-input;
-  font-size: 16px;
-  display: flex;
-  border: 1px solid black;
-  border-radius: 3px;
-  width: 100%;
-  padding: 10px;
-  background: $bg-session-input;
+    .input-container {
+      display: flex;
+      flex-direction: column;
+    
+      label {
+        color: #8e9297;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 20px;
 
-  &:focus {
-    border-color: $active-input;
+        div {
+          margin-bottom: 8px;
+        }
+
+        input {
+          color: #dcddde;
+          font-size: 16px;
+          font-weight: 400;
+          width: 100%;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          border-radius: 3px;
+        
+          &:focus {
+            border-color: $active-input;
+          }
+        }
+      }
+
+      .forgot-password {
+        color: #7289da;
+        font-size: 14px;
+        width: max-content;
+        margin: 6px 0px 2px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.tooltip::after {
+          content: 'I\'m sorry.';
+        }
+      }
+      
+      button {
+        width: 100%;
+        text-align: center;
+        border-radius: 3px;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    }
+    
+    .session-nav {
+      font-size: 14px;
+      margin-top: 10px;
+    
+      .switch-msg {
+        color: #72767d;
+        cursor: default;
+      }
+      
+      .nav-link {
+        color: #7289da;
+      
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
   }
-}
-
-.session-form-submit-btn {
-  width: 100%;
-  background: $default-btn;
-  text-align: center;
-  border-radius: 3px;
-  padding: 10px;
-  margin-top: 20px;
-}
-
-.session-nav {
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.session-nav-link {
-  color: $txt-session-nav-link;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.session-switch-msg {
-  color: $txt-session-switch;
-  cursor: default;
 }
