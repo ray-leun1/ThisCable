@@ -1,79 +1,49 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../../actions/modal_actions';
+import { logout } from '../../../actions/session_actions';
+import { getCurrentUser } from '../../../actions/current_actions';
+import MyAccount from './my_account';
+import svgs from '../../svgs';
 
-class Settings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleLogout = this.handleLogout.bind(this);
-  }
+export default () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.current.user);
+  const [currentTab, setCurrentTab] = useState('my-account');
+  
+  const updateCurrentUser = () => dispatch(getCurrentUser(currentUser.id));
 
-  handleLogout(e) {
-    e.preventDefault();
-    this.props.logout();
-    this.props.closeModal();
-  }
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(closeModal());
+  };
 
-  render() {
-    return (<div className='settings-container'>
-      <div className='settings-container-left'>
-        <div className='settings-sidebar'>
-          <div className='settings-tab my-account'>
-            My Account
-          </div>
-          <div className='settings-tab logout'
-            onClick={this.handleLogout}>
-            Log Out
-          </div>
+  return (<div className='settings-container'>
+    <div className='container-left'>
+      <div className='sidebar'>
+        <div className={`tab my-account${currentTab === 'my-account' ? ' active' : ''}`}>
+          My Account
+        </div>
+        <div className='divider'></div>
+        <div className='tab logout'
+          onClick={handleLogout}>
+          Log Out
         </div>
       </div>
-      <div className='settings-container-right'>
-        <div className='settings-content'>
-          <div className='settings-content-my-account'>
-            <div className='settings-content-title'>
-              MY ACCOUNT
-            </div>
-            <div className='settings-content-user-info'>
-              <div className='user-info-avatar-container'>
-                <img className='user-info-avatar'
-                  src='https://i.imgur.com/3jykKJ3.jpg'
-                  alt={`${this.props.currentUser.username} avatar`} />
-              </div>
-                <div className='user-info-txt-container'>
-                  <div className='user-info-username'>
-                    <div className='user-info-label'>
-                      USERNAME
-                    </div>
-                    <div className='user-info-input'>
-                      {this.props.currentUser.username}
-                      <span className='user-info-id'>
-                        #{this.props.currentUser.id}
-                      </span>
-                    </div>
-                  </div>
-                  <div className='user-info-email'>
-                    <div className='user-info-label'>
-                      EMAIL
-                    </div>
-                    <div className='user-info-input'>
-                      {this.props.currentUser.email}
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
+    </div>
+    <div className='container-right'>
+      <div className='content'>
+        <MyAccount currentUser={currentUser} updateCurrentUser={updateCurrentUser} />
+      </div>
+      <div className='exit-container'>
+        <div className='exit-btn'
+          onClick={() => dispatch(closeModal())}>
+          {svgs.X}
         </div>
-        <div className='settings-exit-container'>
-          <div className='settings-exit-btn'
-            onClick={() => this.props.closeModal()}>
-            <i className="fas fa-times"></i>
-          </div>
-          <div className='settings-exit-txt'>
-            ESC
-          </div>
+        <div className='exit-txt'>
+          ESC
         </div>
       </div>
-    </div>)
-  }
+    </div>
+  </div>)
 }
-
-export default withRouter(Settings);

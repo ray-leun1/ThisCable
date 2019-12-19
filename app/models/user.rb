@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles, source: :role
   has_many :joined_channels, through: :roles, source: :channels
 
+  has_one_attached :profile_img
+
   before_validation :ensure_session_token
 
   attr_reader :password

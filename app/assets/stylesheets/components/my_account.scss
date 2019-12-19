@@ -1,0 +1,263 @@
+.my-account {
+  .title {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .user-info {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    border: 1px solid #202225;
+    background: rgba(32, 34, 37, 0.6);
+    border-radius: 5px;
+
+    .icon-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-right: 10px;
+    }
+    
+    .txt-container {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      
+      .username {
+        margin-bottom: 20px;
+      }
+      
+      .id {
+        opacity: 0.5;
+      }
+    }
+
+    .label {
+      opacity: 0.8;
+      color: #8e9297;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      margin-bottom: 4px;
+    }
+    
+    .input {
+      color: #b9bbbe;
+    }
+
+    button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      min-width: 28px;
+      height: 32px;
+      min-height: 32px;
+    }
+  } // End user-info
+
+  .update-user-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #202225;
+    background: rgba(32, 34, 37, 0.3);
+    border-radius: 5px;
+
+    .form-input-container {
+      display: flex;
+
+      .icon-upload-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: box-shadow .1s, -webkit-box-shadow .1s;
+      
+        .tip {
+          visibility: hidden;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 12px;
+          text-align: center;
+          width: min-content;
+        }
+      
+        .upload-indicator {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 28px;
+          height: 28px;
+          background: #dcddde;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+          cursor: pointer;
+        }
+  
+        input[type=file] {
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+          width: 100px;
+          min-width: 100px;
+          height: 100px;
+          min-height: 100px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      
+        &:hover {
+          box-shadow: inset 0 0 120px rgba(0, 0, 0, .75);
+      
+          .tip {
+            visibility: visible;
+          }
+        }
+      }
+  
+      .label {
+        opacity: 0.8;
+        color: #8e9297;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        margin-bottom: 4px;
+      }
+      
+      input {
+        color: #dcddde;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+  
+        &:focus {
+          border-color: #7289da;
+        }
+      }
+  
+      .txt-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-left: 10px;
+        
+        .username {
+          .input {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+  
+            input {
+              border: none;
+              background: none;
+            }
+  
+            div {
+              position: relative;
+              color: #dcddde;
+              height: 40px;
+              width: 100px;
+              padding: 10px 10px 10px 30px;
+              background: none;
+              border: none;
+              opacity: 0.5;
+  
+              &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                width: 1px;
+                height: 30px;
+                border-right: 2px solid white;
+                margin-top: 5px;
+                opacity: .1;
+              }
+            }
+  
+            &.focus {
+              border-color: #7289da;
+            }
+          }
+        }
+  
+        .password {
+          input {
+            opacity: 0.5;
+          }
+        }
+  
+        .input-container {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      } // End txt-container
+    } // End form-input-container
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: hsla(0, 0%, 100%, 0.06);
+      margin: 20px 0px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 14px;
+
+      .cancel {
+        color: white;
+        padding: 2px 4px;
+        margin: 0px 10px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .save {
+        min-width: 60px;
+        height: 32px;
+        min-height: 32px;
+        background: #43b581;
+
+        &:hover {
+          background: #3ca374;
+        }
+      }
+    }
+  } // End update-user-form
+}

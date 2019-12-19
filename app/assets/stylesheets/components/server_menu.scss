@@ -33,11 +33,11 @@
   cursor: pointer;
 
   &:hover {
-    background: $bgray-overlay-hover;
+    background: rgba(79, 84, 92, 0.16);
   }
 
   &.leave-server {
-    color: $context-tab-warning;
+    color: #f04747;
   }
 }
 

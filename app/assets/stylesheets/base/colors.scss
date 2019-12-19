@@ -28,7 +28,6 @@ $sidebar-user-ui-bg: $bg-gray3;
 
 $bg-gray4: #202225;
 $bg-server-list: $bg-gray4;
-$settings-content-border: $bg-gray4;
 $server-discovery-item-bg: $bg-gray4;
 
 $bg-gray5: #f6f6f7;
@@ -46,7 +45,6 @@ $landing: $txt-gray0;
 
 $txt-gray1: #8e9297;
 $txt-session-label: $txt-gray1;
-$user-info-label: $txt-gray1;
 $channels-tab: $txt-gray1;
 $create-channel-label-txt: $txt-gray1;
 
@@ -57,7 +55,6 @@ $server-list-item-name: $txt-gray-hover;
 $message-user-icon-name: $txt-gray-hover;
 
 $txt-gray2: #72767d;
-$settings-exit-btn: $txt-gray2;
 $create-channel-private-deselected-bg: $txt-gray2;
 $chat-title-hash: $txt-gray2;
 $message-timestamp: $txt-gray2;
@@ -89,7 +86,6 @@ $context-menu-bg: $context-black;
 $ui-color: #b9bbbe;
 $sidebar-user-ui-btns-color: $ui-color;
 $sidebar-user-ui-info-id-txt: $ui-color;
-$user-info-input: $ui-color;
 $context-menu-option-txt: $ui-color;
 $create-channel-text-hash: $ui-color;
 $create-channel-private-lock: $ui-color;
@@ -104,8 +100,6 @@ $landing-hover: $txt-white;
 $title-session-form: $txt-white;
 
 $error-red: #bc1315;
-$warning-red: #f04747;
-$context-tab-warning: $warning-red;
 
 $light-blue: #7289da;
 $server-list-item-bg-hover: $light-blue;
@@ -128,6 +122,3 @@ $join-btn-hover: $warm-green-redux;
 
 $warm-green-dark: #369167;
 $join-btn-active: $warm-green-dark;
-
-$bgray-overlay-hover: rgba(79, 84, 92, 0.16);
-$bgray-overlay-active: rgba(79, 84, 92, 0.32);
