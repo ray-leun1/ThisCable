@@ -25,11 +25,11 @@
 
   &:hover {
     color: $tab-hover;
-    background: $bgray-overlay-hover;
+    background: rgba(79, 84, 92, 0.16);
   }
 
   &:active {
-    background: $bgray-overlay-active;
+    background: rgba(79, 84, 92, 0.32);
   }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .member-index-item-username {
-  color: $user-info-label;
+  color: #8e9297;
   font-size: 16px;
   line-height: 20px;
 }

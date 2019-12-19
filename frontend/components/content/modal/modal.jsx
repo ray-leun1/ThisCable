@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import CreateServerFormContainer from './create_server_form_container';
-import SettingsContainer from './settings_container';
+import Settings from './settings';
 import CreateChannelFormContainer from './create_channel_form_container';
 
 function Modal({ modal, closeModal }) {
@@ -18,7 +18,7 @@ function Modal({ modal, closeModal }) {
       component = <CreateChannelFormContainer />;
       break;
     case 'settings':
-      component = <SettingsContainer />;
+      component = <Settings />;
       break;
     default:
       return null;

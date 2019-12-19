@@ -39,7 +39,7 @@ export default () => {
       </div>
     </div>
     <div className='splash-imgs'>
-      <div class='shadow'></div>
+      <div className='shadow'></div>
       {imgs.triangle}{imgs.triangle}{imgs.triangle}
       {imgs.dot}{imgs.dot}{imgs.dot}{imgs.dot}{imgs.dot}
       {imgs.circle}{imgs.circle}{imgs.circle}

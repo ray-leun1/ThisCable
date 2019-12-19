@@ -8,6 +8,16 @@ export const getUser = id => $.ajax({
   url: `api/users/${id}`
 });
 
+export const editUser = formData => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${formData.get('user[id]')}`,
+    data: formData,
+    contentType: false,
+    processData: false
+  })
+}
+
 export const createMembership = membership => $.ajax({
   method: 'POST',
   url: `api/servers/${membership.server_id}/memberships`,
