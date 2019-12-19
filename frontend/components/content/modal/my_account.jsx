@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editUser } from '../../../actions/user_actions';
-import { getCurrentUser } from '../../../actions/current_actions';
-import svgs from '../../svgs';
 
 export default props => {
   const dispatch = useDispatch();
-  const { currentUser, updateCurrentUser } = props;
+  const { currentUser, updateCurrentUser, svgs } = props;
 
   const [updateUser, setUpdateUser] = useState(false);
   const [usernameFocus, setUsernameFocus] = useState(false);
