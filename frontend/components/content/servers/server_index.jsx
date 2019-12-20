@@ -59,7 +59,7 @@ export default () => {
       <div className='active-tab'></div>
       <button className='home-btn' data-tip data-for='home'
         onClick={() => history.push('/channels/@me')}>
-        <i className="fas fa-home"></i>
+        {svgs.logoCat}
       </button>
       <ReactTooltip id='home' place='right' effect='solid' offset={{ right: 3 }}>
         Home
