@@ -1,4 +1,4 @@
-.server-list {
+.server-index-container {
   box-sizing: content-box;
   position: relative;
   height: 100vh;
@@ -6,25 +6,18 @@
   min-width: 72px;
   display: flex;
   flex-direction: column;
-  // background: $bg-server-list;
+  background: #202225;
   overflow-y: scroll;
   scrollbar-width: none;
-
-  padding-right: 220px;
-  margin-right: -220px;
 
   ::-webkit-scrollbar {
     display: none;
   }
 
-  .server-list-bg {
-    position: absolute;
-    height: inherit;
-    width: inherit;
-    background: $bg-server-list;
-    top: 0;
-    left: 0;
-    z-index: -5;
+  &.tooltip {
+    &::after {
+      top: -50%;
+    }
   }
 }
 
@@ -103,42 +96,23 @@
   }
 }
 
-.add-server-btn, .logout-btn {
-  color: $server-list-btn;
+.server-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: #43b581;
   font-size: 28px;
-  text-align: center;
-  width: 46px;
-  height: 46px;
-  padding-bottom: 2px;
-  padding-right: 2px;
-  background: $server-list-btn-bg;
-  border-radius: 50%;
-
-  transition-property: border-radius;
-  transition-duration: 0.2s;
-
-  &:hover {
-    color: white;
-    background: $server-list-btn-hover;
-    border-radius: 25%;
-  }
-}
-
-.server-discovery-btn {
-  color: $server-list-btn;
-  font-size: 20px;
   text-align: center;
   width: 48px;
   height: 48px;
-  background: $server-list-btn-bg;
+  background: #36393f;
   border-radius: 50%;
-
   transition-property: border-radius;
   transition-duration: 0.2s;
 
   &:hover {
-    color: white;
-    background: $server-list-btn-hover;
+    fill: white;
+    background: #43b581;
     border-radius: 25%;
   }
 }

@@ -33,7 +33,7 @@ export default () => {
     </div>
     <div className='container-right'>
       <div className='content'>
-        <MyAccount currentUser={currentUser} updateCurrentUser={updateCurrentUser} />
+        <MyAccount currentUser={currentUser} updateCurrentUser={updateCurrentUser} svgs={svgs} />
       </div>
       <div className='exit-container'>
         <div className='exit-btn'
