@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import { getServers } from '../../../actions/server_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { logout } from '../../../actions/session_actions';
@@ -17,10 +18,6 @@ export default () => {
 
   const [servers, setServers] = useState(useSelector(state => state.entities.servers));
   const [currentServer, setCurrentServer] = useState(useSelector(state => state.current.server));
-  const [addServerHover, setAddServerHover] = useState(false);
-  const [serverDiscoveryHover, setServerDiscoveryHover] = useState(false);
-  const [logoutHover, setLogoutHover] = useState(false);
-
 
   useEffect(() => {
     dispatch(getServers()).then(data => setServers(data.servers));
@@ -47,33 +44,32 @@ export default () => {
     </div>
     <div className='server-list-separator'></div>
     {joinedServers.map(server => <ServerIndexItem history={history} server={server} />)}
-    <div className='server-list-item-container'>
-      <button className={`server-btn add-server${addServerHover ? ' has-tooltip' : ''}`}
-        onClick={() => dispatch(openModal('create server'))}
-        onMouseEnter={() => setAddServerHover(true)}
-        onMouseLeave={() => setAddServerHover(false)}>
+    <div className='server-list-item-container' data-tip data-for='add-server'>
+      <button className='server-btn'
+        onClick={() => dispatch(openModal('create server'))}>
         {svgs.addServerPlus}
       </button>
+      <ReactTooltip id='add-server' place='right' effect='solid' offset={{right: 3}}>
+        Add a Server
+      </ReactTooltip>
     </div>
-    <div className='server-list-item-container'>
-      <button className='server-btn server-discovery'
+    <div className='server-list-item-container' data-tip data-for='server-discovery'>
+      <button className='server-btn'
         onClick={() => history.push('/channels/server-discovery')}>
         {svgs.serverDiscovery}
       </button>
-      <div className='hover-tooltip server-list-item-hover'
-        key={'server-hover-name-server-discovery'}>
+      <ReactTooltip id='server-discovery' place='right' effect='solid' offset={{ right: 3 }}>
         Server Discovery
-      </div>
+      </ReactTooltip>
     </div>
-    <div className='server-list-item-container'>
-      <button className='server-btn logout'
+    <div className='server-list-item-container' data-tip data-for='logout'>
+      <button className='server-btn'
         onClick={() => dispatch(logout())}>
         {svgs.logoutMinus}
       </button>
-      <div className='hover-tooltip server-list-item-hover'
-        key={'server-hover-name-logout'}>
+      <ReactTooltip id='logout' place='right' effect='solid' offset={{ right: 3 }}>
         Logout
-      </div>
+      </ReactTooltip>
     </div>
   </div>);
 }
