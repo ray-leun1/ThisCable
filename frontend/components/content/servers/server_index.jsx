@@ -17,6 +17,7 @@ export default () => {
 
   const [servers, setServers] = useState(useSelector(state => state.entities.servers));
   const [currentServer, setCurrentServer] = useState(useSelector(state => state.current.server));
+  const [createServer, setCreateServer] = useState(false);
 
   useEffect(() => {
     dispatch(getServers()).then(data => setServers(data.servers));
@@ -36,12 +37,15 @@ export default () => {
     })
   };
 
+  console.log(currentServerId)
+
   const serverItems = () => (
     joinedServers.map(server => 
-      <div className='server-item-container' key={`server-item-${server.id}`}
-        data-tip data-for={`server-item-${server.id}`}
-        onClick={() => handleClick(server.id)}>
-        <div className='server-item'>
+      <div className={`server-item-container${parseInt(currentServerId) === server.id ? ' active' : ''}`}
+        key={`server-item-${server.id}`}>
+        <div className='active-tab'></div>
+        <div className='server-item' data-tip data-for={`server-item-${server.id}`}
+          onClick={() => handleClick(server.id)}>
           {server.name.split(' ').map(word => word[0].toUpperCase()).join('').slice(0, 3)}
         </div>
         <ReactTooltip id={`server-item-${server.id}`} place='right' effect='solid' offset={{ right: 3 }}>
@@ -51,8 +55,9 @@ export default () => {
   );
 
   return (<div className='server-index-container'>
-    <div className='server-item-container' data-tip data-for='home'>
-      <button className='home-btn'
+    <div className={`server-item-container${currentServerId === '@me' ? ' active' : ''}`}>
+      <div className='active-tab'></div>
+      <button className='home-btn' data-tip data-for='home'
         onClick={() => history.push('/channels/@me')}>
         <i className="fas fa-home"></i>
       </button>
@@ -62,17 +67,19 @@ export default () => {
     </div>
     <div className='divider'></div>
     {serverItems()}
-    <div className='server-item-container' data-tip data-for='add-server'>
-      <button className='server-btn'
-        onClick={() => dispatch(openModal('create server'))}>
+    <div className={`server-item-container${createServer ? ' active' : ''}`}>
+      <div className='active-tab'></div>
+      <button className='server-btn' data-tip data-for='add-server'
+        onClick={() => {setCreateServer(true); dispatch(openModal('create server'));}}>
         {svgs.addServerPlus}
       </button>
       <ReactTooltip id='add-server' place='right' effect='solid' offset={{right: 3}}>
         Add a Server
       </ReactTooltip>
     </div>
-    <div className='server-item-container' data-tip data-for='server-discovery'>
-      <button className='server-btn'
+    <div className={`server-item-container${currentServerId === 'server-discovery' ? ' active' : ''}`}>
+      <div className='active-tab'></div>
+      <button className='server-btn' data-tip data-for='server-discovery'
         onClick={() => history.push('/channels/server-discovery')}>
         {svgs.serverDiscovery}
       </button>
@@ -80,8 +87,9 @@ export default () => {
         Server Discovery
       </ReactTooltip>
     </div>
-    <div className='server-item-container' data-tip data-for='logout'>
-      <button className='server-btn'
+    <div className='server-item-container'>
+      <div className='active-tab'></div>
+      <button className='server-btn' data-tip data-for='logout'
         onClick={() => dispatch(logout())}>
         {svgs.logoutMinus}
       </button>
