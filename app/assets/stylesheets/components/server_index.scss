@@ -6,6 +6,7 @@
   min-width: 72px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: #202225;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -19,100 +20,115 @@
       top: -50%;
     }
   }
-}
 
-.server-list-item-container {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  margin: 4px auto;
-  border-radius: 50%;
-  cursor: pointer;
+  .home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background: #36393f;
+    border-radius: 50%;
+    transition-property: border-radius;
+    transition-duration: 0.2s;
 
-  transition-property: border-radius;
-  transition-duration: 0.2s;
+    .svg-logo-cat {
+      width: 24px;
+      fill: #dcddde;
+    }
 
-  &:hover {
-    border-radius: 25%;
+    &:hover {
+      background: #7289da;
+      border-radius: 25%;
+
+      .svg-logo-cat {
+        fill: white;
+      }
+    }
   }
-}
 
-.server-list-separator {
-  width: 32px;
-  height: 2px;
-  background: hsla(0, 0%, 100%, 0.06);
-  border-radius: 1px;
-  margin: 2px auto;
-}
+  .server-item-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    margin: 4px 0px;
+    border-radius: 50%;
+    transition-property: border-radius;
+    transition-duration: 0.2s;
 
-.server-list-item {
-  color: $server-list-item-name;
-  font-size: 18px;
-  line-height: 48px;
-  text-align: center;
-  vertical-align: middle;
-  width: 48px;
-  height: 48px;
-  background: $server-list-item-bg;
-  border-radius: 50%;
+    .active-tab {
+      position: absolute;
+      left: -16px;
+      width: 0px;
+      height: 0px;
+      background: white;
+      border-radius: 0 4px 4px 0;
+      transition: .15s width ease, .15s height ease;
+    }
 
-  transition-property: border-radius;
-  transition-duration: 0.2s;
+    &:hover {
+      border-radius: 25%;
+      
+      .active-tab {
+        width: 8px;
+        height: 20px;
+      }
+    }
 
-  &:hover {
-    background: $server-list-item-bg-hover;
-    border-radius: 25%;
+    &.active {
+      .active-tab {
+        width: 8px;
+        height: 40px;
+      }
+    }
+
+    .server-item {
+      color: #dcddde;
+      font-size: 18px;
+      line-height: 48px;
+      text-align: center;
+      width: 100%;
+      background: #36393f;
+      border-radius: 50%;
+      cursor: pointer;
+      transition-property: border-radius;
+      transition-duration: 0.2s;
+
+      &:hover {
+        background: #7289da;
+        border-radius: 25%;
+      }
+    }
+  } // End item-container
+
+  .divider {
+    width: 32px;
+    height: 2px;
+    background: hsla(0, 0%, 100%, 0.06);
+    border-radius: 1px;
+    margin: 2px auto;
   }
-}
 
-.server-list-item-hover {
-  display: none;
-  position: absolute;
-  left: 56px;
-  top: 0px;
-  bottom: 0px;
-}
+  .server-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: #43b581;
+    font-size: 28px;
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    background: #36393f;
+    border-radius: 50%;
+    transition-property: border-radius;
+    transition-duration: 0.2s;
 
-.server-list-item-container:hover > .server-list-item-hover {
-  display: inline;
-}
-
-.home-btn {
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  width: 48px;
-  height: 48px;
-  background: $server-list-item-bg;
-  border-radius: 50%;
-
-  transition-property: border-radius;
-  transition-duration: 0.2s;
-
-  &:hover {
-    color: white;
-    background: $server-list-item-bg-hover;
-    border-radius: 25%;
-  }
-}
-
-.server-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  fill: #43b581;
-  font-size: 28px;
-  text-align: center;
-  width: 48px;
-  height: 48px;
-  background: #36393f;
-  border-radius: 50%;
-  transition-property: border-radius;
-  transition-duration: 0.2s;
-
-  &:hover {
-    fill: white;
-    background: #43b581;
-    border-radius: 25%;
+    &:hover {
+      fill: white;
+      background: #43b581;
+      border-radius: 25%;
+    }
   }
 }
