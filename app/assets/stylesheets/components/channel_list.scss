@@ -13,12 +13,53 @@
   overflow-y: scroll;
   overflow-x: visible;
   scrollbar-width: none;
-  scrollbar-track-color: $scrollbar-tracker;
 
-  ::-webkit-scrollbar {
-    display: none;
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 3px solid #36393f;
+    border-radius: 7px;
   }
 
+  &::-webkit-scrollbar-track {
+    display: none;
+    background: transparent;
+    border: 2px solid transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(32,34,37,.6);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: move;
+
+    &:hover, &:active {
+      background: #25272b;
+    }
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: #2f3136;
+    border: 3px solid #36393f;
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 8px;
+    height: 8px;
+  }
+  
+  &:hover {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      display: auto;
+    }
+  }
 }
 
 .channel-list-item-container {

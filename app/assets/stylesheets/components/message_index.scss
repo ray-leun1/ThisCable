@@ -3,16 +3,38 @@
   height: calc(100% - 124px);
   max-height: calc(100% - 124px);
   overflow-y: scroll;
-  scrollbar-width: 8px;
-  scrollbar-color: $scrollbar-tracker;
+
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 3px solid #36393f;
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
   
-  ::-webkit-scrollbar-thumb {
-    &:hover {
-      background: $scrollbar-tracker;
+  &::-webkit-scrollbar-thumb {
+    background: #202225;
+
+    &:hover, &:active {
+      background: #25272b;
     }
-    &:active {
-      background: $scrollbar-tracker;
-    }
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: #2f3136;
+    border: 3px solid #36393f;
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
   }
 }
 
