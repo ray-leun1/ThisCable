@@ -6,7 +6,6 @@ import { getServers } from '../../../actions/server_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { logout } from '../../../actions/session_actions';
 import { getCurrentUser, getCurrentServer } from '../../../actions/current_actions';
-import ServerIndexItem from './server_index_item';
 import svgs from '../../svgs';
 
 export default () => {
@@ -21,7 +20,6 @@ export default () => {
 
   useEffect(() => {
     dispatch(getServers()).then(data => setServers(data.servers));
-    dispatch(getCurrentServer(currentServerId)).then(data => setCurrentServer(data.server));
     dispatch(getCurrentUser(currentUserId));
   }, [])
 
@@ -31,20 +29,40 @@ export default () => {
     joinedServers = currentUser.joinedServerIds.map(serverId => servers[serverId]);
   }
 
+  const handleClick = serverId => {
+    dispatch(getCurrentServer(serverId)).then(data => {
+      setCurrentServer(data.server)
+      history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`)
+    })
+  };
+
+  const serverItems = () => (
+    joinedServers.map(server => 
+      <div className='server-item-container' key={`server-item-${server.id}`}
+        data-tip data-for={`server-item-${server.id}`}
+        onClick={() => handleClick(server.id)}>
+        <div className='server-item'>
+          {server.name.split(' ').map(word => word[0].toUpperCase()).join('').slice(0, 3)}
+        </div>
+        <ReactTooltip id={`server-item-${server.id}`} place='right' effect='solid' offset={{ right: 3 }}>
+          {server.name}
+        </ReactTooltip>
+      </div>)
+  );
+
   return (<div className='server-index-container'>
-    <div className='server-list-item-container'>
+    <div className='server-item-container' data-tip data-for='home'>
       <button className='home-btn'
         onClick={() => history.push('/channels/@me')}>
         <i className="fas fa-home"></i>
       </button>
-      <div className='hover-tooltip server-list-item-hover'
-        key={'server-hover-name-home'}>
+      <ReactTooltip id='home' place='right' effect='solid' offset={{ right: 3 }}>
         Home
-      </div>
+      </ReactTooltip>
     </div>
-    <div className='server-list-separator'></div>
-    {joinedServers.map(server => <ServerIndexItem history={history} server={server} />)}
-    <div className='server-list-item-container' data-tip data-for='add-server'>
+    <div className='divider'></div>
+    {serverItems()}
+    <div className='server-item-container' data-tip data-for='add-server'>
       <button className='server-btn'
         onClick={() => dispatch(openModal('create server'))}>
         {svgs.addServerPlus}
@@ -53,7 +71,7 @@ export default () => {
         Add a Server
       </ReactTooltip>
     </div>
-    <div className='server-list-item-container' data-tip data-for='server-discovery'>
+    <div className='server-item-container' data-tip data-for='server-discovery'>
       <button className='server-btn'
         onClick={() => history.push('/channels/server-discovery')}>
         {svgs.serverDiscovery}
@@ -62,7 +80,7 @@ export default () => {
         Server Discovery
       </ReactTooltip>
     </div>
-    <div className='server-list-item-container' data-tip data-for='logout'>
+    <div className='server-item-container' data-tip data-for='logout'>
       <button className='server-btn'
         onClick={() => dispatch(logout())}>
         {svgs.logoutMinus}
