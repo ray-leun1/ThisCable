@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import { signup, login, compUnmount } from '../actions/session_actions';
 
 export default () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const [formType, setFormType] = useState(location.pathname.split('/')[1]);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [forgotHover, setForgotHover] = useState(false);
   
   const clearErrors = () => dispatch(compUnmount());
   const errors = useSelector(state => state.errors.session);
   
+  const formType = location.pathname.split('/')[1];
   const demoUser = { email: 'arisaichigaya@cable.com', password: 'thisisdumb' };
   const processForm = user => formType === 'login' ? dispatch(login(user)) : dispatch(signup(user));
 
@@ -52,7 +52,6 @@ export default () => {
 
   const submitStr = formType === 'login' ? 'Login' : 'Continue';
   const titleStr = formType === 'login' ? 'Welcome back!' : 'Create an account'
-  const forgotClass = 'forgot-password' + (forgotHover ? ' tooltip right' : '');
 
   return (<div className='session-form-container'>
     <form onSubmit={e => handleSubmit(e)}>
@@ -82,11 +81,12 @@ export default () => {
             value={password}
             onChange={e => handleChange(e, setPassword)} />
         </label>
-        {formType === 'login' ? <div className={forgotClass}
-          onMouseEnter={() => setForgotHover(true)}
-          onMouseLeave={() => setForgotHover(false)}>
+        {formType === 'login' ? <div className='forgot-password' data-tip>
           Forgot your password?
         </div> : ''}
+        {formType === 'login' ? <ReactTooltip place='right' effect='solid' offset={{ right: 3 }}>
+          Too bad.
+        </ReactTooltip> : ''}
         <button className='default-btn'
           type='submit'>
           {submitStr}
