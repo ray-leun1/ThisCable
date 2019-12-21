@@ -38,7 +38,7 @@ export default () => {
       <div className='exit-container'>
         <div className='exit-btn'
           onClick={() => dispatch(closeModal())}>
-          {svgs.X}
+          {svgs.closeSettings}
         </div>
         <div className='exit-txt'>
           ESC

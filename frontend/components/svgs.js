@@ -5,7 +5,7 @@ export default {
     <svg className='svg-logo-cat' viewBox='0 0 192 231'>
       <path d='M 128.00,64.00 C 128.00,64.00 64.00,64.00 64.00,64.00 64.00,64.00 0.00,0.00 0.00,0.00 0.00,0.00 0.00,134.40 0.00,134.40 0.00,187.42 42.98,230.40 96.00,230.40 149.02,230.40 192.00,187.42 192.00,134.40 192.00,134.40 192.00,0.00 192.00,0.00 192.00,0.00 128.00,64.00 128.00,64.00 Z M 56.00,144.00 C 47.16,144.00 40.00,136.84 40.00,128.00 40.00,119.16 47.16,112.00 56.00,112.00 64.84,112.00 72.00,119.16 72.00,128.00 72.00,136.84 64.84,144.00 56.00,144.00 Z M 136.00,144.00 C 127.16,144.00 120.00,136.84 120.00,128.00 120.00,119.16 127.16,112.00 136.00,112.00 144.84,112.00 152.00,119.16 152.00,128.00 152.00,136.84 144.84,144.00 136.00,144.00 Z' />
     </svg>,
-  X:
+  closeSettings:
     <svg className='svg-X' width='18' height='18' viewBox='0 0 12 12'>
       <g fill='none' fillRule='evenodd'>
         <path d='M0 0h12v12H0' />
@@ -32,5 +32,29 @@ export default {
   logoutMinus:
     <svg className='svg-logout-minus' width='24' height='24' viewBox='0 0 24 24'>
       <path d='M21 11.001 H24 H3 V13.001 H24 H21 Z' />
-    </svg>
+    </svg>,
+  openContextMenu:
+    <svg className='svg-open-context-menu' width='18' height='18'>
+      <g fill='none' fill-rule='evenodd'>
+        <path d='M0 0h18v18H0' />
+        <path stroke='currentColor' d='M4.5 4.5l9 9' stroke-linecap='round' />
+        <path stroke='currentColor' d='M13.5 4.5l-9 9' stroke-linecap='round' />
+      </g>
+    </svg>,
+  closeContextMenu:
+    <svg className='svg-close-context-menu' width='18' height='18'>
+      <g fill='none' fill-rule='evenodd'>
+        <path d='M0 0h18v18H0' />
+        <path stroke='currentColor' d='M4.5 4.5l9 9' stroke-linecap='round' />
+        <path stroke='currentColor' d='M13.5 4.5l-9 9' stroke-linecap='round' />
+      </g>
+    </svg>,
+  createChannel:
+    <svg className='svg-create-channel' width='18' height='18' viewBox='0 0 24 24'>
+      <path d='M12 2.00098C6.486 2.00098 2 6.48698 2 12.001C2 17.515 6.486 22.001 12 22.001C17.514 22.001 22 17.515 22 12.001C22 6.48698 17.514 2.00098 12 2.00098ZM17 13.001H13V17.001H11V13.001H7V11.001H11V7.00098H13V11.001H17V13.001Z' />
+    </svg>,
+  leaveServer:
+    <svg className='svg-leave-server' width='18' height='18' viewBox='0 0 24 24'>
+      <path d='M10.418 13L12.708 15.294L11.292 16.706L6.586 11.991L11.294 7.292L12.707 8.708L10.41 11H21.949C21.446 5.955 17.177 2 12 2C6.486 2 2 6.487 2 12C2 17.513 6.486 22 12 22C17.177 22 21.446 18.046 21.949 13H10.418Z' />
+    </svg>,
 }
