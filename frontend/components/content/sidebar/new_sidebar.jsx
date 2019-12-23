@@ -70,7 +70,7 @@ export default props => {
   return (<div className='sidebar-container'>
     <div className='title-container'
       onClick={() => setServerContextMenu(serverContextMenu ? false : true)}>
-      <div className='title-txt noverflow'>{currentServerId !== '@me' ? currentServer.name : 'Home'}</div>
+      <div className='title-txt noverflow'>{currentServerId !== '@me' && currentServer ? currentServer.name : 'Home'}</div>
       {currentServer && !serverContextMenu ? svgs.openContextMenu : svgs.closeContextMenu}
       {serverContextMenu ? renderServerContextMenu() : ''}
     </div>
@@ -78,9 +78,12 @@ export default props => {
     {/* <Route path='/channels/@me' component={DMListContainer} /> */}
     <div className='user-ui-container'>
       <div className='user-info-container'>
-        <img className='avatar'
-          src='https://i.imgur.com/3jykKJ3.jpg'
-          alt={`${currentUser.username} avatar`} />
+        <div className='avatar'
+          style={currentUser.profile_img_url
+            ? { backgroundImage: `url(${currentUser.profile_img_url})` }
+            : { background: '#7289da' }}>
+          {currentUser.profile_img_url ? '' : svgs.logoCat}
+        </div>
         <div className='user-info'>
           <div className='username'>
             {currentUser.username}

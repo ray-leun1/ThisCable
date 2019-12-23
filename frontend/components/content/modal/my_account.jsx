@@ -54,7 +54,7 @@ export default props => {
         onSubmit={e => handleSubmit(e)}>
         <div className='form-input-container'>
           <div className='icon-upload-container'
-            style={{ backgroundImage: `url(${profileImgUrl})`}}>
+            style={profileImgUrl ? { backgroundImage: `url(${profileImgUrl})`} : { backgroundImage: `image-url(logoHead.svg)`}}>
             <div className='tip'>CHANGE AVATAR</div>
             <div className='upload-indicator'>{svgs.uploadIndicator}</div>
             <input type='file'
