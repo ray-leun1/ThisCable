@@ -1,50 +1,39 @@
-.server-menu-container {
+.context-menu-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   position: absolute;
   left: 10px;
   top: 56px;
   width: 204px;
   padding: 6px 4px;
-  background: $context-menu-bg;
+  background: #18191c;
   border-radius: 4px;
   z-index: 10;
 
-  &.hide {
-    display: none;
-  }
-
-  &.show {
+  .menu-option {
     display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 18px;
+    color: #b9bbbe;
+    min-height: 32px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin: 2px 4px;
+    cursor: pointer;
+  
+    &:hover {
+      background: rgba(79, 84, 92, 0.16);
+    }
+  
+    &.leave-server {
+      color: #f04747;
+    }
+
+    .txt {
+      line-height: 24px;
+    }
   }
-}
-
-.server-menu-option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  line-height: 18px;
-  color: $context-menu-option-txt;
-  height: 24px;
-  padding: 4px 8px;
-  border-radius: 2px;
-  margin: 2px 4px;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(79, 84, 92, 0.16);
-  }
-
-  &.leave-server {
-    color: #f04747;
-  }
-}
-
-.server-menu-option-txt {
-  line-height: 24px;
-}
-
-.server-menu-option-icon {
-  margin-left: 4px;
 }

@@ -48,7 +48,7 @@ export default () => {
           onClick={() => handleClick(server.id)}>
           {server.name.split(' ').map(word => word[0].toUpperCase()).join('').slice(0, 3)}
         </div>
-        <ReactTooltip id={`server-item-${server.id}`} place='right' effect='solid' offset={{ right: 3 }}>
+        <ReactTooltip id={`server-item-${server.id}`} place='right' effect='solid' offset={{ left: 2 }}>
           {server.name}
         </ReactTooltip>
       </div>)
@@ -61,7 +61,7 @@ export default () => {
         onClick={() => history.push('/channels/@me')}>
         {svgs.logoCat}
       </button>
-      <ReactTooltip id='home' place='right' effect='solid' offset={{ right: 3 }}>
+      <ReactTooltip id='home' place='right' effect='solid' offset={{ left: 2 }}>
         Home
       </ReactTooltip>
     </div>
@@ -73,7 +73,7 @@ export default () => {
         onClick={() => {setCreateServer(true); dispatch(openModal('create server'));}}>
         {svgs.addServerPlus}
       </button>
-      <ReactTooltip id='add-server' place='right' effect='solid' offset={{right: 3}}>
+      <ReactTooltip id='add-server' place='right' effect='solid' offset={{left: 2}}>
         Add a Server
       </ReactTooltip>
     </div>
@@ -83,7 +83,7 @@ export default () => {
         onClick={() => history.push('/channels/server-discovery')}>
         {svgs.serverDiscovery}
       </button>
-      <ReactTooltip id='server-discovery' place='right' effect='solid' offset={{ right: 3 }}>
+      <ReactTooltip id='server-discovery' place='right' effect='solid' offset={{ left: 2 }}>
         Server Discovery
       </ReactTooltip>
     </div>
@@ -93,7 +93,7 @@ export default () => {
         onClick={() => dispatch(logout())}>
         {svgs.logoutMinus}
       </button>
-      <ReactTooltip id='logout' place='right' effect='solid' offset={{ right: 3 }}>
+      <ReactTooltip id='logout' place='right' effect='solid' offset={{ left: 2 }}>
         Logout
       </ReactTooltip>
     </div>

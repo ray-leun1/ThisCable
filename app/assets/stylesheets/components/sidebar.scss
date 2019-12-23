@@ -1,124 +1,98 @@
 .sidebar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 232px;
   min-width: 232px;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: $sidebar-bg;
-}
-
-
-// Server name at top
-.sidebar-title-container {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 48px;
-  min-height: 48px;
-  padding: 0px 16px;
-  border-bottom: 1px solid $content-top-divider;
-  margin-bottom: 16px;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(79, 84, 92, 0.16);
-  }
-}
-
-.sidebar-title-txt {
-  color: white;
-  line-height: 48px;
-}
-
-.sidebar-title-v {
-  margin-left: 4px;
-}
-
-
-// User UI at bottom
-.sidebar-user-ui {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 52px;
-  min-height: 52px;
-  padding: 0px 10px;
-  background: $sidebar-user-ui-bg;
-}
-
-
-// User info
-.sidebar-user-ui-info {
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-user-ui-info-avatar {
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-  border-radius: 50%;
-}
-
-.sidebar-user-ui-info-user {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.sidebar-user-ui-info-username {
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.sidebar-user-ui-info-id {
-  color: $sidebar-user-ui-info-id-txt;
-  font-size: 10px;
-  line-height: 13px;
-}
-
-
-// Buttons in UI
-.sidebar-user-ui-btn-container {
-  color: $sidebar-user-ui-btns-color;
-  // width: 96px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.sidebar-user-ui-btn {
-  position: relative;
-  width: 32px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  padding-bottom: 2px;
-  border-radius: 4px;
+  background: #2f3136;
   
-  &:hover {
-    background: $sidebar-user-ui-btns-bg;
-  }
-}
+  .title-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    height: 48px;
+    min-height: 48px;
+    padding: 0px 16px;
+    border-bottom: 1px solid #242529;
+    margin-bottom: 16px;
+    cursor: pointer;
+  
+    &:hover {
+      background: rgba(79, 84, 92, 0.16);
+    }
 
-.sidebar-user-ui-btn-hover {
-  display: none;
-  position: absolute;
-  left: -45px;
-  right: -45px;
-  bottom: 40px;
-}
-
-
-.sidebar-user-ui-btn-container > * {
-  position: relative;
-
-  &:hover > .sidebar-user-ui-btn-hover {
-    display: inline;
-  }
+    .svg-open-context-menu {
+      transform: translateY(3px);
+    }
+  
+    .svg-open-context-menu, .svg-close-context-menu {
+      stroke-width: 2px;
+      opacity: 0.8;
+    }
+  } // End title-container
+  
+  .user-ui-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    min-height: 52px;
+    padding: 0px 10px;
+    background: #292b2f;
+    
+    .user-info-container {
+      display: flex;
+      align-items: center;
+      
+      .avatar {
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+      
+      .user-info {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        
+        .username {
+          color: white;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+        }
+        
+        .id {
+          color: #b9bbbe;
+          font-size: 10px;
+          line-height: 13px;
+        }
+      }
+    } // End user-info-container
+    
+    .btn-container {
+      color: #b9bbbe;
+      display: flex;
+      justify-content: space-between;
+    
+      .ui-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        cursor: pointer;
+        
+        &:hover {
+          background: #33363b;
+        }
+      }
+    }
+  } // End user-ui-container
 }
