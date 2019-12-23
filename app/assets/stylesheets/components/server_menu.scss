@@ -35,15 +35,5 @@
     .txt {
       line-height: 24px;
     }
-    
-    .svg-open-context-menu, .svg-close-context-menu {
-      fill: #b9bbbe;
-      margin-left: 4px;
-      opacity: 0.8;
-    }
-
-    .svg-close-context-menu {
-      transform: translate3d(0,-3px,0) rotate(-90deg);
-    }
   }
 }

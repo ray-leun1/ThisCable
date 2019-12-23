@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { getUser, deleteMembership } from '../../../actions/user_actions';
-import { getServer, deleteServer } from '../../../actions/server_actions';
+import { Route, useHistory } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
+import { deleteMembership } from '../../../actions/user_actions';
 import { deleteChannel } from '../../../actions/channel_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
-import { getCurrentUser, getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
+import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
+import ChannelListContainer from './channels/channel_list_container';
 import svgs from '../../svgs';
 
 // const mapDispatchToProps = dispatch => ({
@@ -46,9 +47,9 @@ export default props => {
     dispatch(deleteServer(parseInt(currentServerId)));
     history.push('/channels/@me');
   }
-debugger
+
   const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
-  debugger
+
   const renderServerContextMenu = () => {
     if (currentServer && currentUser) {
       return (<div className='context-menu-container'>
@@ -69,36 +70,31 @@ debugger
   return (<div className='sidebar-container'>
     <div className='title-container'
       onClick={() => setServerContextMenu(serverContextMenu ? false : true)}>
-      <div className='title-txt noverflow'>{currentServer ? currentServer.name : 'Home'}</div>
+      <div className='title-txt noverflow'>{currentServerId !== '@me' ? currentServer.name : 'Home'}</div>
       {currentServer && !serverContextMenu ? svgs.openContextMenu : svgs.closeContextMenu}
       {serverContextMenu ? renderServerContextMenu() : ''}
     </div>
-    {/* <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={parseInt(this.props.location.pathname.split('/')[2])} />} /> */}
+    <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={`server-${currentServerId}-channels`} server={currentServer} />} />
     {/* <Route path='/channels/@me' component={DMListContainer} /> */}
-    <div className='sidebar-user-ui'>
-      <div className='sidebar-user-ui-info'>
-        <img className='sidebar-user-ui-info-avatar'
+    <div className='user-ui-container'>
+      <div className='user-info-container'>
+        <img className='avatar'
           src='https://i.imgur.com/3jykKJ3.jpg'
           alt={`${currentUser.username} avatar`} />
-        <div className='sidebar-user-ui-info-user'>
-          <div className='sidebar-user-ui-info-username'>
+        <div className='user-info'>
+          <div className='username'>
             {currentUser.username}
           </div>
-          <div className='sidebar-user-ui-info-id'>
+          <div className='id'>
             #{currentUser.id}
           </div>
         </div>
       </div>
-      <div className='sidebar-user-ui-btn-container'>
-        <div className='sidebar-user-ui-cog-container'>
-          <div className='sidebar-user-ui-btn'
-            onClick={() => this.props.openModal('settings')}>
-            <i className="fas fa-cog"></i>
-          </div>
-          <div className='hover-tooltip sidebar-user-ui-btn-hover'
-            key={'sidebar-user-ui-btn-settings'}>
-            User Settings
-          </div>
+      <div className='btn-container'>
+        <div className='ui-btn' data-tip
+          onClick={() => dispatch(openModal('settings'))}>
+          {svgs.gear}
+          <ReactTooltip place='top' effect='solid' offset={{ bottom: 4 }}>User Settings</ReactTooltip>
         </div>
       </div>
     </div>

@@ -22,9 +22,6 @@ $create-server-input-region-border: $border-gray;
 $content-top-divider: #242529;
 $content-top-divider: $content-top-divider;
 
-$bg-gray3: #292b2f;
-$sidebar-user-ui-bg: $bg-gray3;
-
 $bg-gray4: #202225;
 $bg-server-list: $bg-gray4;
 $server-discovery-item-bg: $bg-gray4;
@@ -82,16 +79,11 @@ $context-menu-bg: $context-black;
 
 
 $ui-color: #b9bbbe;
-$sidebar-user-ui-btns-color: $ui-color;
-$sidebar-user-ui-info-id-txt: $ui-color;
 $context-menu-option-txt: $ui-color;
 $create-channel-text-hash: $ui-color;
 $create-channel-private-lock: $ui-color;
 $create-channel-checkbox-deselected: $ui-color;
 $create-channel-private-description: $ui-color;
-
-$ui-bg: #33363b;
-$sidebar-user-ui-btns-bg: $ui-bg;
 
 $txt-white: #d4d4d5;
 $landing-hover: $txt-white;

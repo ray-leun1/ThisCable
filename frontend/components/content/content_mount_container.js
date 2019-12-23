@@ -10,16 +10,21 @@ import ServerDiscoveryContainer from './server_discovery/server_discovery_contai
 export default () => {
   const dispatch = useDispatch();
   const currentUserId = useSelector(state => state.session.id);
-  let currentUser = useSelector(state => state.current.user);
+  const [currentUser, setCurrentUser] = useState(useSelector(state => state.current.user));
 
-  useEffect(() => !currentUser ? dispatch(getCurrentUser(currentUserId))
-    .then(data => {debugger;currentUser = data.user}) : '')
+  useEffect(() => {
+    if (!currentUser) dispatch(getCurrentUser(currentUserId)).then(data => setCurrentUser(data.user))
+  })
 
-  return(<div className='content-mount-container'>
-    <Route path='/channels/:serverId' component={ServerIndex} />
-    <Route path='/channels/:serverId(\d+)' render={<Sidebar currentUser={currentUser}/>} />
-    <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
-    <Route path='/channels/@me' render={<Sidebar currentUser={currentUser}/>} />
-    <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
-  </div>)
+  if (currentUser) {
+    return(<div className='content-mount-container'>
+      <Route path='/channels/:serverId' component={ServerIndex} />
+      <Route path='/channels/:serverId(\d+)' render={props => <Sidebar {...props} currentUser={currentUser}/>} />
+      <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
+      <Route path='/channels/@me' render={props => <Sidebar {...props} currentUser={currentUser}/>} />
+      <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
+    </div>)
+  } else {
+    return <div>Loading</div>
+  }
 }

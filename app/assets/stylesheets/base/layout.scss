@@ -61,7 +61,7 @@ strong {
 .__react_component_tooltip {
   font-size: 14px;
   font-weight: 700;
-  padding: 11px 13px 10px 12px;
+  padding: 11px 13px;
   border-radius: 5px;
   
   &.type-dark {
@@ -70,7 +70,17 @@ strong {
     border-color: black;
 
     &.place-right::after {
+      left: -5px;
+      border-width: 5px 5px 5px 0px;
       border-right-color: black;
+      margin-top: -5px;
+    }
+
+    &.place-top::after {
+      bottom: -5px;
+      border-width: 5px 5px 0px 5px;
+      border-top-color: black;
+      margin-left: -5px;
     }
   }
 }
