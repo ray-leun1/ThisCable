@@ -54,7 +54,8 @@ export default props => {
         onSubmit={e => handleSubmit(e)}>
         <div className='form-input-container'>
           <div className='icon-upload-container'
-            style={profileImgUrl ? { backgroundImage: `url(${profileImgUrl})`} : { backgroundImage: `image-url(logoHead.svg)`}}>
+            style={profileImgUrl ? { backgroundImage: `url(${profileImgUrl})` } : { background: '#7289da' }}>
+            {profileImgUrl ? '' : svgs.logoCat}
             <div className='tip'>CHANGE AVATAR</div>
             <div className='upload-indicator'>{svgs.uploadIndicator}</div>
             <input type='file'
@@ -101,7 +102,10 @@ export default props => {
     } else {
       return <div className='user-info'>
         <div className='icon-container'
-          style={{ backgroundImage: `url(${currentUser.profile_img_url})` }}>
+          style={currentUser.profile_img_url
+            ? { backgroundImage: `url(${currentUser.profile_img_url})` }
+            : { background: '#7289da' }}>
+          {currentUser.profile_img_url ? '' : svgs.logoCat}
         </div>
         <div className='txt-container'>
           <div className='username'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import svgs from '../../svgs';
 
 class MemberIndex extends React.Component {
   constructor(props) {
@@ -36,8 +37,11 @@ class MemberIndex extends React.Component {
           if (user) {
             users.push(<div className='member-index-item'
               key={`member-index-item-${user.id}`}>
-              <div className='member-index-item-icon'>
-                {user.username.slice(0, 1)}
+              <div className='member-index-item-icon'
+                style={user.profile_img_url
+                  ? { backgroundImage: `url(${user.profile_img_url})` }
+                  : { background: '#7289da' }}>
+                {user.profile_img_url ? '' : svgs.logoCat}
               </div>
               <div className='member-index-item-username noverflow'>
                 {user.username}

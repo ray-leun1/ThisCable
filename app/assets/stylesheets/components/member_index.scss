@@ -34,15 +34,24 @@
 }
 
 .member-index-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $message-user-icon-name;
   text-align: center;
   vertical-align: middle;
   line-height: 32px;
   width: 32px;
   height: 32px;
-  background: $message-user-icon-bg;
+  background-size: cover;
+  background-position: center;
   border-radius: 50%;
   margin-right: 12px;
+
+  .svg-logo-cat {
+    width: 16px;
+    fill: #dcddde;
+  }
 }
 
 .member-index-item-username {

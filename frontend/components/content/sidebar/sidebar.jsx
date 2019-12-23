@@ -1,169 +1,105 @@
-import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, useHistory } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
+import { deleteMembership } from '../../../actions/user_actions';
+import { deleteChannel } from '../../../actions/channel_actions';
+import { openModal, closeModal } from '../../../actions/modal_actions';
+import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
 import ChannelListContainer from './channels/channel_list_container';
-import DMListContainer from '../servers/dm_list_container';
+import svgs from '../../svgs';
 
-class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      serverContextMenu: 'hide'
-    }
+// const mapDispatchToProps = dispatch => ({
+//   getUser: id => dispatch(getUser(id)),
+//   deleteMembership: serverId => dispatch(deleteMembership(serverId)),
+//   getServer: id => dispatch(getServer(id)),
+//   deleteServer: id => dispatch(deleteServer(id)),
+//   deleteChannel: id => dispatch(deleteChannel(id)),
+//   openModal: item => dispatch(openModal(item)),
+//   closeModal: () => dispatch(closeModal()),
+//   getCurrentUser: userId => dispatch(getCurrentUser(userId)),
+//   getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
+//   getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId))
+// });
 
-    this.handleLeaveServer = this.handleLeaveServer.bind(this);
-    this.handleDeleteServer = this.handleDeleteServer.bind(this);
-    this.toggleContextMenu = this.toggleContextMenu.bind(this);
-    this.renderTitleTxt = this.renderTitleTxt.bind(this);
+export default props => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
+  const currentUserId = useSelector(state => state.session.id);
+  let { currentUser } = props;
+  const currentServer = useSelector(state => state.current.server);
+  const currentServerId = history.location.pathname.split('/')[2];
+
+  const [serverContextMenu, setServerContextMenu] = useState(false);
+
+  useEffect(() => {
+    if (!currentUser) dispatch(getCurrentUser(currentUserId));
+    if (!currentServer) dispatch(getCurrentServer(parseInt(currentServerId)));
+  }, [])
+
+  const handleLeaveServer = () => {
+    dispatch(deleteMembership(currentServerId));
+    history.push('/channels/@me');
   }
 
-  componentDidMount() {
-    if (!this.props.currentUser) {
-      this.props.getCurrentUser(this.props.currentUserId);
-    }
-    if (!this.props.currentServer) {
-      this.props.getCurrentServer(parseInt(this.props.location.pathname.split('/')[2]));
-    }
+  const handleDeleteServer = () => {
+    dispatch(deleteServer(parseInt(currentServerId)));
+    history.push('/channels/@me');
   }
 
-  componentDidUpdate(prevProps) {
-    if (!this.props.currentUser) {
-      this.props.getCurrentUser(this.props.currentUserId);
-    }
-    if (!this.props.currentServer) {
-      this.props.getCurrentServer(parseInt(this.props.location.pathname.split('/')[2]));
-    }
-    if ((prevProps.currentUser && this.props.currentUser) &&
-      (prevProps.currentUser.joinedServerIds && this.props.currentUser.joinedServerIds)) {
-      if (prevProps.currentUser.joinedServerIds.length
-        !== this.props.currentUser.joinedServerIds.length) {
-        this.props.getUser(this.props.currentUser.id);
-      }
-    }
-    if (prevProps.match.params.serverId !== this.props.match.params.serverId) {
-      this.props.getServer(this.props.match.params.serverId);
-    }
-  }
+  const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
 
-  handleLeaveServer() {
-    this.props.deleteMembership(this.props.currentServer.id);
-    this.props.history.push('/channels/@me');
-  }
-
-  handleDeleteServer() {
-    this.props.deleteServer(parseInt(this.props.match.params.serverId));
-    this.props.history.push('/channels/@me');
-  }
-
-  toggleContextMenu() {
-    if (this.state.serverContextMenu === 'hide') {
-      this.setState({serverContextMenu: 'show'});
-    } else {
-      this.setState({serverContextMenu: 'hide'});
-    }
-  }
-
-  renderServerContextMenu() {
-    if (this.props.currentServer && this.props.currentUser) {
-      if (this.props.currentServer.admin_id === this.props.currentUser.id) {
-        return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
-          <div className='server-menu-option noverflow'
-            onClick={() => this.props.openModal('create channel')}>
-            <div className='server-menu-option-txt'>
-              Create Channel
-            </div>
-            <div className='server-menu-option-icon'>
-              <i className="fas fa-plus-circle"></i>
-            </div>
-          </div>
-          <div className='server-menu-option leave-server noverflow'
-            onClick={() => this.handleDeleteServer()}>
-            <div className='server-menu-option-txt'>
-              Delete Server
-            </div>
-            <div className='server-menu-option-icon'>
-              <i className="fas fa-sign-out-alt"></i>
-            </div>
-          </div>
-        </div>)
-      } else {
-        return (<div className={`server-menu-container ${this.state.serverContextMenu}`}>
-          <div className='server-menu-option leave-server noverflow'
-            onClick={() => this.handleLeaveServer()}>
-            <div className='server-menu-option-txt'>
-              Leave Server
-            </div>
-            <div className='server-menu-option-icon'>
-              <i className="fas fa-sign-out-alt"></i>
-            </div>
-          </div>
-        </div>)
-      }
-    }
-  }
-
-  renderTitleTxt() {
-    if (this.props.currentServer) {
-      return this.props.currentServer.name;
-    } else {
-      return 'Home';
-    }
-  }
-
-  renderTitleV() {
-    if (this.props.currentServer) {
-      if (this.state.serverContextMenu === 'hide') {
-        return <i className="fas fa-chevron-down"></i>
-      } else {
-        return <i className="fas fa-times"></i>
-      }
-    }
-  }
-
-  render() {
-    let currentUser = this.props.currentUser;
-    if (!currentUser) currentUser = {username: '', id: ''};
-    return (<div className='sidebar-container'>
-      <div className='sidebar-title-container'
-        onClick={() => this.toggleContextMenu()}>
-        <div className='sidebar-title-txt noverflow'>
-          {this.renderTitleTxt()}
+  const renderServerContextMenu = () => {
+    if (currentServer && currentUser) {
+      return (<div className='context-menu-container'>
+        {isAdmin ? <div className='menu-option noverflow'
+          onClick={() => dispatch(openModal('create channel'))}>
+          <div className='txt'>Create Channel</div>
+          {svgs.createChannel}
+        </div> : ''}
+        <div className='menu-option leave-server noverflow'
+          onClick={() => isAdmin ? handleDeleteServer() : handleLeaveServer()}>
+          <div className='txt'>{isAdmin ? 'Delete Server' : 'Leave Server'}</div>
+          {svgs.leaveServer}
         </div>
-        <div className='sidebar-title-v'>
-          {this.renderTitleV()}
+      </div>)
+    }
+  }
+
+  return (<div className='sidebar-container'>
+    <div className='title-container'
+      onClick={() => setServerContextMenu(serverContextMenu ? false : true)}>
+      <div className='title-txt noverflow'>{currentServerId !== '@me' && currentServer ? currentServer.name : 'Home'}</div>
+      {currentServer && !serverContextMenu ? svgs.openContextMenu : svgs.closeContextMenu}
+      {serverContextMenu ? renderServerContextMenu() : ''}
+    </div>
+    <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={`server-${currentServerId}-channels`} server={currentServer} />} />
+    {/* <Route path='/channels/@me' component={DMListContainer} /> */}
+    <div className='user-ui-container'>
+      <div className='user-info-container'>
+        <div className='avatar'
+          style={currentUser.profile_img_url
+            ? { backgroundImage: `url(${currentUser.profile_img_url})` }
+            : { background: '#7289da' }}>
+          {currentUser.profile_img_url ? '' : svgs.logoCat}
         </div>
-        {this.renderServerContextMenu()}
-      </div>
-      <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={parseInt(this.props.location.pathname.split('/')[2])} />} />
-      {/* <Route path='/channels/@me' component={DMListContainer} /> */}
-      <div className='sidebar-user-ui'>
-        <div className='sidebar-user-ui-info'>
-          <img className='sidebar-user-ui-info-avatar'
-            src='https://i.imgur.com/3jykKJ3.jpg'
-            alt={`${currentUser.username} avatar`} />
-          <div className='sidebar-user-ui-info-user'>
-            <div className='sidebar-user-ui-info-username'>
-              {currentUser.username}
-            </div>
-            <div className='sidebar-user-ui-info-id'>
-              #{currentUser.id}
-            </div>
+        <div className='user-info'>
+          <div className='username'>
+            {currentUser.username}
           </div>
-        </div>
-        <div className='sidebar-user-ui-btn-container'>
-          <div className='sidebar-user-ui-cog-container'>
-            <div className='sidebar-user-ui-btn'
-              onClick={() => this.props.openModal('settings')}>
-              <i className="fas fa-cog"></i>
-            </div>
-            <div className='hover-tooltip sidebar-user-ui-btn-hover'
-              key={'sidebar-user-ui-btn-settings'}>
-              User Settings
-            </div>
+          <div className='id'>
+            #{currentUser.id}
           </div>
         </div>
       </div>
-    </div>)
-  }
+      <div className='btn-container'>
+        <div className='ui-btn' data-tip
+          onClick={() => dispatch(openModal('settings'))}>
+          {svgs.gear}
+          <ReactTooltip place='top' effect='solid' offset={{ bottom: 4 }}>User Settings</ReactTooltip>
+        </div>
+      </div>
+    </div>
+  </div>)
 }
-
-export default withRouter(Sidebar);

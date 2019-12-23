@@ -45,21 +45,27 @@
 }
 
 .message-user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $message-user-icon-name;
-  line-height: 40px;
-  text-align: center;
-  vertical-align: middle;
   width: 40px;
   min-width: 40px;
   height: 40px;
   min-height: 40px;
-  background: $message-user-icon-bg;
+  background-size: cover;
+  background-position: center;
   border-radius: 50%;
   margin: 0px 20px;
   cursor: pointer;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  .svg-logo-cat {
+    width: 20px;
+    fill: #dcddde;
   }
 }
 

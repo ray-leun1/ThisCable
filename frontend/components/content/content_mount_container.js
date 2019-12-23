@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { getCurrentUser } from '../../actions/current_actions';
 import ServerIndex from './servers/server_index';
-import Sidebar from './sidebar/new_sidebar';
+import Sidebar from './sidebar/sidebar';
 import ChatContainer from './chat/chat_container';
 import ServerDiscoveryContainer from './server_discovery/server_discovery_container';
 

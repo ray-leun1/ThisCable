@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import svgs from '../../svgs';
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -36,8 +37,11 @@ class MessageIndex extends React.Component {
 
         return (<div className='message-container'
           key={`message-container-${message.id}`}>
-          <div className='message-user-icon'>
-            {author.username.slice(0, 1)}
+          <div className='message-user-icon'
+            style={author.profile_img_url
+              ? { backgroundImage: `url(${author.profile_img_url})` }
+              : { background: '#7289da' }}>
+            {author.profile_img_url ? '' : svgs.logoCat}
           </div>
           <div className='message-info'>
             <div className='message-user-header'>
