@@ -18,10 +18,10 @@ export default () => {
 
   if (currentUser) {
     return(<div className='content-mount-container'>
-      <Route path='/channels/:serverId' component={ServerIndex} />
-      <Route path='/channels/:serverId(\d+)' render={props => <Sidebar {...props} currentUser={currentUser}/>} />
+      <Route path='/channels/:serverId' render={() => <ServerIndex currentUser={currentUser} />} />
+      <Route path='/channels/:serverId(\d+)' render={() => <Sidebar currentUser={currentUser}/>} />
       <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
-      <Route path='/channels/@me' render={props => <Sidebar {...props} currentUser={currentUser}/>} />
+      <Route path='/channels/@me' render={() => <Sidebar currentUser={currentUser}/>} />
       <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
     </div>)
   } else {

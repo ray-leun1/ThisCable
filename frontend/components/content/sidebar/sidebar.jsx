@@ -3,24 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import { deleteMembership } from '../../../actions/user_actions';
-import { deleteChannel } from '../../../actions/channel_actions';
-import { openModal, closeModal } from '../../../actions/modal_actions';
-import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
+import { openModal } from '../../../actions/modal_actions';
+import { getCurrentServer } from '../../../actions/current_actions';
 import ChannelListContainer from './channels/channel_list_container';
+import ChannelIndex from './channels/channel_index';
 import svgs from '../../svgs';
-
-// const mapDispatchToProps = dispatch => ({
-//   getUser: id => dispatch(getUser(id)),
-//   deleteMembership: serverId => dispatch(deleteMembership(serverId)),
-//   getServer: id => dispatch(getServer(id)),
-//   deleteServer: id => dispatch(deleteServer(id)),
-//   deleteChannel: id => dispatch(deleteChannel(id)),
-//   openModal: item => dispatch(openModal(item)),
-//   closeModal: () => dispatch(closeModal()),
-//   getCurrentUser: userId => dispatch(getCurrentUser(userId)),
-//   getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
-//   getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId))
-// });
 
 export default props => {
   const dispatch = useDispatch();
@@ -31,7 +18,7 @@ export default props => {
   const currentServer = useSelector(state => state.current.server);
   const currentServerId = history.location.pathname.split('/')[2];
 
-  const [serverContextMenu, setServerContextMenu] = useState(false);
+  const [contextMenu, setContextMenu] = useState(false);
 
   useEffect(() => {
     if (!currentUser) dispatch(getCurrentUser(currentUserId));
@@ -50,7 +37,7 @@ export default props => {
 
   const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
 
-  const renderServerContextMenu = () => {
+  const renderContextMenu = () => {
     if (currentServer && currentUser) {
       return (<div className='context-menu-container'>
         {isAdmin ? <div className='menu-option noverflow'
@@ -69,12 +56,16 @@ export default props => {
 
   return (<div className='sidebar-container'>
     <div className='title-container'
-      onClick={() => setServerContextMenu(serverContextMenu ? false : true)}>
+      onClick={() => setContextMenu(contextMenu ? false : true)}>
       <div className='title-txt noverflow'>{currentServerId !== '@me' && currentServer ? currentServer.name : 'Home'}</div>
-      {currentServer && !serverContextMenu ? svgs.openContextMenu : svgs.closeContextMenu}
-      {serverContextMenu ? renderServerContextMenu() : ''}
+      {currentServer && !contextMenu ? svgs.openContextMenu : svgs.closeContextMenu}
+      {contextMenu ? renderContextMenu() : ''}
     </div>
-    <Route path='/channels/:serverId(\d+)' render={() => <ChannelListContainer key={`server-${currentServerId}-channels`} server={currentServer} />} />
+    {currentServer ? <Route path='/channels/:serverId(\d+)' render={() => 
+      <ChannelIndex key={`server-${currentServerId}-channels`}
+        currentUser={currentUser}
+        currentServer={currentServer}
+        svgs={svgs} />} /> : ''}
     {/* <Route path='/channels/@me' component={DMListContainer} /> */}
     <div className='user-ui-container'>
       <div className='user-info-container'>

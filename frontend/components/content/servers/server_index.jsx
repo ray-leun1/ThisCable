@@ -5,14 +5,14 @@ import ReactTooltip from 'react-tooltip';
 import { getServers } from '../../../actions/server_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { logout } from '../../../actions/session_actions';
-import { getCurrentUser, getCurrentServer } from '../../../actions/current_actions';
+import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
 import svgs from '../../svgs';
 
-export default () => {
+export default props => {
+  const { currentUser } = props;
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentUserId = useSelector(state => state.session.id);
-  const currentUser = useSelector(state => state.current.user);
   const currentServerId = history.location.pathname.split('/')[2];
 
   const [servers, setServers] = useState(useSelector(state => state.entities.servers));
@@ -21,7 +21,6 @@ export default () => {
 
   useEffect(() => {
     dispatch(getServers()).then(data => setServers(data.servers));
-    dispatch(getCurrentUser(currentUserId));
   }, [])
 
   let joinedServers = [];
@@ -32,12 +31,11 @@ export default () => {
 
   const handleClick = serverId => {
     dispatch(getCurrentServer(serverId)).then(data => {
-      setCurrentServer(data.server)
+      setCurrentServer(data.server);
+      dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
       history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`)
     })
   };
-
-  console.log(currentServerId)
 
   const serverItems = () => (
     joinedServers.map(server => 
