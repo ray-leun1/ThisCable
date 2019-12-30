@@ -10,7 +10,7 @@ export default props => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const currentChannelId = history.location.pathname.split('/')[3];
+  // const currentChannelId = history.location.pathname.split('/')[3];
 
   const [channels, setChannels] = useState(useSelector(state => state.entities.channels));
   const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.server));
