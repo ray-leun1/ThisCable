@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 import { getChannels, deleteChannel } from '../../../../actions/channel_actions';
 import { getCurrentChannel } from '../../../../actions/current_actions';
 
@@ -14,9 +15,6 @@ export default props => {
 
   const [channels, setChannels] = useState(useSelector(state => state.entities.channels));
   const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.channel));
-  const [contextMenu, setContextMenu] = useState(false);
-  const [clickPos, setClickPos] = useState({ x: 0, y: 0 });
-
   useEffect(() => {
     dispatch(getChannels(currentServer.id)).then(data => setChannels(data.channels));
   }, [])
@@ -32,24 +30,19 @@ export default props => {
 
   const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
 
-  const handleContextMenu = e => {
-    e.preventDefault();
-    setClickPos({ x: e.screenX, y: e.screenY });
-
-    setContextMenu(true);
-  }
-
-  const renderContextMenu = () => {
+  const renderContextMenu = channelId => {
     if (currentServer && currentUser) {
-      return (<div className='context-menu-container'>
-        {isAdmin ? <div className='menu-option delete-channel noverflow'
-          onClick={() => handleDeleteChannel()}>
+      return (<ContextMenu>
+        {isAdmin ? <MenuItem id={`channel-tab-${channelId}`}
+          className='menu-option delete-channel noverflow'
+          onClick={() => handleDeleteChannel(channelId)}>
           <div className='txt'>Delete Channel</div>
-        </div> : <div className='menu-option noverflow'>
+        </MenuItem> : <MenuItem id={`channel-tab-${channelId}`}
+          className='menu-option noverflow'>
           <div className='txt'>Nothing here!</div>
-          {svgs.logoCat}
-        </div>}
-      </div>)
+          {/* {svgs.logoCat} */}
+        </MenuItem>}
+      </ContextMenu>)
     }
   }
 
@@ -61,24 +54,30 @@ export default props => {
 
   const channelItems = () => (
     joinedChannels.map(channel =>
-      <div className={`channel-tab${parseInt(currentChannel.id) === channel.id ? ' active' : ''}`}
-        key={`channel-tab-${channel.id}`}
-        onClick={() => handleClick(channel.id)}
-        onContextMenu={e => handleContextMenu(e)}>
-        <div className='title noverflow'>
-          {svgs.hash}
-          <div className='name noverflow'>
-            {channel.name}
+      <>
+        <ContextMenuTrigger id={`channel-tab-${channel.id}`}>
+          <div className={`channel-tab${parseInt(currentChannel.id) === channel.id ? ' active' : ''} noverflow`}
+            key={`channel-tab-${channel.id}`}
+            onClick={() => handleClick(channel.id)}>
+            {svgs.hash}
+            <div className='name noverflow'>
+              {channel.name}
+            </div>
           </div>
-        </div>
-        <div className='x' hidden={!contextMenu}>
-          {svgs.closeContextMenu}
-        </div>
-      </div>)
+        </ContextMenuTrigger>
+        <ContextMenu id={`channel-tab-${channel.id}`} className='context-menu-container'>
+          {isAdmin ? <MenuItem className='menu-option delete-channel noverflow'
+            onClick={() => handleDeleteChannel(channel.id)}>
+            <div className='txt'>Delete Channel</div>
+          </MenuItem> : <MenuItem className='menu-option noverflow'>
+              <div className='txt'>Nothing here!</div>
+              {svgs.logoCat}
+            </MenuItem>}
+        </ContextMenu>
+      </>)
   );
 
   return (<div className='channel-index-container'>
     {channelItems()}
-    {contextMenu ? renderContextMenu(clickPos) : ''}
   </div>)
 }
