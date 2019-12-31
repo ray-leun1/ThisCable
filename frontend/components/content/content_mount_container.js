@@ -13,7 +13,7 @@ export default () => {
   const [currentUser, setCurrentUser] = useState(useSelector(state => state.current.user));
 
   useEffect(() => {
-    if (!currentUser) dispatch(getCurrentUser(currentUserId)).then(data => setCurrentUser(data.user))
+    if (!currentUser || !currentUser.joinedServerIds) dispatch(getCurrentUser(currentUserId)).then(data => setCurrentUser(data.user))
   })
 
   if (currentUser) {
