@@ -55,8 +55,11 @@
   }
   
   .channel-tab {
-    position: relative;
+    display: flex;
+    align-items: center;
     color: #72767d;
+    font-size: 16px;
+    line-height: 20px;
     height: 32px;
     padding: 6px 10px;
     margin: 1px 8px;
@@ -73,34 +76,29 @@
   
     &.active {
       background: rgba(79, 84, 92, 0.32);
+      cursor: default;
     
       .name {
         color: white;
       }
     }
   
-    .title {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      line-height: 20px;
-  
-      .svg-hash {
-        width: 20px;
-        height: 20px;
-        margin-right: 6px;
-      }
+    .svg-hash {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
     }
   } // End channel-tab
 
   .context-menu-container {
-    position: absolute;
+    font-weight: 700;
     min-width: 188px;
     max-width: 320px;
     padding: 6px 8px;
     background: #18191c;
     border-radius: 4px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+    z-index: 2;
     
     .menu-option {
       display: flex;
@@ -126,6 +124,12 @@
       .txt {
         line-height: 24px;
       }
+    }
+
+    .svg-logo-cat {
+      width: 18px;
+      height: 18px;
+      fill: #b9bbbe;
     }
   } // End context-menu-container
 }
