@@ -3,10 +3,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1088px;
-  margin: auto;
-  margin-top: 100px;
+  max-width: 1140px;
+  width: 100%;
+  padding: 0px 34px 100px;
+  margin: 100px auto 0px;
   z-index: 1;
+}
+
+@media screen and (max-width: 1240px) {
+  .server-discovery-container {
+    max-width: 868px;
+  }
 }
 
 .server-discovery-header {
@@ -38,10 +45,14 @@
 }
 
 .server-discovery-server-list {
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, 256px);
+  grid-auto-rows: min-content;
+  -webkit-box-align: stretch;
+  align-items: stretch;
   width: 100%;
+  margin: auto;
 }
 
 .server-discovery-list-item-container {

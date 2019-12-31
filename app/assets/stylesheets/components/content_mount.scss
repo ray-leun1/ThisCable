@@ -20,4 +20,9 @@
   .chat-container {
     grid-area: chat;
   }
+
+  .server-discovery-container {
+    grid-column-start: sidebar;
+    grid-column-end: chat;
+  }
 }
