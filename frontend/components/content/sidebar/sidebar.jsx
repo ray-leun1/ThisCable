@@ -5,8 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import { deleteMembership } from '../../../actions/user_actions';
 import { openModal } from '../../../actions/modal_actions';
 import { getCurrentServer } from '../../../actions/current_actions';
-import ChannelListContainer from './channels/channel_list_container';
-import ChannelIndex from './channels/channel_index';
+import ChannelIndex from './channel_index';
 import svgs from '../../svgs';
 
 export default props => {
