@@ -32,8 +32,9 @@ export default props => {
   const handleClick = serverId => {
     dispatch(getCurrentServer(serverId)).then(data => {
       setCurrentServer(data.server);
-      dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
-      history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`)
+      console.log(data.server);
+      dispatch(getCurrentChannel(data.server.joinedChannelIds[0]))
+      .then(() => history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`));
     })
   };
 

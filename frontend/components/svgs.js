@@ -36,15 +36,15 @@ export default {
   openContextMenu:
     <svg className='svg-open-context-menu' width='18' height='18'>
       <g fill='none' fillRule='evenodd'>
-        <path stroke='currentColor' d='M4.5 4.5l4.5 4.5' stroke-linecap='round' />
-        <path stroke='currentColor' d='M13.5 4.5l-4.5 4.5' stroke-linecap='round' />
+        <path stroke='currentColor' d='M4.5 4.5l4.5 4.5' strokeLinecap='round' />
+        <path stroke='currentColor' d='M13.5 4.5l-4.5 4.5' strokeLinecap='round' />
       </g>
     </svg>,
   closeContextMenu:
     <svg className='svg-close-context-menu' width='18' height='18'>
       <g fill='none' fillRule='evenodd'>
-        <path stroke='currentColor' d='M4.5 4.5l9 9' stroke-linecap='round' />
-        <path stroke='currentColor' d='M13.5 4.5l-9 9' stroke-linecap='round' />
+        <path stroke='currentColor' d='M4.5 4.5l9 9' strokeLinecap='round' />
+        <path stroke='currentColor' d='M13.5 4.5l-9 9' strokeLinecap='round' />
       </g>
     </svg>,
   createChannel:

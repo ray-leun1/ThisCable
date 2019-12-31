@@ -10,12 +10,14 @@ export default props => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const currentChannelId = history.location.pathname.split('/')[3];
+  const currentChannelId = history.location.pathname.split('/')[3];
 
   const [channels, setChannels] = useState(useSelector(state => state.entities.channels));
-  const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.server));
+  const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.channel));
   const [contextMenu, setContextMenu] = useState(false);
   const [clickPos, setClickPos] = useState({ x: 0, y: 0 });
+
+  console.log(channels);
 
   useEffect(() => {
     dispatch(getChannels(currentServer.id)).then(data => setChannels(data.channels));
