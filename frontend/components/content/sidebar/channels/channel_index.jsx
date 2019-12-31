@@ -17,8 +17,6 @@ export default props => {
   const [contextMenu, setContextMenu] = useState(false);
   const [clickPos, setClickPos] = useState({ x: 0, y: 0 });
 
-  console.log(channels);
-
   useEffect(() => {
     dispatch(getChannels(currentServer.id)).then(data => setChannels(data.channels));
   }, [])

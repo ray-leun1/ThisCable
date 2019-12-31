@@ -1,4 +1,23 @@
 .content-mount-container {
   overflow: hidden;
   height: 100%;
+
+  display: grid;
+  grid-template-columns: 72px 232px 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas: 'server-index sidebar chat';
+
+  .server-index-container {
+    grid-area: server-index;
+  }
+
+  .sidebar-container {
+    grid-area: sidebar;
+  }
+
+  .chat-container {
+    grid-area: chat;
+  }
 }
