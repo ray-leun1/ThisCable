@@ -16,7 +16,8 @@ class ServerDiscovery extends React.Component {
 
   renderServers() {
     let servers = [];
-    let search = new RegExp(this.state.search, 'i');
+    let search = this.state.search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    search = new RegExp(search, 'i');
 
     this.props.servers.forEach(server => {
       if (search.test(server.name)) {

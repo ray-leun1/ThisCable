@@ -26,12 +26,13 @@
 }
 
 .server-discovery-search-container {
+  color: #dcddde;
   font-size: 18px;
   overflow: hidden;
-  min-width: 600px;
-  max-width: 800px;
+  max-width: 700px;
+  width: 100%;
   margin-bottom: 80px;
-  background: $server-discovery-search-bg;
+  background: #4f545c;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
@@ -39,7 +40,6 @@
 .server-discovery-search-input {
   font-size: 18px;
   width: 90%;
-  height: 25px;
   padding: 12px;
   border-radius: 3px;
 }
