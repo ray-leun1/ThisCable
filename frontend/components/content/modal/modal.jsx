@@ -6,23 +6,23 @@ import Settings from './settings';
 import CreateChannelFormContainer from './create_channel_form_container';
 
 function Modal({ modal, closeModal }) {
-  if (!modal) {
-    return null;
-  }
+  if (!modal) return null;
+
   let component;
-  switch (modal) {
-    case 'create server':
-      component = <CreateServerFormContainer />;
+  switch (modal.component) {
+    case 'createServer':
+      component = <CreateServerFormContainer {...modal.props} />;
       break;
-    case 'create channel':
-      component = <CreateChannelFormContainer />;
+    case 'createChannel':
+      component = <CreateChannelFormContainer {...modal.props} />;
       break;
     case 'settings':
-      component = <Settings />;
+      component = <Settings {...modal.props} />;
       break;
     default:
       return null;
   }
+  
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>

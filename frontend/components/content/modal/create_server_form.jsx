@@ -19,12 +19,13 @@ class CreateServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    
     this.props.createServer(this.state)
       .then(server => {
         this.props.history.push(`/channels/${server.server.id}/${server.server.joinedChannelIds[0]}`);
         this.props.getCurrentServer(server.server.id);
         this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
+        this.props.updateServerIndex();
       });
 
     this.props.closeModal();

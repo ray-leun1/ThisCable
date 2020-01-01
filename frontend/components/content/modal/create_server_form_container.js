@@ -13,12 +13,13 @@ const mapStateToProps = state => ({
   server: { name: '' }
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   createServer: server => dispatch(createServer(server)),
   closeModal: () => dispatch(closeModal()),
   getCurrentUser: userId => dispatch(getCurrentUser(userId)),
   getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
-  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId))
+  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId)),
+  updateServerIndex: ownProps.updateServerIndex
 })
 
 export default connect(
