@@ -4,9 +4,9 @@ import { Route, useHistory } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import { deleteMembership } from '../../../actions/user_actions';
 import { openModal } from '../../../actions/modal_actions';
+import { deleteServer } from '../../../actions/server_actions';
 import { getCurrentServer } from '../../../actions/current_actions';
-import ChannelListContainer from './channels/channel_list_container';
-import ChannelIndex from './channels/channel_index';
+import ChannelIndex from './channel_index';
 import svgs from '../../svgs';
 
 export default props => {
@@ -14,7 +14,7 @@ export default props => {
   const history = useHistory();
   
   const currentUserId = useSelector(state => state.session.id);
-  let { currentUser } = props;
+  let { currentUser, updateCurrentUser } = props;
   const currentServer = useSelector(state => state.current.server);
   const currentServerId = history.location.pathname.split('/')[2];
 
@@ -26,13 +26,15 @@ export default props => {
   }, [])
 
   const handleLeaveServer = () => {
-    dispatch(deleteMembership(currentServerId));
-    history.push('/channels/@me');
+    dispatch(deleteMembership(currentServerId))
+      .then(() => updateCurrentUser());
+    history.push('/channels/1/1'); // @me
   }
 
   const handleDeleteServer = () => {
-    dispatch(deleteServer(parseInt(currentServerId)));
-    history.push('/channels/@me');
+    dispatch(deleteServer(parseInt(currentServerId)))
+      .then(() => updateCurrentUser());
+    history.push('/channels/1/1'); // @me
   }
 
   const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
@@ -41,7 +43,7 @@ export default props => {
     if (currentServer && currentUser) {
       return (<div className='context-menu-container'>
         {isAdmin ? <div className='menu-option noverflow'
-          onClick={() => dispatch(openModal('create channel'))}>
+          onClick={() => dispatch(openModal('createChannel'))}>
           <div className='txt'>Create Channel</div>
           {svgs.createChannel}
         </div> : ''}

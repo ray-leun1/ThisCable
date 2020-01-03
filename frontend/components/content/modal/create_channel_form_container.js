@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal()),
   getCurrentUser: userId => dispatch(getCurrentUser(userId)),
   getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
-  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId))
+  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId)),
 })
 
 export default connect(

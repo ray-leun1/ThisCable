@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
+# img1 = open('https://this-cable-dev.s3-us-west-1.amazonaws.com/skelekazoo.png')
+
 User.create([
   {email: 'kasumitoyama@cable.com', username: 'Kasumi!', password: 'password'},
   {email: 'taehanazono@cable.com', username: 'Usagi', password: 'Oddeye'},
@@ -34,6 +38,8 @@ User.create([
   {email: 'mayayamato@cable.com', username: 'Huhehe', password: 'technicdream'},
   {email: 'evewakamiya@cable.com', username: 'SakuraSamurai', password: 'bushibushido'}
 ])
+
+# User.find(1).photo.attach(io: img1, filename: 'skelekazoo.png')
 
 Server.create([
   {name: 'Ryuseido', admin_id: 5},

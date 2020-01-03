@@ -9,7 +9,7 @@ import { getCurrentServer, getCurrentChannel } from '../../../actions/current_ac
 import svgs from '../../svgs';
 
 export default props => {
-  const { currentUser } = props;
+  const { currentUser, updateCurrentUser } = props;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,9 +19,13 @@ export default props => {
   const [currentServer, setCurrentServer] = useState(useSelector(state => state.current.server));
   const [createServer, setCreateServer] = useState(false);
 
-  useEffect(() => {
-    dispatch(getServers()).then(data => setServers(data.servers));
-  }, [])
+  useEffect(() => updateServerIndex(), [])
+  
+  const updateServerIndex = () => {
+    dispatch(getServers()).then(data => setServers(data.servers))
+      .then(updateCurrentUser());
+    setCreateServer(false);
+  }
 
   let joinedServers = [];
 
@@ -39,7 +43,7 @@ export default props => {
 
   const serverItems = () => (
     joinedServers.map(server => 
-      <div className={`server-item-container${parseInt(currentServerId) === server.id ? ' active' : ''}`}
+      server ? <div className={`server-item-container${parseInt(currentServerId) === server.id ? ' active' : ''}`}
         key={`server-item-${server.id}`}>
         <div className='active-tab'></div>
         <div className='server-item' data-tip data-for={`server-item-${server.id}`}
@@ -49,7 +53,7 @@ export default props => {
         <ReactTooltip id={`server-item-${server.id}`} place='right' effect='solid' offset={{ left: 2 }}>
           {server.name}
         </ReactTooltip>
-      </div>)
+      </div> : '')
   );
 
   return (<div className='server-index-container'>
@@ -68,7 +72,10 @@ export default props => {
     <div className={`server-item-container${createServer ? ' active' : ''}`}>
       <div className='active-tab'></div>
       <button className='server-btn' data-tip data-for='add-server'
-        onClick={() => {setCreateServer(true); dispatch(openModal('create server'));}}>
+        onClick={() => {
+          setCreateServer(true);
+          dispatch(openModal('createServer', {updateServerIndex}));
+        }}>
         {svgs.addServerPlus}
       </button>
       <ReactTooltip id='add-server' place='right' effect='solid' offset={{left: 2}}>
