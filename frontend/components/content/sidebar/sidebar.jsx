@@ -28,13 +28,13 @@ export default props => {
   const handleLeaveServer = () => {
     dispatch(deleteMembership(currentServerId))
       .then(() => updateCurrentUser());
-    history.push('/channels/1'); // @me
+    history.push('/channels/1/1'); // @me
   }
 
   const handleDeleteServer = () => {
     dispatch(deleteServer(parseInt(currentServerId)))
       .then(() => updateCurrentUser());
-    history.push('/channels/1'); // @me
+    history.push('/channels/1/1'); // @me
   }
 
   const isAdmin = currentServer && currentUser ? currentServer.admin_id === currentUser.id : false;
