@@ -9,13 +9,14 @@
   .container-left {
     display: flex;
     justify-content: flex-end;
-    background: $settings-left-bg;
-    flex: 1 0 auto;
+    background: #2f3136;
+    flex: 1 0 218px;
     
     .sidebar {
       display: flex;
       flex-direction: column;
       height: 100%;
+      min-width: 218px;
       max-width: 218px;
       padding: 60px 6px 60px 20px;
       margin-right: 8px;
@@ -23,7 +24,6 @@
       .tab {
         font-size: 16px;
         line-height: 20px;
-        width: 172px;
         padding: 6px 10px;
         margin-bottom: 2px;
         border-radius: 3px;
@@ -65,19 +65,20 @@
   // Right-side Content
   .container-right {
     display: flex;
-    background: $settings-right-bg;
-    flex: 1 1 auto;
+    background: #36393f;
+    flex: 1 1 800px;
     
     .content {
+      width: 100%;
       max-width: 740px;
-      min-width: 660px;
+      min-width: 460px;
       min-height: 100%;
       padding: 60px 40px 80px 40px;
     }
     
     // Exit button
     .exit-container {
-      margin-top: 60px;
+      margin: 60px 21px 0px 0px;
       
       .exit-btn {
         display: flex;
