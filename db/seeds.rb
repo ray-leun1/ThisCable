@@ -8,7 +8,32 @@
 
 require 'open-uri'
 
-# img1 = open('https://this-cable-dev.s3-us-west-1.amazonaws.com/skelekazoo.png')
+img1 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/kirakira.png')
+img2 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/occhan.png')
+img3 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/chococornets.png')
+img4 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/scrunchie.png')
+img5 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/bonsai.png')
+img6 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/catwind.png')
+img7 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/fries.png')
+img8 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/anguish.png')
+img9 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/akatbox.png')
+img10 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/chest.png')
+img11 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/flowers.png')
+img12 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/mocabread.png')
+img13 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/AGcharm.png')
+img14 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/taiko.png')
+img15 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/tea.png')
+img16 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/potatokro.png')
+img17 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/phantomfleet.png')
+img18 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/maryantoinette.png')
+img19 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/jellyfishplate.png')
+img20 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/michburger.png')
+img21 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/michellefish.png')
+img22 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/maruyamasignature.png')
+img23 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/hinamole.png')
+img24 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/leon.png')
+img25 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/bangershirt.png')
+img26 = open('https://this-cable-seeds.s3-us-west-1.amazonaws.com/bushido.png')
 
 User.create([
   {email: 'kasumitoyama@cable.com', username: 'Kasumi!', password: 'password'},
@@ -33,13 +58,38 @@ User.create([
   {email: 'misakiokusawa@cable.com', username: 'Misaki', password: 'crochetkeyboard'},
   {email: 'michelle@cable.com', username: 'DJ Bearbear', password: 'smiletoomisaki'},
   {email: 'ayamaruyama@cable.com', username: 'Undercover Idol', password: 'selfiestick'},
-  {email: 'hinahikawa@cable.com', username: 'Boppin!', password: 'iloveyousayo'},
+  {email: 'hinahikawa@cable.com', username: 'Boppin!', password: 'iloveyouoneechan'},
   {email: 'chisatoshirasagi@cable.com', username: 'C.Shirasagi', password: 'leonsundays'},
   {email: 'mayayamato@cable.com', username: 'Huhehe', password: 'technicdream'},
   {email: 'evewakamiya@cable.com', username: 'SakuraSamurai', password: 'bushibushido'}
 ])
 
-# User.find(1).photo.attach(io: img1, filename: 'skelekazoo.png')
+User.find(1).profile_img.attach(io: img1, filename: 'kirakira.png')
+User.find(2).profile_img.attach(io: img2, filename: 'occhan.png')
+User.find(3).profile_img.attach(io: img3, filename: 'chococornets.png')
+User.find(4).profile_img.attach(io: img4, filename: 'scrunchie.png')
+User.find(5).profile_img.attach(io: img5, filename: 'bonsai.png')
+User.find(6).profile_img.attach(io: img6, filename: 'catwind.png')
+User.find(7).profile_img.attach(io: img7, filename: 'fries.png')
+User.find(8).profile_img.attach(io: img8, filename: 'anguish.png')
+User.find(9).profile_img.attach(io: img9, filename: 'akatbox.png')
+User.find(10).profile_img.attach(io: img10, filename: 'chest.png')
+User.find(11).profile_img.attach(io: img11, filename: 'flowers.png')
+User.find(12).profile_img.attach(io: img12, filename: 'mocabread.png')
+User.find(13).profile_img.attach(io: img13, filename: 'AGcharm.png')
+User.find(14).profile_img.attach(io: img14, filename: 'taiko.png')
+User.find(15).profile_img.attach(io: img15, filename: 'tea.png')
+User.find(16).profile_img.attach(io: img16, filename: 'potatokro.png')
+User.find(17).profile_img.attach(io: img17, filename: 'phantomfleet.png')
+User.find(18).profile_img.attach(io: img18, filename: 'maryantoinette.png')
+User.find(19).profile_img.attach(io: img19, filename: 'jellyfishplate.png')
+User.find(20).profile_img.attach(io: img20, filename: 'michburger.png')
+User.find(21).profile_img.attach(io: img21, filename: 'michellefish.png')
+User.find(22).profile_img.attach(io: img22, filename: 'maruyamasignature.png')
+User.find(23).profile_img.attach(io: img23, filename: 'hinamole.png')
+User.find(24).profile_img.attach(io: img24, filename: 'leon.png')
+User.find(25).profile_img.attach(io: img25, filename: 'bangershirt.png')
+User.find(26).profile_img.attach(io: img26, filename: 'bushido.png')
 
 Server.create([
   {name: 'Ryuseido', admin_id: 5},
