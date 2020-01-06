@@ -10,7 +10,7 @@ ThisCable is a fullstack clone of [Discord](https://discordapp.com), a live-mess
 ## Features and Technical Challenges
 * Servers for users to join and communicate in
 * Channels for organizing messages
-![Feature_1](https://github.com/ray-leun1/ThisCable/tree/master/app/assets/images/thisCableScreenshot_chat.png)
+![Feature_1](/app/assets/images/thisCableScreenshot_chat.png)
 ```javascript
 // message_index.jsx
 return (<div className='message-container'
@@ -39,7 +39,7 @@ return (<div className='message-container'
 
 * User profile picture customization
 * Uses aws for image upload
-![Feature_2](https://github.com/ray-leun1/ThisCable/tree/master/app/assets/images/thisCableScreenshot_settings.png)
+![Feature_2](/app/assets/images/thisCableScreenshot_settings.png)
 ```javascript
 // my_account.jsx
 const handleFile = e => {
@@ -70,7 +70,7 @@ const handleSubmit = e => {
 
 * Server search and join
 * Updates search and user types in query
-![Feature_3](https://github.com/ray-leun1/ThisCable/tree/master/app/assets/images/thisCableScreenshot_serverdiscovery.png)
+![Feature_3](/app/assets/images/thisCableScreenshot_serverdiscovery.png)
 ```javascript
 // server_discovery.jsx
 renderServers() {
