@@ -14,6 +14,7 @@
 // Top header
 .create-channel-form-header {
   color: white;
+  font-weight: 700;
   padding: 20px;
 }
 
@@ -88,7 +89,7 @@
 }
 
 .create-channel-input-name {
-  height: 18px;
+  height: 40px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -285,9 +286,15 @@
   font-size: 14px;
   line-height: 16px;
   align-items: center;
-  width: 64px;
-  height: 34px;
+  width: 96px;
+  min-width: 96px;
+  height: 38px;
+  min-height: 38px;
   padding: 2px 16px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .create-channel-form-submit {
