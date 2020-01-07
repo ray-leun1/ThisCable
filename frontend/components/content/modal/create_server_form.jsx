@@ -91,7 +91,7 @@ class CreateServerForm extends React.Component {
         </div>
         <div className='create-server-form-bottom-container'>
           <button className='create-server-form-back'
-            onClick={() => this.props.closeModal()}>
+            onClick={() => {this.props.updateServerIndex(); this.props.closeModal()}}>
             <i className="fas fa-arrow-left"></i>
             BACK
           </button>

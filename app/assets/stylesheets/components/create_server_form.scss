@@ -15,14 +15,14 @@
 }
 
 .create-server-form-title {
-  color: $create-server-title;
+  color: #7289da;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
 }
 
 .create-server-form-text {
-  color: $create-server-txt;
+  color: #99aab5;
   font-size: 18px;
   text-align: center;
   padding: 10px 0;
@@ -39,7 +39,7 @@
 }
 
 .create-server-label {
-  color: $create-server-label-txt;
+  color: #87909c;
   font-size: 11px;
   font-weight: 700;
 }
@@ -68,11 +68,11 @@
 
   &:hover {
     .create-server-input-region {
-      border-color: $create-server-input-region-btn-hover;
+      border-color: #7289da;
     }
     .create-server-input-region-change-btn {
       color: white;
-      background: $create-server-input-region-change-btn;
+      background: #7289da;
     }
   }
 }
@@ -81,9 +81,8 @@
   display: flex;
   align-items: center;
   width: 155px;
-  height: 30px;
   padding: 7px;
-  border: 1px solid $create-server-input-region-border;
+  border: 1px solid #cdcdcd;
   border-right: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -93,7 +92,7 @@
   width: 44px;
   height: 30px;
   background-image: image-url('flag_uswest');
-  background-color: $light-blue;
+  background-color: #7289da;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
@@ -101,17 +100,17 @@
 }
 
 .create-server-input-region-text {
-  color: $create-server-txt;
+  color: #99aab5;
   font-size: 16px;
   font-weight: 700;
 }
 
 .create-server-input-region-change-btn {
-  color: $create-server-input-region-change-btn;
+  color: #7289da;
+  font-size: 14px;
   line-height: 24px;
-  height: 100%;
   padding: 10px;
-  border: 1px solid $create-server-input-region-border;
+  border: 1px solid #cdcdcd;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   text-align: center;
@@ -119,7 +118,7 @@
 }
 
 .create-server-input-fineprint {
-  color: $create-server-label-txt;
+  color: #87909c;
   font-size: 11px;
   line-height: 13px;
   margin: 15px 0px;
@@ -134,14 +133,14 @@
 .create-server-input-icon {
   width: 128px;
   height: 128px;
-  background: $create-server-input-icon-btn;
-  border: 5px solid $create-server-avatar-border;
+  background: #7289da;
+  border: 5px solid #ebebeb;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .create-server-input-icon-txt {
-  color: $create-server-input-icon-txt;
+  color: #87909c;
   font-size: 10px;
 }
 
@@ -156,7 +155,7 @@
 }
 
 .create-server-form-back {
-  color: $create-server-txt;
+  color: #99aab5;
   font-size: 12px;
   border-bottom: 2px solid transparent;
 
@@ -171,6 +170,8 @@
 
 .create-server-form-submit {
   font-size: 14px;
-  width: 64px;
-  height: 34px;
+  width: 96px;
+  min-width: 96px;
+  height: 38px;
+  min-height: 38px;
 }
