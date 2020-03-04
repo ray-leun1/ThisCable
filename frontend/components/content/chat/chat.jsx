@@ -2,13 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import MessageIndexContainer from './message_index_container';
-import MemberIndexContainer from './member_index_container';
+import MemberIndex from './member_index';
 
 class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: ''
+      body: '',
+      currentChannel: this.props.currentChannel
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +23,6 @@ class Chat extends React.Component {
 
   handleSubmit() {
     let currentChannelId = this.props.location.pathname.split('/')[3];
-    console.log(this.state.body);
     
     let message = {
       body: this.state.body,
@@ -42,7 +42,15 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCurrentChannel(this.props.location.pathname.split('/')[3]);
+    this.props.getCurrentChannel(this.props.location.pathname.split('/')[3])
+      .then(data => this.setState({currentChannel: data.channel}));
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname.split('/')[3] !== this.props.location.pathname.split('/')[3]) {
+      this.props.getCurrentChannel(this.props.location.pathname.split('/')[3])
+        .then(data => this.setState({ currentChannel: data.channel }));
+    }
   }
 
   render() {
@@ -66,7 +74,7 @@ class Chat extends React.Component {
               onKeyDown={this.handleOnEnter} />
           </form>
         </div>
-        <Route path='/channels/:serverId/:channelId' component={MemberIndexContainer} />
+        <Route path='/channels/:serverId/:channelId' render={() => <MemberIndex currentChannel={this.state.currentChannel} />} />
       </div>
     </div>)
   }
