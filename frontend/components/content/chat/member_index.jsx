@@ -1,65 +1,47 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../../actions/user_actions';
 import svgs from '../../svgs';
 
-class MemberIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    
-    this.renderMembers = this.renderMembers.bind(this);
-  }
+export default props => {
+  const { currentChannel } = props;
 
-  componentDidMount() {
-    let currentChannelId = this.props.location.pathname.split('/')[3];
+  const dispatch = useDispatch();
 
-    this.props.getUsers();
-    this.props.getCurrentChannel(currentChannelId);
-  }
+  const [users, setUsers] = useState(useSelector(state => state.entities.users));
 
-  componentDidUpdate(prevProps) {
-    if (!(prevProps.currentChannel && this.props.currentChannel) ||
-      (this.props.currentChannel.id !== parseInt(this.props.location.pathname.split('/')[3]))) {
-      this.props.getCurrentChannel(parseInt(this.props.location.pathname.split('/')[3]));
-    } else if ((!this.props.users || Object.values(this.props.users).length === 0) ||
-      (this.props.currentChannel.permittedUserIds.length > Object.values(this.props.users).length)) {
-      this.props.getUsers();
-    }
-  }
+  useEffect(() => {
+    dispatch(getUsers()).then(data => setUsers(data.users));
+  }, [])
 
-  renderMembers() {
-    if (this.props.currentChannel && this.props.users) {
-      let users = [];
-      
-      this.props.currentChannel.permittedUserIds.forEach(userId => {
-        if (this.props.users[userId]) {
-          let user = this.props.users[userId];
+  const renderMembers = () => {
+    if (currentChannel && users) {
+      let channelUsers = [];
 
-          if (user) {
-            users.push(<div className='member-index-item'
-              key={`member-index-item-${user.id}`}>
-              <div className='member-index-item-icon'
-                style={user.profile_img_url
-                  ? { backgroundImage: `url(${user.profile_img_url})` }
-                  : { background: '#7289da' }}>
-                {user.profile_img_url ? '' : svgs.logoCat}
-              </div>
-              <div className='member-index-item-username noverflow'>
-                {user.username}
-              </div>
-            </div>)
-          }
+      currentChannel.permittedUserIds.forEach(userId => {
+        let user = users[userId];
+
+        if (user) {
+          channelUsers.push(<div className='member-index-item'
+            key={`member-index-item-${userId}`}>
+            <div className='member-index-item-icon'
+              style={user.profile_img_url
+                ? { backgroundImage: `url(${user.profile_img_url})` }
+                : { background: '#7289da' }}>
+              {user.profile_img_url ? '' : svgs.logoCat}
+            </div>
+            <div className='member-index-item-username noverflow'>
+              {user.username}
+            </div>
+          </div>)
         }
       })
 
-      return users;
+      return channelUsers;
     }
   }
 
-  render() {
-    return (<div className='member-index-container'>
-      {this.renderMembers()}
-    </div>)
-  }
+  return (<div className='member-index-container'>
+    {renderMembers()}
+  </div>)
 }
-
-export default withRouter(MemberIndex);

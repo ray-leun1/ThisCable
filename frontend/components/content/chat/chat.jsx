@@ -1,75 +1,72 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, useHistory } from 'react-router-dom';
+import { createMessage } from '../../../actions/message_actions';
+import { getCurrentChannel } from '../../../actions/current_actions';
 import MessageIndexContainer from './message_index_container';
-import MemberIndexContainer from './member_index_container';
+import MemberIndex from './member_index';
 
-class Chat extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      body: ''
-    }
+export default props => {
+  const { currentUser } = props;
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOnEnter = this.handleOnEnter.bind(this);
-  }
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  handleChange(field) {
-    return e => this.setState({[field]: e.target.value});
-  }
+  const currentChannelId = history.location.pathname.split('/')[3];
+  const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.channel));
+  const [messageBody, setMessageBody] = useState('');
 
-  handleSubmit() {
-    let currentChannelId = this.props.location.pathname.split('/')[3];
-    console.log(this.state.body);
-    
+  const handleSubmit = () => {
     let message = {
-      body: this.state.body,
-      author_id: this.props.currentUserId,
-      channel_id: currentChannelId
+      body: messageBody,
+      author_id: currentUser.id,
+      channel_id: currentChannel.id
     };
 
-    this.props.createMessage(message)
-    this.setState({body: ''});
+    createMessage(message)
+    setMessageBody('');
   }
 
-  handleOnEnter(e) {
+  const handleOnEnter = e => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
-      this.handleSubmit();
+      handleSubmit();
     }
   }
 
-  componentDidMount() {
-    this.props.getCurrentChannel(this.props.location.pathname.split('/')[3]);
-  }
+  useEffect(() => {
+    dispatch(getCurrentChannel(currentChannelId))
+      .then(data => setCurrentChannel(data.channel));
+  }, [])
 
-  render() {
-    return (<div className='chat-container'>
-      <div className='chat-title-container'>
-        <div className='chat-title-hash'>
-          <i className='fas fa-hashtag'></i>
-        </div>
-        <div className='chat-title-txt'>
-          {this.props.currentChannel ? this.props.currentChannel.name : ''}
-        </div>
+  useEffect(() => {
+    if (currentChannel && (parseInt(currentChannelId) !== currentChannel.id)) {
+      dispatch(getCurrentChannel(currentChannelId))
+        .then(data => setCurrentChannel(data.channel));
+    }
+  })
+
+  return (<div className='chat-container'>
+    <div className='chat-title-container'>
+      <div className='chat-title-hash'>
+        <i className='fas fa-hashtag'></i>
       </div>
-      <div className='chat-content-container'>
-        <div className='chat-area-container'>
-          <Route path='/channels/:serverId/:channelId' render={() => <MessageIndexContainer key={parseInt(this.props.location.pathname.split('/')[3])} />} />
-          <form className='chat-form-container'>
-            <textarea className='chat-form-input'
-              placeholder={`Message #${this.props.currentChannel ? this.props.currentChannel.name : ''}`}
-              value={this.state.body}
-              onChange={this.handleChange('body')}
-              onKeyDown={this.handleOnEnter} />
-          </form>
-        </div>
-        <Route path='/channels/:serverId/:channelId' component={MemberIndexContainer} />
+      <div className='chat-title-txt'>
+        {currentChannel ? currentChannel.name : ''}
       </div>
-    </div>)
-  }
+    </div>
+    <div className='chat-content-container'>
+      <div className='chat-area-container'>
+        <Route path='/channels/:serverId/:channelId' render={() => <MessageIndexContainer key={parseInt(currentChannelId)} />} />
+        <form className='chat-form-container'>
+          <textarea className='chat-form-input'
+            placeholder={`Message #${currentChannel ? currentChannel.name : ''}`}
+            value={messageBody}
+            onChange={e => setMessageBody(e.target.valuer)}
+            onKeyDown={handleOnEnter} />
+        </form>
+      </div>
+      <Route path='/channels/:serverId/:channelId' render={() => <MemberIndex currentChannel={currentChannel} />} />
+    </div>
+  </div>)
 }
-
-export default withRouter(Chat);

@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { getCurrentUser } from '../../actions/current_actions';
 import ServerIndex from './servers/server_index';
 import Sidebar from './sidebar/sidebar';
-import ChatContainer from './chat/chat_container';
+import Chat from './chat/chat';
 import ServerDiscoveryContainer from './server_discovery/server_discovery_container';
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
     return(<div className='content-mount-container'>
       <Route path='/channels/:serverId' render={() => <ServerIndex currentUser={currentUser} updateCurrentUser={updateCurrentUser} />} />
       <Route path='/channels/:serverId(\d+)' render={() => <Sidebar currentUser={currentUser} updateCurrentUser={updateCurrentUser} />} />
-      <Route path='/channels/:serverId(\d+)/:channelId(\d+)' component={ChatContainer} />
+      <Route path='/channels/:serverId(\d+)/:channelId(\d+)' render={() => <Chat currentUser={currentUser} />} />
       <Route path='/channels/@me' render={() => <Sidebar currentUser={currentUser}/>} />
       <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
     </div>)
