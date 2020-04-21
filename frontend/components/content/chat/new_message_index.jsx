@@ -14,14 +14,12 @@ export default props => {
 
   useEffect(() => {
     dispatch(getUsers()).then(data => setUsers(data.users));
-    dispatch(getMessages(currentChannelId).then(data => setMessages(data.messages)));
+    dispatch(getMessages(currentChannelId)).then(data => setMessages(data.messages));
   }, [])
 
   useEffect(() => {
-    if (messages.length > 0) {
-      let container = document.getElementsByClassName('message-index-container')[0];
-      container.scrollTop = container.scrollHeight;
-    }
+    let container = document.getElementsByClassName('message-index-container')[0];
+    container.scrollTop = container.scrollHeight;
   })
 
   const dateParser = date => {
@@ -55,9 +53,11 @@ export default props => {
 
   const renderMessages = () => {
     let author;
+    let messageList = Object.values(messages);
 
-    if (users && messages && Object.values(users).length > 1) {
-      return (messages.map(message => {
+    if (users && messages && Object.values(users).length > 1 && messageList.length > 1) {
+
+      return (messageList.map(message => {
         author = users[message.author_id];
 
         return (<div className='message-container'
@@ -91,5 +91,3 @@ export default props => {
     {renderMessages()}
   </div>)
 }
-
-export default withRouter(MessageIndex);
