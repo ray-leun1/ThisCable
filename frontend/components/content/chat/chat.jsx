@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
 import { createMessage } from '../../../actions/message_actions';
 import { getCurrentChannel } from '../../../actions/current_actions';
-import MessageIndex from './new_message_index';
+import MessageIndex from './message_index';
 import MemberIndex from './member_index';
 
 export default props => {

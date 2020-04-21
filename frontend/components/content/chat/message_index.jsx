@@ -1,33 +1,28 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../../actions/user_actions';
+import { getMessages } from '../../../actions/message_actions';
 import svgs from '../../svgs';
 
-class MessageIndex extends React.Component {
-  constructor(props) {
-    super(props);
+export default props => {
+  const { currentChannelId } = props;
 
-    this.renderMessages = this.renderMessages.bind(this);
-    this.dateParser = this.dateParser.bind(this);
-  }
+  const dispatch = useDispatch();
 
-  componentDidMount() {
-    let currentChannelId = parseInt(this.props.location.pathname.split('/')[3]);
-    this.props.getCurrentChannel(currentChannelId);
-    this.props.getUsers();
-    this.props.getMessages(currentChannelId);
-  }
+  const [users, setUsers] = useState(useSelector(state => state.entities.users));
+  const [messages, setMessages] = useState(useSelector(state => state.entities.messages));
 
-  componentDidUpdate() {
-    if (Object.values(this.props.users).length === 1) {
-      this.props.getUsers();
-    }
-    if (this.props.messages.length > 0) {
-      let container = document.getElementsByClassName('message-index-container')[0];
-      container.scrollTop = container.scrollHeight;
-    }
-  }
+  useEffect(() => {
+    dispatch(getUsers()).then(data => setUsers(data.users));
+    dispatch(getMessages(currentChannelId)).then(data => setMessages(data.messages));
+  }, [])
 
-  dateParser(date) {
+  useEffect(() => {
+    let container = document.getElementsByClassName('message-index-container')[0];
+    container.scrollTop = container.scrollHeight;
+  })
+
+  const dateParser = date => {
     const today = new Date();
     const dateObject = new Date(date);
     let timeString = dateObject.toLocaleTimeString('en-US', {
@@ -56,13 +51,13 @@ class MessageIndex extends React.Component {
     }
   }
 
-  renderMessages() {
-    let author
-    let users = this.props.users;
-    
-    if (this.props.currentChannel && this.props.users && this.props.messages
-      && Object.values(this.props.users).length > 1) {
-      return (this.props.messages.map(message => {
+  const renderMessages = () => {
+    let author;
+    let messageList = Object.values(messages);
+
+    if (users && messages && Object.values(users).length > 1 && messageList.length > 1) {
+
+      return (messageList.map(message => {
         author = users[message.author_id];
 
         return (<div className='message-container'
@@ -79,7 +74,7 @@ class MessageIndex extends React.Component {
                 {author.username}
               </div>
               <div className='message-timestamp'>
-                {this.dateParser(message.created_at)}
+                {dateParser(message.created_at)}
               </div>
             </div>
             <div className='message-body'>
@@ -88,14 +83,11 @@ class MessageIndex extends React.Component {
           </div>
         </div>)
       })
-    )}
+      )
+    }
   }
 
-  render() {
-    return (<div className='message-index-container'>
-      {this.renderMessages()}
-    </div>)
-  }
+  return (<div className='message-index-container'>
+    {renderMessages()}
+  </div>)
 }
-
-export default withRouter(MessageIndex);
