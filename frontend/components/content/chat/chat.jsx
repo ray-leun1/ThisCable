@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
 import { createMessage } from '../../../actions/message_actions';
 import { getCurrentChannel } from '../../../actions/current_actions';
-import MessageIndexContainer from './message_index_container';
+import MessageIndex from './message_index_container';
 import MemberIndex from './member_index';
 
 export default props => {
@@ -57,7 +57,7 @@ export default props => {
     </div>
     <div className='chat-content-container'>
       <div className='chat-area-container'>
-        <Route path='/channels/:serverId/:channelId' render={() => <MessageIndexContainer key={parseInt(currentChannelId)} />} />
+        <Route path='/channels/:serverId/:channelId' render={() => <MessageIndex key={parseInt(currentChannelId)} />} />
         <form className='chat-form-container'>
           <textarea className='chat-form-input'
             placeholder={`Message #${currentChannel ? currentChannel.name : ''}`}
