@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../../actions/user_actions';
+import { getMessages } from '../../../actions/message_actions';
 
 export default props => {
   const handleJoin = join => {
