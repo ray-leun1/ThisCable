@@ -23,7 +23,7 @@ export default props => {
       channel_id: currentChannel.id
     };
 
-    createMessage(message)
+    dispatch(createMessage(message))
     setMessageBody('');
   }
 
@@ -62,7 +62,7 @@ export default props => {
           <textarea className='chat-form-input'
             placeholder={`Message #${currentChannel ? currentChannel.name : ''}`}
             value={messageBody}
-            onChange={e => setMessageBody(e.target.valuer)}
+            onChange={e => setMessageBody(e.target.value)}
             onKeyDown={handleOnEnter} />
         </form>
       </div>
