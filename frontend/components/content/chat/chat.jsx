@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
-import { createMessage } from '../../../actions/message_actions';
+import { getUsers } from '../../../actions/user_actions';
+import { createMessage, getMessages } from '../../../actions/message_actions';
 import { getCurrentChannel } from '../../../actions/current_actions';
 import MessageIndex from './message_index';
 import MemberIndex from './member_index';
@@ -14,6 +15,7 @@ export default props => {
 
   const currentChannelId = history.location.pathname.split('/')[3];
   const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.channel));
+  const [messages, setMessages] = useState(useSelector(state => state.entities.messages));
   const [messageBody, setMessageBody] = useState('');
 
   const handleSubmit = () => {
@@ -23,8 +25,9 @@ export default props => {
       channel_id: currentChannel.id
     };
 
-    createMessage(message)
+    dispatch(createMessage(message));
     setMessageBody('');
+    dispatch(getMessages(currentChannelId)).then(data => setMessages(data.messages));
   }
 
   const handleOnEnter = e => {
@@ -62,7 +65,7 @@ export default props => {
           <textarea className='chat-form-input'
             placeholder={`Message #${currentChannel ? currentChannel.name : ''}`}
             value={messageBody}
-            onChange={e => setMessageBody(e.target.valuer)}
+            onChange={e => setMessageBody(e.target.value)}
             onKeyDown={handleOnEnter} />
         </form>
       </div>

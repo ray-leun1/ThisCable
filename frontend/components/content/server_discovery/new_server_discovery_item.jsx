@@ -1,30 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from '../../../actions/user_actions';
-import { getMessages } from '../../../actions/message_actions';
+import React from 'react';
+import useDispatch from 'react-redux';
+import useHistory from 'react-router-dom';
+import createMembership from '../../../actions/user_actions';
+import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
 
 export default props => {
+  const { currentUser, server } = props;
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const handleJoin = join => {
     if (join === 'join') {
-      this.props.createMembership({
-        user_id: this.props.currentUser.id,
-        server_id: this.props.server.id
-      }).then(() => {
-        this.props.getCurrentServer(this.props.server.id).then(server => {
-          this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
-          this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
+      dispatch(createMembership({
+        user_id: currentUser.id,
+        server_id: server.id
+      })).then(() => {
+        dispatch(getCurrentServer(server.id)).then(data => {
+          history.push(`/channels/${server.id}/${data.server.joinedChannelIds[0]}`);
+          dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
         })
       })
     } else {
-      this.props.getCurrentServer(this.props.server.id).then(server => {
-        this.props.history.push(`/channels/${this.props.server.id}/${server.server.joinedChannelIds[0]}`);
-        this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
+      dispatch(getCurrentServer(server.id)).then(server => {
+        history.push(`/channels/${server.id}/${server.server.joinedChannelIds[0]}`);
+        dispatch(getCurrentChannel(server.server.joinedChannelIds[0]));
       })
     }
   }
 
   const renderJoinBtn = () => {
-    if (this.props.currentUser.joinedServerIds.includes(this.props.server.id)) {
+    if (currentUser.joinedServerIds.includes(server.id)) {
       return (<div className='server-discovery-list-item-join-btn joined'
         onClick={() => this.handleJoin('joined')}>
         <div className='join-btn-txt'>
@@ -45,17 +51,17 @@ export default props => {
   }
 
   return (<div className='server-discovery-list-item-container'
-    key={`server-discovery-list-item-container-${this.props.server.id}`}>
+    key={`server-discovery-list-item-container-${server.id}`}>
     <img className='server-discovery-list-item-icon'
-      key={`server-discovery-list-item-icon-${this.props.server.id}`}
+      key={`server-discovery-list-item-icon-${server.id}`}
       src='https://i.imgur.com/Jvh1OQm.jpg'
-      alt={`${this.props.server.name} icon`} />
+      alt={`${server.name} icon`} />
     <div className='server-discovery-list-item-name noverflow'
-      key={`server-discovery-list-item-name-${this.props.server.id}`}>
-      {this.props.server.name}
+      key={`server-discovery-list-item-name-${server.id}`}>
+      {server.name}
     </div>
     <div className='server-discovery-list-item-join'
-      key={`server-discovery-list-item-join-${this.props.server.id}`}>
+      key={`server-discovery-list-item-join-${server.id}`}>
       {this.renderJoinBtn()}
     </div>
   </div>)
