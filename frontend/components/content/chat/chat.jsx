@@ -61,7 +61,7 @@ export default props => {
       <div className='chat-area-container'>
         <Route path='/channels/:serverId/:channelId' render={() =>
           <MessageIndex key={parseInt(currentChannelId)}
-            currentChannelId={currentChannelId} messages ={messages} />
+            currentChannelId={currentChannelId} messages={messages} />
         } />
         <form className='chat-form-container'>
           <textarea className='chat-form-input'
