@@ -1,7 +1,7 @@
 import React from 'react';
-import useDispatch from 'react-redux';
-import useHistory from 'react-router-dom';
-import createMembership from '../../../actions/user_actions';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createMembership } from '../../../actions/user_actions';
 import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
 
 export default props => {
@@ -22,9 +22,9 @@ export default props => {
         })
       })
     } else {
-      dispatch(getCurrentServer(server.id)).then(server => {
-        history.push(`/channels/${server.id}/${server.server.joinedChannelIds[0]}`);
-        dispatch(getCurrentChannel(server.server.joinedChannelIds[0]));
+      dispatch(getCurrentServer(server.id)).then(data => {
+        history.push(`/channels/${server.id}/${data.server.joinedChannelIds[0]}`);
+        dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
       })
     }
   }
@@ -62,7 +62,7 @@ export default props => {
     </div>
     <div className='server-discovery-list-item-join'
       key={`server-discovery-list-item-join-${server.id}`}>
-      {this.renderJoinBtn()}
+      {renderJoinBtn()}
     </div>
   </div>)
 }
