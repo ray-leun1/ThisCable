@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentChannel } from '../../../actions/current_actions';
 import { getUsers } from '../../../actions/user_actions';
 import { getMessages } from '../../../actions/message_actions';
 import svgs from '../../svgs';
 
 export default props => {
-  const { currentChannelId } = props;
+  const { currentChannelId, messages } = props;
 
   const dispatch = useDispatch();
 
   const [users, setUsers] = useState(useSelector(state => state.entities.users));
-  const [messages, setMessages] = useState(useSelector(state => state.entities.messages));
 
   useEffect(() => {
+    dispatch(getCurrentChannel(currentChannelId));
     dispatch(getUsers()).then(data => setUsers(data.users));
-    dispatch(getMessages(currentChannelId)).then(data => setMessages(data.messages));
+    dispatch(getMessages(currentChannelId));
   }, [])
 
   useEffect(() => {
+    if (Object.values(users).length === 1) {
+      dispatch(getUsers());
+    }
     let container = document.getElementsByClassName('message-index-container')[0];
     container.scrollTop = container.scrollHeight;
   })
