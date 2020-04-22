@@ -32,7 +32,7 @@ export default props => {
   const renderJoinBtn = () => {
     if (currentUser.joinedServerIds.includes(server.id)) {
       return (<div className='server-discovery-list-item-join-btn joined'
-        onClick={() => this.handleJoin('joined')}>
+        onClick={() => handleJoin('joined')}>
         <div className='join-btn-txt'>
           Joined
         </div>
@@ -42,7 +42,7 @@ export default props => {
       </div>)
     } else {
       return (<div className='server-discovery-list-item-join-btn join'
-        onClick={() => this.handleJoin('join')}>
+        onClick={() => handleJoin('join')}>
         <div className='join-btn-txt'>
           Join
         </div>
