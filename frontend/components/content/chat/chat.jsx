@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
-import { getUsers } from '../../../actions/user_actions';
 import { createMessage, getMessages } from '../../../actions/message_actions';
 import { getCurrentChannel } from '../../../actions/current_actions';
 import MessageIndex from './message_index';
@@ -13,9 +12,10 @@ export default props => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const messages = useSelector(state => state.entities.messages);
+
   const currentChannelId = history.location.pathname.split('/')[3];
   const [currentChannel, setCurrentChannel] = useState(useSelector(state => state.current.channel));
-  const [messages, setMessages] = useState(useSelector(state => state.entities.messages));
   const [messageBody, setMessageBody] = useState('');
 
   const handleSubmit = () => {
@@ -27,7 +27,6 @@ export default props => {
 
     dispatch(createMessage(message));
     setMessageBody('');
-    dispatch(getMessages(currentChannelId)).then(data => setMessages(data.messages));
   }
 
   const handleOnEnter = e => {
@@ -60,7 +59,10 @@ export default props => {
     </div>
     <div className='chat-content-container'>
       <div className='chat-area-container'>
-        <Route path='/channels/:serverId/:channelId' render={() => <MessageIndex key={parseInt(currentChannelId)} currentChannelId={currentChannelId} />} />
+        <Route path='/channels/:serverId/:channelId' render={() =>
+          <MessageIndex key={parseInt(currentChannelId)}
+            currentChannelId={currentChannelId} messages ={messages} />
+        } />
         <form className='chat-form-container'>
           <textarea className='chat-form-input'
             placeholder={`Message #${currentChannel ? currentChannel.name : ''}`}
