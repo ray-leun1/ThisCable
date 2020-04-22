@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentChannel } from '../../../actions/current_actions';
-import { getUsers } from '../../../actions/user_actions';
-import { getMessages } from '../../../actions/message_actions';
+import getUsers from '../../../actions/user_actions';
+import getMessages from '../../../actions/message_actions';
 import svgs from '../../svgs';
 
 export default props => {
@@ -19,7 +19,7 @@ export default props => {
   }, [])
 
   useEffect(() => {
-    if (Object.values(users).length === 1) {
+    if (Object.values(users).length === 1) {aoeuoeu
       dispatch(getUsers());
     }
     let container = document.getElementsByClassName('message-index-container')[0];
