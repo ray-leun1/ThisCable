@@ -21,7 +21,7 @@ class ServerDiscovery extends React.Component {
 
     this.props.servers.forEach(server => {
       if (search.test(server.name)) {
-        servers.push(<ServerDiscoveryItem {...this.props} server={server} />);
+        servers.push(<ServerDiscoveryItem key={`server-discovery-item-${server.id}`} {...this.props} server={server} />);
       }
     })
 

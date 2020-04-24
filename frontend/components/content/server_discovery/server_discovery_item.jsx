@@ -50,18 +50,15 @@ export default props => {
     }
   }
 
-  return (<div className='list-item-container'
-    key={`server-discovery-list-item-container-${server.id}`}>
+  return (<div className='list-item-container'>
     <img className='item-icon'
-      key={`server-discovery-list-item-icon-${server.id}`}
+      key={`item-icon-${server.id}`}
       src='https://i.imgur.com/Jvh1OQm.jpg'
       alt={`${server.name} icon`} />
-    <div className='item-name noverflow'
-      key={`server-discovery-list-item-name-${server.id}`}>
+    <div className='item-name noverflow'>
       {server.name}
     </div>
-    <div className='item-join'
-      key={`server-discovery-list-item-join-${server.id}`}>
+    <div className='item-join'>
       {renderJoinBtn()}
     </div>
   </div>)
