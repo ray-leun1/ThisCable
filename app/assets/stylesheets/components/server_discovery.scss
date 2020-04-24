@@ -8,120 +8,120 @@
   padding: 0px 34px 100px;
   margin: 100px auto 0px;
   z-index: 1;
+
+  .header {
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .search-container {
+    color: #dcddde;
+    font-size: 18px;
+    overflow: hidden;
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 80px;
+    background: #4f545c;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+
+    .input {
+      font-size: 18px;
+      width: 90%;
+      padding: 12px;
+      border-radius: 3px;
+    }
+  }
+
+  .server-list {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, 256px);
+    grid-auto-rows: min-content;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    margin: auto;
+
+    .list-item-container {
+      position: relative;
+      width: 256px;
+      height: 144px;
+      margin-right: 16px;
+      margin-bottom: 16px;
+      padding: 16px;
+      background: #202225;
+      border-radius: 8px;
+    }
+
+    .item-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 25%;
+      margin: 8px;
+    }
+
+    .item-name {
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    .item-join-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: white;
+      font-size: 14px;
+      line-height: 20px;
+      min-width: 90px;
+      height: 40px;
+      padding: 2px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      
+      &.join {
+        background: #43b581;
+
+        &:hover {
+          background: #3ca374;
+        }
+      
+        &:active {
+          background: #369167;
+        }
+      }
+
+      &.joined {
+        border: 1px solid hsla(0, 0, 100%, 0.3);
+        
+        &:hover {
+          border-color: hsla(0, 0, 100%, 0.6);
+        }
+        
+        &:active {
+          background: rgba(79, 84, 92, 0.32);
+          border-color: hsla(0, 0, 100%, 0.9);
+        }
+      }
+    }
+
+    .join-btn-check {
+      margin-left: 8px;
+    }
+  }
 }
 
 @media screen and (max-width: 1240px) {
   .server-discovery-container {
     max-width: 868px;
   }
-}
-
-.server-discovery-header {
-  color: white;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 40px;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.server-discovery-search-container {
-  color: #dcddde;
-  font-size: 18px;
-  overflow: hidden;
-  max-width: 700px;
-  width: 100%;
-  margin-bottom: 80px;
-  background: #4f545c;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-}
-
-.server-discovery-search-input {
-  font-size: 18px;
-  width: 90%;
-  padding: 12px;
-  border-radius: 3px;
-}
-
-.server-discovery-server-list {
-  display: grid;
-  grid-gap: 16px;
-  grid-template-columns: repeat(auto-fill, 256px);
-  grid-auto-rows: min-content;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-  width: 100%;
-  margin: auto;
-}
-
-.server-discovery-list-item-container {
-  position: relative;
-  width: 256px;
-  height: 144px;
-  margin-right: 16px;
-  margin-bottom: 16px;
-  padding: 16px;
-  background: $server-discovery-item-bg;
-  border-radius: 8px;
-}
-
-.server-discovery-list-item-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 25%;
-  margin: 8px;
-}
-
-.server-discovery-list-item-name {
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-}
-
-.server-discovery-list-item-join-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  color: white;
-  font-size: 14px;
-  line-height: 20px;
-  min-width: 90px;
-  height: 40px;
-  padding: 2px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  
-  &.join {
-    background: $join-btn;
-
-    &:hover {
-      background: $join-btn-hover;
-    }
-  
-    &:active {
-      background: $join-btn-active;
-    }
-  }
-
-  &.joined {
-    border: 1px solid hsla(0, 0, 100%, 0.3);
-    
-    &:hover {
-      border-color: hsla(0, 0, 100%, 0.6);
-    }
-    
-    &:active {
-      background: rgba(79, 84, 92, 0.32);
-      border-color: hsla(0, 0, 100%, 0.9);
-    }
-  }
-}
-
-.join-btn-check {
-  margin-left: 8px;
 }

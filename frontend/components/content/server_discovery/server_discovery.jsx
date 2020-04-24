@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ServerDiscoveryItem from './new_server_discovery_item';
+import ServerDiscoveryItem from './server_discovery_item';
 
 class ServerDiscovery extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class ServerDiscovery extends React.Component {
 
     this.props.servers.forEach(server => {
       if (search.test(server.name)) {
-        servers.push(<ServerDiscoveryItem {...this.props} server={server} />);
+        servers.push(<ServerDiscoveryItem key={`server-discovery-item-${server.id}`} {...this.props} server={server} />);
       }
     })
 
@@ -34,11 +34,11 @@ class ServerDiscovery extends React.Component {
 
   render() {
     return (<div className='server-discovery-container'>
-      <div className='server-discovery-header'>
+      <div className='header'>
         Find new communities on thisCable
       </div>
-      <div className='server-discovery-search-container'>
-        <input className='server-discovery-search-input'
+      <div className='search-container'>
+        <input className='input'
           type='text'
           value={this.state.search}
           placeholder='Try searching for a server name, I dare you'
@@ -48,7 +48,7 @@ class ServerDiscovery extends React.Component {
           <i className="fas fa-search"></i>
         </button> */}
       </div>
-      <div className='server-discovery-server-list'>
+      <div className='server-list'>
         {this.renderServers()}
       </div>
     </div>);
