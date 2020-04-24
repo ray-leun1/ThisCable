@@ -31,7 +31,7 @@ export default props => {
 
   const renderJoinBtn = () => {
     if (currentUser.joinedServerIds.includes(server.id)) {
-      return (<div className='server-discovery-list-item-join-btn joined'
+      return (<div className='item-join-btn joined'
         onClick={() => handleJoin('joined')}>
         <div className='join-btn-txt'>
           Joined
@@ -41,7 +41,7 @@ export default props => {
         </div>
       </div>)
     } else {
-      return (<div className='server-discovery-list-item-join-btn join'
+      return (<div className='item-join-btn join'
         onClick={() => handleJoin('join')}>
         <div className='join-btn-txt'>
           Join
@@ -50,17 +50,17 @@ export default props => {
     }
   }
 
-  return (<div className='server-discovery-list-item-container'
+  return (<div className='list-item-container'
     key={`server-discovery-list-item-container-${server.id}`}>
-    <img className='server-discovery-list-item-icon'
+    <img className='item-icon'
       key={`server-discovery-list-item-icon-${server.id}`}
       src='https://i.imgur.com/Jvh1OQm.jpg'
       alt={`${server.name} icon`} />
-    <div className='server-discovery-list-item-name noverflow'
+    <div className='item-name noverflow'
       key={`server-discovery-list-item-name-${server.id}`}>
       {server.name}
     </div>
-    <div className='server-discovery-list-item-join'
+    <div className='item-join'
       key={`server-discovery-list-item-join-${server.id}`}>
       {renderJoinBtn()}
     </div>

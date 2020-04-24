@@ -9,7 +9,7 @@
   margin: 100px auto 0px;
   z-index: 1;
 
-  .server-discovery-header {
+  .header {
     color: white;
     font-size: 32px;
     font-weight: 600;
@@ -18,7 +18,7 @@
     margin-bottom: 24px;
   }
 
-  .server-discovery-search-container {
+  .search-container {
     color: #dcddde;
     font-size: 18px;
     overflow: hidden;
@@ -29,7 +29,7 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 
-    .server-discovery-search-input {
+    .input {
       font-size: 18px;
       width: 90%;
       padding: 12px;
@@ -37,7 +37,7 @@
     }
   }
 
-  .server-discovery-server-list {
+  .server-list {
     display: grid;
     grid-gap: 16px;
     grid-template-columns: repeat(auto-fill, 256px);
@@ -47,7 +47,7 @@
     width: 100%;
     margin: auto;
 
-    .server-discovery-list-item-container {
+    .list-item-container {
       position: relative;
       width: 256px;
       height: 144px;
@@ -58,21 +58,21 @@
       border-radius: 8px;
     }
 
-    .server-discovery-list-item-icon {
+    .item-icon {
       width: 48px;
       height: 48px;
       border-radius: 25%;
       margin: 8px;
     }
 
-    .server-discovery-list-item-name {
+    .item-name {
       color: white;
       font-size: 16px;
       font-weight: 600;
       line-height: 20px;
     }
 
-    .server-discovery-list-item-join-btn {
+    .item-join-btn {
       display: flex;
       justify-content: center;
       align-items: center;
