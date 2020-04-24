@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ServerDiscoveryItem from './new_server_discovery_item';
+import ServerDiscoveryItem from './server_discovery_item';
 
 class ServerDiscovery extends React.Component {
   constructor(props) {
