@@ -54,7 +54,7 @@
       margin-right: 16px;
       margin-bottom: 16px;
       padding: 16px;
-      background: $server-discovery-item-bg;
+      background: #202225;
       border-radius: 8px;
     }
 
@@ -89,14 +89,14 @@
       cursor: pointer;
       
       &.join {
-        background: $join-btn;
+        background: #43b581;
 
         &:hover {
-          background: $join-btn-hover;
+          background: #3ca374;
         }
       
         &:active {
-          background: $join-btn-active;
+          background: #369167;
         }
       }
 
