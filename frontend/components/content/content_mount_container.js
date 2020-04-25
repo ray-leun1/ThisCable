@@ -5,7 +5,7 @@ import { getCurrentUser } from '../../actions/current_actions';
 import ServerIndex from './servers/server_index';
 import Sidebar from './sidebar/sidebar';
 import Chat from './chat/chat';
-import ServerDiscoveryContainer from './server_discovery/server_discovery_container';
+import ServerDiscovery from './server_discovery/server_discovery';
 
 export default () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default () => {
       <Route path='/channels/:serverId(\d+)' render={() => <Sidebar currentUser={currentUser} updateCurrentUser={updateCurrentUser} />} />
       <Route path='/channels/:serverId(\d+)/:channelId(\d+)' render={() => <Chat currentUser={currentUser} />} />
       <Route path='/channels/@me' render={() => <Sidebar currentUser={currentUser}/>} />
-      <Route path='/channels/server-discovery' component={ServerDiscoveryContainer} />
+      <Route path='/channels/server-discovery' component={ServerDiscovery} />
     </div>)
   } else {
     return <div>Loading</div>
