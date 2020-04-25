@@ -14,9 +14,11 @@ export default () => {
     search = new RegExp(search, 'i');
 
     servers.forEach(server => {
-      if (search.test(server.name)) {
-        serverList.push(<ServerDiscoveryItem key={`server-discovery-item-${server.id}`} currentUser={currentUser} server={server} />);
-      }
+      if (search.test(server.name)) serverList.push(
+        <ServerDiscoveryItem
+          key={`server-discovery-item-${server.id}`}
+          currentUser={currentUser} server={server} />
+      );
     })
 
     return serverList;
@@ -32,10 +34,6 @@ export default () => {
         value={query}
         placeholder='Try searching for a server name, I dare you'
         onChange={e => setQuery(e.currentTarget.value)} />
-      {/* <button className='server-discovery-search-submit'
-        onClick={() => this.handleSubmit()}>
-        <i className="fas fa-search"></i>
-      </button> */}
     </div>
     <div className='server-list'>
       {renderServers()}
