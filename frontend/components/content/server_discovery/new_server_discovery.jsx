@@ -19,7 +19,7 @@ export default () => {
       }
     })
 
-    return servers
+    return serverList;
   }
 
   return (<div className='server-discovery-container'>
