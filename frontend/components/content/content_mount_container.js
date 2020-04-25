@@ -5,7 +5,7 @@ import { getCurrentUser } from '../../actions/current_actions';
 import ServerIndex from './servers/server_index';
 import Sidebar from './sidebar/sidebar';
 import Chat from './chat/chat';
-import ServerDiscovery from './server_discovery/new_server_discovery';
+import ServerDiscovery from './server_discovery/server_discovery';
 
 export default () => {
   const dispatch = useDispatch();
