@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createServer } from '../../../actions/server_actions';
 import { closeModal } from '../../../actions/modal_actions';
 import {
@@ -6,42 +7,14 @@ import {
   getCurrentServer,
   getCurrentChannel
 } from '../../../actions/current_actions';
-import CreateServerForm from './create_server_form';
 
-const mapStateToProps = state => ({
-  currentUserId: state.session.id,
-  server: { name: '' }
-});
+export default props => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  createServer: server => dispatch(createServer(server)),
-  closeModal: () => dispatch(closeModal()),
-  getCurrentUser: userId => dispatch(getCurrentUser(userId)),
-  getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
-  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId)),
-  updateServerIndex: ownProps.updateServerIndex
-})
+  const adminId = useSelector(state => state.session.id);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateServerForm)
-
-
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-
-class CreateServerForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.server.name,
-      admin_id: this.props.currentUserId
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOnEnter = this.handleOnEnter.bind(this);
-  }
+  const [name, setName] = useState('');
+  const [adminId, setAdminId]
 
   handleChange(field) {
     return e => this.setState({ [field]: e.target.value })
@@ -133,5 +106,3 @@ class CreateServerForm extends React.Component {
     </div>)
   }
 }
-
-export default withRouter(CreateServerForm);
