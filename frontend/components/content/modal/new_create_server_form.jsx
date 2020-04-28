@@ -37,34 +37,33 @@ export default props => {
   }
 
   return (<div className='create-server-form-container'>
-    <form className='create-server-form'
-      onSubmit={handleSubmit}>
-      <div className='create-server-form-container-top'>
-        <div className='create-server-form-title'>CREATE YOUR SERVER</div>
-        <div className='create-server-form-text'>
+    <form onSubmit={handleSubmit}>
+      <div className='top-container'>
+        <div className='title'>CREATE YOUR SERVER</div>
+        <div className='text'>
           By creating a server you will have access to <strong>free</strong> text chat to use amongst yourself.
         </div>
 
-        <div className='create-server-form-input-container'>
-          <div className='create-server-form-input-container-left'>
-            <label className='create-server-label'>SERVER NAME
-              <input className='create-server-input-name'
+        <div className='input-container'>
+          <div className='left-container'>
+            <label>SERVER NAME
+              <input className='input-name'
                 type='text'
                 value={name}
                 placeholder='Enter a server name'
                 onChange={e => setName(e.target.value)}
                 onKeyDown={handleOnEnter} />
             </label>
-            <div className='create-server-input-region-container'>
-              <label className='create-server-label'>SERVER REGION
-                <div className='create-server-input-region-btn'>
-                  <div className='create-server-input-region'>
-                    <div className='create-server-input-region-flag'></div>
-                    <span className='create-server-input-region-text'>
+            <div className='region-container'>
+              <label>SERVER REGION
+                <div className='region-btn'>
+                  <div className='region'>
+                    <div className='region-flag'></div>
+                    <span className='region-text'>
                       US West
                     </span>
                   </div>
-                  <div className='create-server-input-region-change-btn'>
+                  <div className='region-change-btn'>
                     Change
                   </div>
                 </div>
