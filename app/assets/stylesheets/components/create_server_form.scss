@@ -50,130 +50,129 @@
         margin-top: 12px;
         border-bottom: 2px solid $underline;
       }
+
+      .region-container {
+        margin-top: 32px;
+    
+        .region-btn {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          cursor: pointer;
+    
+          .region {
+            display: flex;
+            align-items: center;
+            width: 155px;
+            padding: 7px;
+            border: 1px solid #cdcdcd;
+            border-right: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+    
+            .region-flag {
+              width: 44px;
+              height: 30px;
+              background-image: image-url('flag_uswest');
+              background-color: #7289da;
+              background-repeat: no-repeat;
+              background-size: cover;
+              border-radius: 4px;
+              margin-right: 16px;
+            }
+    
+            .region-text {
+              color: #99aab5;
+              font-size: 16px;
+              font-weight: 700;
+            }
+          }
+    
+          .region-change-btn {
+            color: #7289da;
+            font-size: 14px;
+            line-height: 24px;
+            padding: 10px;
+            border: 1px solid #cdcdcd;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            text-align: center;
+            vertical-align: middle;
+          }
+    
+          &:hover {
+            .region {
+              border-color: #7289da;
+            }
+    
+            .region-change-btn {
+              color: white;
+              background: #7289da;
+            }
+          }
+        }
+      }
+    
+      .input-fineprint {
+        color: #87909c;
+        font-size: 11px;
+        line-height: 13px;
+        margin: 15px 0px;
+      }
     }
   }
 
 
-  // Server region select
-  .region-container {
-    margin-top: 32px;
+  .right-container {
+    .icon-container {
+      width: 160px;
 
-
-  }
-
-  .region-btn {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    cursor: pointer;
-
-    .region {
-      display: flex;
-      align-items: center;
-      width: 155px;
-      padding: 7px;
-      border: 1px solid #cdcdcd;
-      border-right: none;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-
-      .region-flag {
-        width: 44px;
-        height: 30px;
-        background-image: image-url('flag_uswest');
-        background-color: #7289da;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 4px;
-        margin-right: 16px;
+      .icon-btn {
+        .icon {
+          width: 128px;
+          height: 128px;
+          background: #7289da;
+          border: 5px solid #ebebeb;
+          border-radius: 50%;
+          cursor: pointer;
+        }
       }
 
-      .region-text {
-        color: #99aab5;
-        font-size: 16px;
-        font-weight: 700;
-      }
-    }
-
-    .region-change-btn {
-      color: #7289da;
-      font-size: 14px;
-      line-height: 24px;
-      padding: 10px;
-      border: 1px solid #cdcdcd;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    &:hover {
-      .region {
-        border-color: #7289da;
-      }
-      .region-change-btn {
-        color: white;
-        background: #7289da;
+      .icon-txt {
+        color: #87909c;
+        font-size: 10px;
       }
     }
   }
 
-  .create-server-input-fineprint {
-    color: #87909c;
-    font-size: 11px;
-    line-height: 13px;
-    margin: 15px 0px;
-  }
-
-
-  // Server icon button
-  .create-server-input-icon-container {
-    width: 160px;
-  }
-
-  .create-server-input-icon {
-    width: 128px;
-    height: 128px;
-    background: #7289da;
-    border: 5px solid #ebebeb;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .create-server-input-icon-txt {
-    color: #87909c;
-    font-size: 10px;
-  }
-
-  // Bottom buttons
-  .create-server-form-bottom-container {
+  .bottom-container {
     display: flex;
     justify-content: space-between;
     background: $create-server-form-container-bottom;
     padding: 18px 40px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-  }
 
-  .create-server-form-back {
-    color: #99aab5;
-    font-size: 12px;
-    border-bottom: 2px solid transparent;
-
-    .fa-arrow-left {
-      margin-right: 10px;
+    .back-btn {
+      color: #99aab5;
+      font-size: 12px;
+      border-bottom: 2px solid transparent;
+  
+      .fa-arrow-left {
+        margin-right: 10px;
+      }
+  
+      &:hover {
+        border-color: $create-server-back-border;
+      }
     }
-
-    &:hover {
-      border-color: $create-server-back-border;
+  
+    .submit-btn {
+      font-size: 14px;
+      width: 96px;
+      min-width: 96px;
+      height: 38px;
+      min-height: 38px;
     }
-  }
-
-  .create-server-form-submit {
-    font-size: 14px;
-    width: 96px;
-    min-width: 96px;
-    height: 38px;
-    min-height: 38px;
   }
 }

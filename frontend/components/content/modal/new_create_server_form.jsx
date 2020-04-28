@@ -69,29 +69,29 @@ export default props => {
                 </div>
               </label>
             </div>
-            <div className='create-server-input-fineprint'>
+            <div className='input-fineprint'>
               By creating a server, you.. create a server, really.
             </div>
           </div>
-          <div className='create-server-form-input-container-right'>
-            <div className='create-server-input-icon-container'>
-              <div className='create-server-input-icon-btn'>
-                <div className='create-server-input-icon'></div>
+          <div className='right-container'>
+            <div className='icon-container'>
+              <div className='icon-btn'>
+                <div className='icon'></div>
               </div>
-              <span className='create-server-input-icon-txt'>
+              <span className='icon-txt'>
                 Minimum Size: <strong>128x128</strong>
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div className='create-server-form-bottom-container'>
-        <button className='create-server-form-back'
+      <div className='bottom-container'>
+        <button className='back-btn'
           onClick={() => { updateServerIndex(); dispatch(closeModal()) }}>
           <i className="fas fa-arrow-left"></i>
           BACK
         </button>
-        <input className='default-btn create-server-form-submit'
+        <input className='default-btn submit-btn'
           type='submit'
           value='Create' />
       </div>
