@@ -1,107 +1,100 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createServer } from '../../../actions/server_actions';
+import { closeModal } from '../../../actions/modal_actions';
+import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
 
-class CreateServerForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.server.name,
-      admin_id: this.props.currentUserId
-    };
+export default props => {
+  const { updateServerIndex } = props;
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOnEnter = this.handleOnEnter.bind(this);
-  }
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  handleChange(field) {
-    return e => this.setState({[field]: e.target.value})
-  }
+  const adminId = useSelector(state => state.session.id);
 
-  handleSubmit(e) {
+  const [name, setName] = useState('');
+
+  const handleSubmit = e => {
     e.preventDefault();
-    
-    this.props.createServer(this.state)
-      .then(server => {
-        this.props.history.push(`/channels/${server.server.id}/${server.server.joinedChannelIds[0]}`);
-        this.props.getCurrentServer(server.server.id);
-        this.props.getCurrentChannel(server.server.joinedChannelIds[0]);
-        this.props.updateServerIndex();
+
+    dispatch(createServer({ name, admin_id: adminId }))
+      .then(data => {
+        dispatch(getCurrentServer(data.server.id));
+        dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
+        updateServerIndex();
+        history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`);
       });
 
-    this.props.closeModal();
+    closeModal();
   }
 
-  handleOnEnter(e) {
+  const handleOnEnter = e => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
-      this.handleSubmit(e);
+      handleSubmit(e);
     }
   }
 
-  render() {
-    return (<div className='create-server-form-container'>
-      <form className='create-server-form'
-        onSubmit={this.handleSubmit}>
-        <div className='create-server-form-container-top'>
-          <div className='create-server-form-title'>CREATE YOUR SERVER</div>
-          <div className='create-server-form-text'>
-            By creating a server you will have access to <strong>free</strong> text chat to use amongst yourself.
-          </div>
+  return (<div className='create-server-form-container'>
+    <form onSubmit={handleSubmit}>
+      <div className='top-container'>
+        <div className='title'>CREATE YOUR SERVER</div>
+        <div className='text'>
+          By creating a server you will have access to <strong>free</strong> text chat to use amongst yourself.
+        </div>
 
-          <div className='create-server-form-input-container'>
-            <div className='create-server-form-input-container-left'>
-              <label className='create-server-label'>SERVER NAME
-                <input className='create-server-input-name'
-                  type='text'
-                  value={this.state.name}
-                  placeholder='Enter a server name'
-                  onChange={this.handleChange('name')}
-                  onKeyDown={this.handleOnEnter} />
-              </label>
-              <div className='create-server-input-region-container'>
-                <label className='create-server-label'>SERVER REGION
-                  <div className='create-server-input-region-btn'>
-                    <div className='create-server-input-region'>
-                      <div className='create-server-input-region-flag'></div>
-                      <span className='create-server-input-region-text'>
-                        US West
-                      </span>
-                    </div>
-                    <div className='create-server-input-region-change-btn'>
-                      Change
-                    </div>
+        <div className='input-container'>
+          <div className='left-container'>
+            <label>SERVER NAME
+              <input className='input-name'
+                type='text'
+                value={name}
+                placeholder='Enter a server name'
+                onChange={e => setName(e.target.value)}
+                onKeyDown={handleOnEnter} />
+            </label>
+            <div className='region-container'>
+              <label>SERVER REGION
+                <div className='region-btn'>
+                  <div className='region'>
+                    <div className='region-flag'></div>
+                    <span className='region-text'>
+                      US West
+                    </span>
                   </div>
-                </label>
-              </div>
-              <div className='create-server-input-fineprint'>
-                By creating a server, you.. create a server, really.
-              </div>
-            </div>
-            <div className='create-server-form-input-container-right'>
-              <div className='create-server-input-icon-container'>
-                <div className='create-server-input-icon-btn'>
-                  <div className='create-server-input-icon'></div>
+                  <div className='region-change-btn'>
+                    Change
+                  </div>
                 </div>
-                <span className='create-server-input-icon-txt'>
-                  Minimum Size: <strong>128x128</strong>
-                </span>
+              </label>
+            </div>
+            <div className='input-fineprint'>
+              By creating a server, you.. create a server, really.
+            </div>
+          </div>
+          <div className='right-container'>
+            <div className='icon-container'>
+              <div className='icon-btn'>
+                <div className='icon'></div>
               </div>
+              <span className='icon-txt'>
+                Minimum Size: <strong>128x128</strong>
+              </span>
             </div>
           </div>
         </div>
-        <div className='create-server-form-bottom-container'>
-          <button className='create-server-form-back'
-            onClick={() => {this.props.updateServerIndex(); this.props.closeModal()}}>
-            <i className="fas fa-arrow-left"></i>
-            BACK
-          </button>
-          <input className='default-btn create-server-form-submit'
-            type='submit'
-            value='Create' />
-        </div>
-      </form>
-    </div>)
-  }
+      </div>
+      <div className='bottom-container'>
+        <button className='back-btn'
+          onClick={() => { updateServerIndex(); dispatch(closeModal()) }}>
+          <i className="fas fa-arrow-left"></i>
+          BACK
+        </button>
+        <input className='default-btn submit-btn'
+          type='submit'
+          value='Create' />
+      </div>
+    </form>
+  </div>)
 }
-
-export default withRouter(CreateServerForm);

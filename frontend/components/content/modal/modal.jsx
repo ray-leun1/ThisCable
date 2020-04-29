@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
-import CreateServerForm from './new_create_server_form';
+import CreateServerForm from './create_server_form';
 import Settings from './settings';
 import CreateChannelFormContainer from './create_channel_form_container';
 
