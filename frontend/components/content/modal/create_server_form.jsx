@@ -26,7 +26,7 @@ export default props => {
         history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`);
       });
 
-    closeModal();
+    dispatch(closeModal());
   }
 
   const handleOnEnter = e => {
