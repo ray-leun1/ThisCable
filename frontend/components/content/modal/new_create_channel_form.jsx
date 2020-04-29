@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChannels, getChannel, createChannel } from '../../../actions/channel_actions';
 import { getRoles } from '../../../actions/role_actions';
 import { createPermission } from '../../../actions/permission_actions';
@@ -8,61 +9,22 @@ import {
   getCurrentServer,
   getCurrentChannel
 } from '../../../actions/current_actions';
-import CreateChannelForm from './create_channel_form';
 
-const mapStateToProps = state => ({
-  currentServer: state.current.server,
-  currentServerId: state.current.server.id,
-  channel: { name: '' }
-});
+export default props => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = dispatch => ({
-  getChannels: serverId => dispatch(getChannels(serverId)),
-  getChannel: id => dispatch(getChannel(id)),
-  createChannel: channel => dispatch(createChannel(channel)),
-  getRoles: () => dispatch(getRoles()),
-  createPermission: permission => dispatch(createPermission(permission)),
-  closeModal: () => dispatch(closeModal()),
-  getCurrentUser: userId => dispatch(getCurrentUser(userId)),
-  getCurrentServer: serverId => dispatch(getCurrentServer(serverId)),
-  getCurrentChannel: channelId => dispatch(getCurrentChannel(channelId)),
-})
+  const currentServer = useSelector(state => state.current.server);
+  const serverId = useSelector(state => state.current.server.id);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateChannelForm)
+  const [name, setName] = useState('');
+  const [private, setPrivate] = useState('deselected');
+  const [roles, setRoles] = useState(currentServer.roles.map(role => ({
+    id: role.id,
+    name: role.name,
+    permit: 'deselected'
+  })));
 
-
-
-
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-
-class CreateChannelForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.channel.name,
-      server_id: this.props.currentServerId,
-      private: 'deselected',
-      roles: this.props.currentServer.roles.map(role => ({
-        id: role.id,
-        name: role.name,
-        permit: 'deselected'
-      }))
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOnEnter = this.handleOnEnter.bind(this);
-    this.togglePrivate = this.togglePrivate.bind(this);
-    this.toggleRole = this.toggleRole.bind(this);
-    this.renderRoles = this.renderRoles.bind(this);
-  }
-
-  componentDidMount() {
-    this.state.roles[0].permit = 'selected';
-  }
+  useEffect(() => roles[0].permit = 'selected', [])
 
   handleChange(field) {
     return e => this.setState({ [field]: e.target.value })
@@ -231,5 +193,3 @@ class CreateChannelForm extends React.Component {
     </div>)
   }
 }
-
-export default withRouter(CreateChannelForm);
