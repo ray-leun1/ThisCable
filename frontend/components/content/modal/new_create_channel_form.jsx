@@ -26,11 +26,7 @@ export default props => {
 
   useEffect(() => roles[0].permit = 'selected', [])
 
-  handleChange(field) {
-    return e => this.setState({ [field]: e.target.value })
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = () => {
     e.preventDefault();
 
     this.props.createChannel({ name: this.state.name, server_id: this.state.server_id })
@@ -51,14 +47,14 @@ export default props => {
     this.props.closeModal();
   }
 
-  handleOnEnter(e) {
+  const handleOnEnter = e => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
       this.handleSubmit(e);
     }
   }
 
-  togglePrivate() {
+  const togglePrivate = () => {
     if (this.state.private === 'deselected') {
       this.setState({ private: 'selected' });
     } else {
@@ -66,7 +62,7 @@ export default props => {
     }
   }
 
-  toggleRole(id) {
+  const toggleRole = id => {
     let roleIndex = this.state.roles.map(role => role.id).indexOf(id);
     let roles = Array.from(this.state.roles);
 
@@ -79,7 +75,7 @@ export default props => {
     }
   }
 
-  renderRoles() {
+  const renderRoles = () => {
     if (this.state.private === 'selected') {
       return (<div className='create-channel-roles-container'>
         <div className='create-channel-label roles-container'>
@@ -115,81 +111,79 @@ export default props => {
     }
   }
 
-  render() {
-    return (<div className='create-channel-form-container'>
-      <form className='create-channel-form'
-        onSubmit={this.handleSubmit}>
-        <div className='create-channel-form-header'>
-          CREATE TEXT CHANNEL
-        </div>
-        <div className='create-channel-form-input-container'>
-          <div className='create-channel-checkbox-container'>
-            <div className='create-channel-label'>
-              CHANNEL TYPE
-            </div>
-            <div className='create-channel-checkbox-text-container'>
-              <label className='form-checkbox-wrapper create-channel-checkbox'>
-                {/* <input className='form-checkbox-input'
-                  type='radio'
-                  checked /> */}
-                <i className="fas fa-check"></i>
-              </label>
-              <div className='create-channel-input-text'>
-                <div className='create-channel-input-text-hash'>
-                  <i className='fas fa-hashtag'></i>
-                </div>
-                <div className='create-channel-input-text-txt'>
-                  Text Channel
-                </div>
+  return (<div className='create-channel-form-container'>
+    <form className='create-channel-form'
+      onSubmit={handleSubmit}>
+      <div className='create-channel-form-header'>
+        CREATE TEXT CHANNEL
+      </div>
+      <div className='create-channel-form-input-container'>
+        <div className='create-channel-checkbox-container'>
+          <div className='create-channel-label'>
+            CHANNEL TYPE
+          </div>
+          <div className='create-channel-checkbox-text-container'>
+            <label className='form-checkbox-wrapper create-channel-checkbox'>
+              {/* <input className='form-checkbox-input'
+                type='radio'
+                checked /> */}
+              <i className="fas fa-check"></i>
+            </label>
+            <div className='create-channel-input-text'>
+              <div className='create-channel-input-text-hash'>
+                <i className='fas fa-hashtag'></i>
+              </div>
+              <div className='create-channel-input-text-txt'>
+                Text Channel
               </div>
             </div>
           </div>
-          <label className='create-channel-input-name-container'>
-            <div className='create-channel-label'>
-              CHANNEL NAME
-            </div>
-            <input className='create-channel-input-name'
-              type='text'
-              value={this.state.name}
-              onChange={this.handleChange('name')}
-              onKeyDown={this.handleOnEnter} />
-          </label>
-          <div className='create-channel-private-container'>
-            <div className='create-channel-private-input-container'>
-              <div className='create-channel-private-header-container'
-                onClick={() => this.togglePrivate()}>
-                <div className='create-channel-private-header-lock'>
-                  <i className="fas fa-lock"></i>
-                </div>
-                <div className='create-channel-private-header-txt'>
-                  Private Channel
-                </div>
-              </div>
-              {/* <button className='create-channel-private-checkbox'
-                type='button'
-                onClick={() => this.togglePrivate()} /> */}
-              <button className={`create-channel-private-checkbox ${this.state.private}`}
-                type='button'
-                onClick={() => this.togglePrivate()}>
-                <div className='create-channel-private-slider'></div>
-              </button>
-            </div>
-            <div className='create-channel-private-description'>
-              By making a channel private, permissions to access this channel must be manually assigned to roles
-            </div>
+        </div>
+        <label className='create-channel-input-name-container'>
+          <div className='create-channel-label'>
+            CHANNEL NAME
           </div>
-          {this.renderRoles()}
+          <input className='create-channel-input-name'
+            type='text'
+            value={name}
+            onChange={e => setName(e.target.value)}
+            onKeyDown={handleOnEnter} />
+        </label>
+        <div className='create-channel-private-container'>
+          <div className='create-channel-private-input-container'>
+            <div className='create-channel-private-header-container'
+              onClick={() => togglePrivate()}>
+              <div className='create-channel-private-header-lock'>
+                <i className="fas fa-lock"></i>
+              </div>
+              <div className='create-channel-private-header-txt'>
+                Private Channel
+              </div>
+            </div>
+            {/* <button className='create-channel-private-checkbox'
+              type='button'
+              onClick={() => this.togglePrivate()} /> */}
+            <button className={`create-channel-private-checkbox ${private}`}
+              type='button'
+              onClick={() => togglePrivate()}>
+              <div className='create-channel-private-slider'></div>
+            </button>
+          </div>
+          <div className='create-channel-private-description'>
+            By making a channel private, permissions to access this channel must be manually assigned to roles
+          </div>
         </div>
-        <div className='create-channel-form-bottom-container'>
-          <button className='create-channel-form-cancel'
-            onClick={() => this.props.closeModal()}>
-            Cancel
-          </button>
-          <input className='default-btn create-channel-form-submit'
-            type='submit'
-            value='Create Channel' />
-        </div>
-      </form>
-    </div>)
-  }
+        {renderRoles()}
+      </div>
+      <div className='create-channel-form-bottom-container'>
+        <button className='create-channel-form-cancel'
+          onClick={() => dispatch(closeModal())}>
+          Cancel
+        </button>
+        <input className='default-btn create-channel-form-submit'
+          type='submit'
+          value='Create Channel' />
+      </div>
+    </form>
+  </div>)
 }
