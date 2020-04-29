@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
-import CreateServerFormContainer from './create_server_form_container';
+import CreateServerForm from './new_create_server_form';
 import Settings from './settings';
 import CreateChannelFormContainer from './create_channel_form_container';
 
@@ -11,7 +11,7 @@ function Modal({ modal, closeModal }) {
   let component;
   switch (modal.component) {
     case 'createServer':
-      component = <CreateServerFormContainer {...modal.props} />;
+      component = <CreateServerForm {...modal.props} />;
       break;
     case 'createChannel':
       component = <CreateChannelFormContainer {...modal.props} />;

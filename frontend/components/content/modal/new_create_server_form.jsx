@@ -18,12 +18,12 @@ export default props => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(createServer({ name, adminId }))
+    dispatch(createServer({ name, admin_id: adminId }))
       .then(data => {
-        history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`);
         dispatch(getCurrentServer(data.server.id));
         dispatch(getCurrentChannel(data.server.joinedChannelIds[0]));
         updateServerIndex();
+        history.push(`/channels/${data.server.id}/${data.server.joinedChannelIds[0]}`);
       });
 
     closeModal();
