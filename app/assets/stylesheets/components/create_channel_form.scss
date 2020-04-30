@@ -23,14 +23,14 @@
         .text-container {
           display: flex;
           align-items: center;
-          background: $create-channel-checkbox-selected;
-          border: 1px solid $create-channel-checkbox-selected;
+          background: #7289da;
+          border: 1px solid #7289da;
           border-radius: 3px;
           padding: 10px;
           cursor: pointer;
       
           .checkbox {
-            color: $create-channel-checkbox-selected;
+            color: #7289da;
             font-size: 12px;
             line-height: 24px;
             text-align: center;
@@ -45,7 +45,7 @@
             margin: 0px 8px;
       
             .hash {
-              color: $create-channel-text-hash;
+              color: #b9bbbe;
               font-size: 20px;
               width: 24px;
               height: 24px;
@@ -74,7 +74,7 @@
           border-radius: 3px;
         
           &:focus {
-            border-color: $active-input;
+            border-color: #7289da;
           }
         }
       }
@@ -91,7 +91,7 @@
             cursor: pointer;
           
             .lock {
-              color: $create-channel-private-lock;
+              color: #b9bbbe;
               font-size: 12px;
               line-height: 16px;
               margin: 3px;
@@ -127,7 +127,7 @@
             }
             
             &.deselected {
-              background: $create-channel-private-deselected-bg;
+              background: #72767d;
           
               .slider {
                 top: 0px;
@@ -138,7 +138,7 @@
             }
             
             &.selected {
-              background: $create-channel-private-selected-bg;
+              background: #7289da;
           
               .slider {
                 top: 0px;
@@ -151,7 +151,7 @@
         }
         
         .description {
-          color: $create-channel-private-description;
+          color: #b9bbbe;
           font-size: 14px;
           line-height: 20px;
           font-weight: 400;
@@ -197,7 +197,7 @@
               }
               
               &.deselected {
-                background: $create-channel-private-deselected-bg;
+                background: #72767d;
             
                 .role-slider {
                   top: 0px;
@@ -208,7 +208,7 @@
               }
               
               &.selected {
-                background: $create-channel-private-selected-bg;
+                background: #7289da;
             
                 .role-slider {
                   top: 0px;
@@ -226,7 +226,7 @@
     .bottom-container {
       display: flex;
       justify-content: flex-end;
-      background: $create-channel-form-bottom-bg;
+      background: #2f3136;
       padding: 20px;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -255,7 +255,7 @@
     }
   
     .create-channel-label {
-      color: $create-channel-label-txt;
+      color: #8e9297;
       font-size: 12px;
       font-weight: 600;
       line-height: 16px;
