@@ -42,7 +42,7 @@
       }
 
       .input-name {
-        color: $create-server-input-name-txt;
+        color: #2f3136;
         font-size: 14px;
         font-weight: 500;
         width: 100%;
@@ -148,7 +148,7 @@
   .bottom-container {
     display: flex;
     justify-content: space-between;
-    background: $create-server-form-container-bottom;
+    background: #f6f6f7;
     padding: 18px 40px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -163,7 +163,7 @@
       }
   
       &:hover {
-        border-color: $create-server-back-border;
+        border-color: #949494;
       }
     }
   
