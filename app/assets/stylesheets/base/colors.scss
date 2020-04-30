@@ -10,7 +10,6 @@ $bg-session-input: $bg-gray1;
 
 $bg-gray2: #2f3136;
 $sidebar-bg: $bg-gray2;
-$create-channel-form-bottom-bg: $bg-gray2;
 
 $content-top-divider: #242529;
 $content-top-divider: $content-top-divider;
@@ -26,7 +25,6 @@ $landing: $txt-gray0;
 
 $txt-gray1: #8e9297;
 $txt-session-label: $txt-gray1;
-$create-channel-label-txt: $txt-gray1;
 
 $txt-gray-hover: #dcddde;
 $tab-hover: $txt-gray-hover;
@@ -34,7 +32,6 @@ $message-body: $txt-gray-hover;
 $message-user-icon-name: $txt-gray-hover;
 
 $txt-gray2: #72767d;
-$create-channel-private-deselected-bg: $txt-gray2;
 $chat-title-hash: $txt-gray2;
 $message-timestamp: $txt-gray2;
 
@@ -48,10 +45,7 @@ $scrollbar-gray: #25272b;
 $scrollbar-tracker: $scrollbar-gray;
 
 $ui-color: #b9bbbe;
-$create-channel-text-hash: $ui-color;
-$create-channel-private-lock: $ui-color;
 $create-channel-checkbox-deselected: $ui-color;
-$create-channel-private-description: $ui-color;
 
 $txt-white: #d4d4d5;
 $landing-hover: $txt-white;
@@ -61,8 +55,5 @@ $error-red: #bc1315;
 
 $light-blue: #7289da;
 $default-btn: $light-blue;
-$active-input: $light-blue;
-$create-channel-checkbox-selected: $light-blue;
-$create-channel-private-selected-bg: $light-blue;
 
 $warm-green: #43b581;
