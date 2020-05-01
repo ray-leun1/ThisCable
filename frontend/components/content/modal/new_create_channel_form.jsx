@@ -11,14 +11,18 @@ export default props => {
   const serverId = useSelector(state => state.current.server.id);
 
   const [name, setName] = useState('');
-  const [private, setPrivate] = useState('deselected');
+  const [privateSlider, setPrivateSlider] = useState('deselected');
   const [roles, setRoles] = useState(currentServer.roles.map(role => ({
     id: role.id,
     name: role.name,
     permit: 'deselected'
   })));
 
-  useEffect(() => roles[0].permit = 'selected', [])
+  useEffect(() => {
+    let roleList = roles;
+    roleList[0].permit = 'selected';
+    setRoles(roleList);
+  }, [])
 
   const handleSubmit = () => {
     e.preventDefault();
@@ -26,7 +30,7 @@ export default props => {
     dispatch(createChannel({ name, server_id: serverId }))
       .then(data => {
         roles.forEach(role => {
-          if (private === 'selected' && role.permit === 'selected') {
+          if (privateSlider === 'selected' && role.permit === 'selected') {
             dispatch(createPermission({ role_id: role.id, channel_id: data.channel.id }));
           }
         })
@@ -44,7 +48,7 @@ export default props => {
     }
   }
 
-  const togglePrivate = () => setPrivate(private === 'selected' ? 'deselected' : 'selected');
+  const togglePrivate = () => setPrivateSlider(privateSlider === 'selected' ? 'deselected' : 'selected');
 
   const toggleRole = id => {
     let roleIdx = roles.map(role => role.id).indexOf(id);
@@ -57,7 +61,7 @@ export default props => {
   }
 
   const renderRoles = () => {
-    if (private === 'selected') {
+    if (privateSlider === 'selected') {
       return (<div className='roles-container'>
         <div className='create-channel-label roles-label'>
           WHO CAN ACCESS THIS CHANNEL?
@@ -140,10 +144,7 @@ export default props => {
                 Private Channel
               </div>
             </div>
-            {/* <button className='create-channel-private-checkbox'
-              type='button'
-              onClick={() => this.togglePrivate()} /> */}
-            <button className={`checkbox ${private}`}
+            <button className={`checkbox ${privateSlider}`}
               type='button'
               onClick={() => togglePrivate()}>
               <div className='slider'></div>
