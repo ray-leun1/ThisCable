@@ -29,12 +29,10 @@
           padding: 10px;
           cursor: pointer;
       
-          .checkbox {
+          .svg-checkmark {
             color: #7289da;
-            font-size: 12px;
-            line-height: 24px;
-            text-align: center;
             background: white;
+            padding: 3px;
             border-radius: 3px;
             cursor: pointer;
           }
@@ -53,7 +51,7 @@
             
             .txt {
               color: white;
-              font-size: 16px;
+              font-size: 15px;
               line-height: 24px;
             }
           }
@@ -99,7 +97,8 @@
             }
             
             .txt {
-              font-size: 16px;
+              color: white;
+              font-size: 15px;
               line-height: 24px;
             }
           }

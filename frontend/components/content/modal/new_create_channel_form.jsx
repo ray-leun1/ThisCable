@@ -108,9 +108,7 @@ export default props => {
             CHANNEL TYPE
           </div>
           <div className='text-container'>
-            <label className='form-checkbox-wrapper checkbox'>
-              <i className="fas fa-check"></i>
-            </label>
+            {svgs.checkmark}
             <div className='input-text'>
               {svgs.hash}
               <div className='txt'>
