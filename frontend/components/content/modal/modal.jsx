@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../../actions/modal_actions';
 import CreateServerForm from './create_server_form';
 import Settings from './settings';
-import CreateChannelForm from './new_create_channel_form';
+import CreateChannelForm from './create_channel_form';
 
 function Modal({ modal, closeModal }) {
   if (!modal) return null;
