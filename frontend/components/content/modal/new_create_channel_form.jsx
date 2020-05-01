@@ -133,9 +133,7 @@ export default props => {
           <div className='slider-container'>
             <div className='header-container'
               onClick={() => togglePrivate()}>
-              <div className='lock'>
-                <i className="fas fa-lock"></i>
-              </div>
+              {svgs.lockSwitch}
               <div className='txt'>
                 Private Channel
               </div>
