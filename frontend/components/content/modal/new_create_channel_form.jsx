@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChannels, createChannel } from '../../../actions/channel_actions';
 import { createPermission } from '../../../actions/permission_actions';
 import { closeModal } from '../../../actions/modal_actions';
+import svgs from '../../svgs';
 
 export default props => {
   const dispatch = useDispatch();
@@ -108,15 +109,10 @@ export default props => {
           </div>
           <div className='text-container'>
             <label className='form-checkbox-wrapper checkbox'>
-              {/* <input className='form-checkbox-input'
-                type='radio'
-                checked /> */}
               <i className="fas fa-check"></i>
             </label>
             <div className='input-text'>
-              <div className='hash'>
-                <i className='fas fa-hashtag'></i>
-              </div>
+              {svgs.hash}
               <div className='txt'>
                 Text Channel
               </div>

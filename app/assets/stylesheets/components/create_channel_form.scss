@@ -23,8 +23,8 @@
         .text-container {
           display: flex;
           align-items: center;
-          background: #7289da;
-          border: 1px solid #7289da;
+          background: rgb(114, 137, 218);
+          border: 1px solid rgb(114, 137, 218);
           border-radius: 3px;
           padding: 10px;
           cursor: pointer;
@@ -44,12 +44,10 @@
             align-items: center;
             margin: 0px 8px;
       
-            .hash {
-              color: #b9bbbe;
-              font-size: 20px;
-              width: 24px;
-              height: 24px;
-              margin: 0px 6px;
+            .svg-hash {
+              fill: #b9bbbe;
+              margin-right: 6px;
+              opacity: 0.6;
             }
             
             .txt {
