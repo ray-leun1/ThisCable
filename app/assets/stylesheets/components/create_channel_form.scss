@@ -1,6 +1,6 @@
 .create-channel-form-container {
   width: 440px;
-  background: $create-channel-form-bg;
+  background: #36393f;
   border-radius: 5px;
   box-shadow: 0 0 0 1px rgba(32,34,37,.6), 0 2px 10px 0 rgba(0,0,0,.2);
 
@@ -29,12 +29,10 @@
           padding: 10px;
           cursor: pointer;
       
-          .checkbox {
+          .svg-checkmark {
             color: #7289da;
-            font-size: 12px;
-            line-height: 24px;
-            text-align: center;
             background: white;
+            padding: 3px;
             border-radius: 3px;
             cursor: pointer;
           }
@@ -44,17 +42,16 @@
             align-items: center;
             margin: 0px 8px;
       
-            .hash {
-              color: #b9bbbe;
-              font-size: 20px;
-              width: 24px;
-              height: 24px;
-              margin: 0px 6px;
+            .svg-hash {
+              color: white;
+              fill: #b9bbbe;
+              margin-right: 6px;
+              opacity: 0.6;
             }
             
             .txt {
               color: white;
-              font-size: 16px;
+              font-size: 15px;
               line-height: 24px;
             }
           }
@@ -82,7 +79,7 @@
       .private-container {
         margin-bottom: 20px;
         
-        .input-container {
+        .slider-container {
           display: flex;
           justify-content: space-between;
         
@@ -90,15 +87,18 @@
             display: flex;
             cursor: pointer;
           
-            .lock {
-              color: #b9bbbe;
-              font-size: 12px;
-              line-height: 16px;
-              margin: 3px;
+            .svg-lock-switch {
+              position: relative;
+              top: 2px;
+              width: 16px;
+              height: 16px;
+              opacity: 0.6;
+              margin-right: 6px;
             }
             
             .txt {
-              font-size: 16px;
+              color: white;
+              font-size: 15px;
               line-height: 24px;
             }
           }
