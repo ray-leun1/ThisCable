@@ -134,7 +134,7 @@ export default props => {
             onKeyDown={handleOnEnter} />
         </label>
         <div className='private-container'>
-          <div className='input-container'>
+          <div className='slider-container'>
             <div className='header-container'
               onClick={() => togglePrivate()}>
               <div className='lock'>
