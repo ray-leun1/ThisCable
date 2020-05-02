@@ -5,6 +5,7 @@ import { createMessage } from '../../../actions/message_actions';
 import { getCurrentChannel } from '../../../actions/current_actions';
 import MessageIndex from './message_index';
 import MemberIndex from './member_index';
+import svgs from '../../svgs';
 
 export default props => {
   const { currentUser } = props;
@@ -50,9 +51,7 @@ export default props => {
 
   return (<div className='chat-container'>
     <div className='chat-title-container'>
-      <div className='chat-title-hash'>
-        <i className='fas fa-hashtag'></i>
-      </div>
+      {svgs.hash}
       <div className='chat-title-txt'>
         {currentChannel ? currentChannel.name : ''}
       </div>

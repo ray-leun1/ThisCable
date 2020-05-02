@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createServer } from '../../../actions/server_actions';
 import { closeModal } from '../../../actions/modal_actions';
 import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
+import svgs from '../../svgs';
 
 export default props => {
   const { updateServerIndex } = props;
@@ -88,7 +89,7 @@ export default props => {
       <div className='bottom-container'>
         <button className='back-btn'
           onClick={() => { updateServerIndex(); dispatch(closeModal()) }}>
-          <i className="fas fa-arrow-left"></i>
+          {svgs.backArrow}
           BACK
         </button>
         <input className='default-btn submit-btn'
