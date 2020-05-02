@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createMembership } from '../../../actions/user_actions';
 import { getCurrentServer, getCurrentChannel } from '../../../actions/current_actions';
+import svgs from '../../svgs';
 
 export default props => {
   const { currentUser, server } = props;
@@ -36,9 +37,7 @@ export default props => {
         <div className='join-btn-txt'>
           Joined
         </div>
-        <div className='join-btn-check'>
-          <i className='fas fa-check'></i>
-        </div>
+        {svgs.checkmark}
       </div>)
     } else {
       return (<div className='item-join-btn join'

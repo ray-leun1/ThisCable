@@ -62,7 +62,7 @@ export default {
   checkmark:
     <svg className='svg-checkmark' width='18' height='18' viewBox='0 0 18 18'>
       <g fill='none' fill-rule='evenodd'>
-        <polyline stroke='#7289da' stroke-width='2' points='3.5 9.5 7 13 15 5' />
+        <polyline stroke='currentColor' stroke-width='2' points='3.5 9.5 7 13 15 5' />
       </g>
     </svg>,
   hash:
