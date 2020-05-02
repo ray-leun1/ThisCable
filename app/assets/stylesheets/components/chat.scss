@@ -12,15 +12,15 @@
   border-bottom: 1px solid $content-top-divider;
 }
 
-.chat-title-hash {
-  color: $chat-title-hash;
-  font-size: 22px;
-  line-height: 22px;
+.svg-hash {
+  fill: #b9bbbe;
   margin: 0px 8px;
+  opacity: 0.6;
 }
 
 .chat-title-txt {
   color: white;
+  font-weight: 700;
 }
 
 
